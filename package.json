@@ -2,9 +2,9 @@
   "name": "nerdhub",
   "version": "1.0.0",
   "description": "Nerdhub website",
-  "main": "index.js",
+  "main": "./backend/index.js",
   "scripts": {
-    "start": "node backend/server.js"
+    "start": "nodemon"
   },
   "author": "Ajaydip Singh",
   "license": "ISC",
