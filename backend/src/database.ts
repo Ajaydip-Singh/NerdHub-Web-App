@@ -1,17 +1,24 @@
 import mongoose from 'mongoose';
 import logger from './utils/logger';
 
-const DB_URL = process.env.MONGODB_URL || 'mongodb://localhost/nerdhub';
+/* Initialize database using a connection string
+ *
+ * Inputs:
+ *
+ *   url - the connection string to the database
+ *
+ */
+const initializeDatabase = (url: string): void => {
+  logger.info(`Starting database connection at url ${url}`);
 
-logger.info(`Starting mongodb connection at url ${DB_URL}`);
+  mongoose
+    .connect(url, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true
+    })
+    .then(() => logger.info(`Connection to database succesful at ${url}`))
+    .catch(() => logger.error(`Connection to database failed at ${url}`));
+};
 
-// Connect to mongodb
-mongoose.connect(DB_URL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true
-});
-
-logger.info(
-  `MongoDB connection state: ${mongoose.STATES[mongoose.connection.readyState]}`
-);
+export default initializeDatabase;
