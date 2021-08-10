@@ -12,6 +12,11 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Middleware for async error handler
+app.use((err: Error, _req: Request, res: Response, _next: Function): void => {
+  res.status(500).send({ message: err.message });
+});
+
 app.get('/', (_req: Request, res: Response): void => {
   res.send('Hello World');
   logger.info(
