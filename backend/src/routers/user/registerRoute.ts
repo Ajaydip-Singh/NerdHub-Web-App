@@ -15,7 +15,7 @@ router.post(
     const body = req.body;
 
     if (!(body.firstName && body.lastName && body.email && body.password)) {
-      res.status(400).send({ message: 'Please fill in all required inputs' });
+      res.status(400).send({ message: 'Please fill all required inputs' });
       logger.error(
         `${req.ip} : ${req.method} : ${req.originalUrl} : ${res.statusCode} : Request does not contain all required body fields`
       );
