@@ -17,7 +17,8 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "nodemon": "^2.0.12",
-    "redux": "^4.1.0"
+    "redux": "^4.1.0",
+    "winston": "^3.3.3"
   },
   "events": {
     "start": "cls || clear"
@@ -26,6 +27,7 @@
     "@types/cors": "^2.8.12",
     "@types/express": "^4.17.13",
     "@types/node": "^16.4.13",
+    "@types/winston": "^2.4.4",
     "@typescript-eslint/eslint-plugin": "^4.29.0",
     "@typescript-eslint/parser": "^4.29.0",
     "eslint": "^7.32.0",

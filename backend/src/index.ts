@@ -1,5 +1,6 @@
 import express, { Application, Request, Response } from 'express';
 import cors from 'cors';
+import logger from './utils/logger';
 
 const app: Application = express();
 
@@ -9,10 +10,14 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (_req: Request, res: Response): void => {
   res.send('Hello World');
+  logger.info(
+    `${_req.ip} : ${_req.method} : ${_req.originalUrl} : ${res.statusCode} : Server sent hello world`
+  );
 });
 
 const port: number = Number(process.env.port) || 5000;
 
 app.listen(port, () => {
   console.log(`Server started at localhost:${port}`);
+  logger.info(`Server started listening at port: ${port}`);
 });
