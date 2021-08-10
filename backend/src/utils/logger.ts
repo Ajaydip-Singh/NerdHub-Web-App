@@ -12,7 +12,10 @@ const logger = createLogger({
   defaultMeta: { service: 'user-service' },
   transports: [
     // - Write all logs error (and below) to `error.log`.
-    new transports.File({ filename: 'logs/error.log', level: 'error' }),
+    new transports.File({
+      filename: 'logs/error.log',
+      level: 'error'
+    }),
 
     // - Write to all logs with level `info` and below to `combined.log`.
     new transports.File({ filename: 'logs/combined.log' })
