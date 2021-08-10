@@ -14,7 +14,7 @@ router.post(
   expressAsyncHandler(async (req: Request, res: Response) => {
     const body = req.body;
 
-    if (!(body.first_name && body.last_name && body.email && body.password)) {
+    if (!(body.firstName && body.lastName && body.email && body.password)) {
       res.status(400).send({ message: 'Please fill in all required inputs' });
       logger.error(
         `${req.ip} : ${req.method} : ${req.originalUrl} : ${res.statusCode} : Request does not contain all required body fields`
@@ -42,8 +42,8 @@ router.post(
 
     // Created new user
     const user = new User({
-      first_name: body.first_name,
-      last_name: body.last_name,
+      firstName: body.firstName,
+      lastName: body.lastName,
       email: body.email,
       phone: body.phone || '',
       password: encryptedPassword
@@ -58,8 +58,8 @@ router.post(
     // Send user back to client in response
     res.status(200).send({
       _id: createdUser._id,
-      first_name: createdUser.first_name,
-      last_name: createdUser.last_name,
+      firstName: createdUser.firstName,
+      lastName: createdUser.lastName,
       email: createdUser.email,
       phone: createdUser.phone,
       isAdmin: createdUser.isAdmin,
