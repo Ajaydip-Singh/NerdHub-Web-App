@@ -1,6 +1,10 @@
 import express, { Application, Request, Response } from 'express';
+import dotenv from 'dotenv';
 import cors from 'cors';
 import logger from './utils/logger';
+
+// Configure dotenv to use ev from .env
+dotenv.config();
 
 const app: Application = express();
 
