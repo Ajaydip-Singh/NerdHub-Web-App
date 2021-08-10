@@ -29,7 +29,7 @@ router.post(
     // Send error if user with exact email exists
     if (oldUser) {
       res.status(409).send({
-        message: 'User Already Exists. Please Login'
+        message: 'User Already Exists. Please Login.'
       });
       logger.error(
         `${req.ip} : ${req.method} : ${req.originalUrl} : ${res.statusCode} : User Already Exists`
