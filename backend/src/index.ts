@@ -18,6 +18,8 @@ app.use(express.urlencoded({ extended: true }));
 const DB_URL = process.env.MONGODB_URL || 'mongodb://localhost:27017/nerdhub';
 initializeDatabase(DB_URL);
 
+app.use('/api', userRouter);
+
 // Middleware for async error handler
 app.use((err: Error, _req: Request, res: Response, _next: Function): void => {
   if (process.env.NODE_ENV !== 'production') {
