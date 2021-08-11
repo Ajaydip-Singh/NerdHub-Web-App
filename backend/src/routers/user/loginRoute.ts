@@ -42,8 +42,8 @@ router.post(
     if (await bcrypt.compare(body.password, user.password)) {
       res.status(200).send({
         _id: user._id,
-        first_name: user.first_name,
-        last_name: user.last_name,
+        firstName: user.firstName,
+        lastName: user.lastName,
         email: user.email,
         phone: user.phone,
         isAdmin: user.isAdmin,
@@ -86,8 +86,8 @@ router.post(
     if (oldUser && oldUser.isGoogle) {
       res.status(200).send({
         _id: oldUser._id,
-        first_name: oldUser.first_name,
-        last_name: oldUser.last_name,
+        firstName: oldUser.firstName,
+        lastName: oldUser.lastName,
         email: oldUser.email,
         phone: oldUser.phone,
         isAdmin: oldUser.isAdmin,
@@ -102,8 +102,8 @@ router.post(
       const updatedUser = await oldUser.save();
       res.status(200).send({
         _id: updatedUser._id,
-        first_name: updatedUser.first_name,
-        last_name: updatedUser.last_name,
+        firstName: updatedUser.firstName,
+        lastName: updatedUser.lastName,
         email: updatedUser.email,
         phone: updatedUser.phone,
         isAdmin: updatedUser.isAdmin,
@@ -126,18 +126,20 @@ router.post(
 
     const encryptedPassword = await bcrypt.hash(password, saltRounds);
 
-    const createdUser = new User({
-      firstName: userInfo.firstName,
-      lastName: userInfo.lastName,
+    const user = new User({
+      firstName: userInfo.given_name,
+      lastName: userInfo.family_name,
       email: userInfo.email,
       password: encryptedPassword,
       isGoogle: true
     });
 
+    const createdUser = await user.save();
+
     res.status(200).send({
       _id: createdUser._id,
-      first_name: createdUser.first_name,
-      last_name: createdUser.last_name,
+      firstName: createdUser.firstName,
+      lastName: createdUser.lastName,
       email: createdUser.email,
       phone: createdUser.phone,
       isAdmin: createdUser.isAdmin,
