@@ -12,8 +12,8 @@ const generateToken = (user: User, expiresIn = '30d'): string => {
   const token = jwt.sign(
     {
       _id: user._id,
-      first_name: user.first_name,
-      last_name: user.last_name,
+      firstName: user.firstName,
+      lastName: user.lastName,
       email: user.email,
       phone: user.phone,
       isAdmin: user.isAdmin
