@@ -8,7 +8,7 @@ import { User } from '../interfaces/user';
  *   user - user object complying fields as defined by the User interface
  *
  */
-const generateToken = (user: User): string => {
+const generateToken = (user: User, expiresIn = '30d'): string => {
   const token = jwt.sign(
     {
       _id: user._id,
@@ -20,7 +20,7 @@ const generateToken = (user: User): string => {
     },
     process.env.JWT_SECRET as string,
     {
-      expiresIn: '30d'
+      expiresIn
     }
   );
   return token;
