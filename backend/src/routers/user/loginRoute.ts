@@ -39,7 +39,18 @@ router.post(
     }
 
     // Validate if passwords match
-    if (await bcrypt.compare(body.password, user.password)) {
+    const passwordsMatch = await bcrypt.compare(body.password, user.password);
+
+    if (!passwordsMatch) {
+      res.status(401).send({ message: 'Incorrect password' });
+      logger.error(
+        `${req.ip} : ${req.method} : ${req.originalUrl} : ${res.statusCode} : User log in failed due to incorrect password`
+      );
+      return;
+    }
+
+    // Check if user has verified email
+    if (user.isEmailVerified) {
       res.status(200).send({
         _id: user._id,
         firstName: user.firstName,
@@ -54,11 +65,11 @@ router.post(
         `${req.ip} : ${req.method} : ${req.originalUrl} : ${res.statusCode} : User logged in`
       );
     } else {
-      res.status(401).send({ message: 'Incorrect password' });
-
+      res.status(401).send({ message: 'Please Verify Email and Try Again' });
       logger.error(
-        `${req.ip} : ${req.method} : ${req.originalUrl} : ${res.statusCode} : User log in failed due to incorrect password`
+        `${req.ip} : ${req.method} : ${req.originalUrl} : ${res.statusCode} : User log in failed due to unverified email`
       );
+      return;
     }
   })
 );
@@ -99,6 +110,7 @@ router.post(
       return;
     } else if (oldUser && !oldUser.isGoogle) {
       oldUser.isGoogle = true;
+      oldUser.isEmailVerified = true; // if signing in with google then email is verified
       const updatedUser = await oldUser.save();
       res.status(200).send({
         _id: updatedUser._id,
@@ -130,6 +142,7 @@ router.post(
       firstName: userInfo.given_name,
       lastName: userInfo.family_name,
       email: userInfo.email,
+      isEmailVerified: true,
       password: encryptedPassword,
       isGoogle: true
     });
@@ -145,7 +158,6 @@ router.post(
       isAdmin: createdUser.isAdmin,
       token: generateToken(createdUser)
     });
-    // res.status(200).send(decoded);
     logger.info(
       `${req.ip} : ${req.method} : ${req.originalUrl} : ${res.statusCode} : Created new user with google`
     );
