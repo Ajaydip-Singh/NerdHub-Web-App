@@ -4,6 +4,8 @@ import bcrypt from 'bcrypt';
 import User from '../../models/userModel';
 import logger from '../../utils/logger';
 import generateToken from '../../utils/jwt';
+import { mg } from '../../utils/mail/mail';
+import { verifyEmailTemplate } from '../../utils/mail/templates';
 
 const router = express.Router();
 
@@ -54,6 +56,24 @@ router.post(
 
     // Create jwt token for created user
     const token = generateToken(createdUser);
+
+    // Send verify email to user
+    const verifyEmail = {
+      from: 'NerdHub Kenya <NerdHubKenya@sandbox89dd7aa0a24e4a9ba739dc59f253ca24.mailgun.org>',
+      to: `${user.firstName} ${user.lastName} <${user.email}>`,
+      subject: `NerdHub Kenya - Verify Email`,
+      html: verifyEmailTemplate(user)
+    };
+
+    mg()
+      .messages()
+      .send(verifyEmail, (error, body) => {
+        if (error) {
+          logger.error(`Error: Verification email not sent. ${error}`);
+        } else {
+          logger.info(`Verification email sent. ${body}`);
+        }
+      });
 
     // Send user back to client in response
     res.status(200).send({
