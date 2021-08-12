@@ -4,8 +4,8 @@ import bcrypt from 'bcrypt';
 import User from '../../models/userModel';
 import logger from '../../utils/logger';
 import generateToken from '../../utils/jwt';
-import { mg } from '../../utils/mail/mail';
-import { verifyEmailTemplate } from '../../utils/mail/templates';
+import { mailGenerator, mg } from '../../utils/mail/mail';
+import { confirmEmailTemplate } from '../../utils/mail/templates';
 import { generateRandomCode } from '../../utils/general';
 
 const router = express.Router();
@@ -67,7 +67,7 @@ router.post(
       from: 'NerdHub Kenya <NerdHubKenya@sandbox89dd7aa0a24e4a9ba739dc59f253ca24.mailgun.org>',
       to: `${user.firstName} ${user.lastName} <${user.email}>`,
       subject: `NerdHub Kenya - Verify Email`,
-      html: verifyEmailTemplate(user, confirmationCode)
+      html: mailGenerator.generate(confirmEmailTemplate(user, confirmationCode))
     };
 
     mg()
