@@ -1,3 +1,7 @@
+import { NextFunction, Response } from 'express';
+import jwt from 'jsonwebtoken';
+import { GetUserAuthInfoRequest } from '../interfaces/express';
+
 // Create random code
 export const generateRandomCode = (): string => {
   const characters =
@@ -8,4 +12,27 @@ export const generateRandomCode = (): string => {
     code += characters[Math.floor(Math.random() * characters.length)];
   }
   return code;
+};
+
+export const isAuth = (
+  req: GetUserAuthInfoRequest,
+  res: Response,
+  next: NextFunction
+): void => {
+  // Get authorization header
+  const authorization = req.headers.authorization;
+  if (authorization) {
+    // Get token sent from frontend
+    const token = authorization.slice(7, authorization.length);
+    jwt.verify(token, String(process.env.JWT_SECRET), (err, decoded) => {
+      if (err) {
+        res.status(401).send({ message: 'Invalid token' });
+      } else {
+        req.user = decoded;
+        next();
+      }
+    });
+  } else {
+    res.status(401).send({ message: 'No token' });
+  }
 };
