@@ -6,6 +6,7 @@ import logger from '../../utils/logger';
 import generateToken from '../../utils/jwt';
 import { mg } from '../../utils/mail/mail';
 import { verifyEmailTemplate } from '../../utils/mail/templates';
+import { generateRandomCode } from '../../utils/general';
 
 const router = express.Router();
 
@@ -42,13 +43,17 @@ router.post(
     // Encrypt user password
     const encryptedPassword = await bcrypt.hash(body.password, saltRounds);
 
+    // Generate confirmation codes
+    const confirmationCode = generateRandomCode();
+
     // Created new user
     const user = new User({
       firstName: body.firstName,
       lastName: body.lastName,
       email: body.email,
       phone: body.phone || '',
-      password: encryptedPassword
+      password: encryptedPassword,
+      confirmationCode: confirmationCode
     });
 
     // Save user in mongodb
@@ -62,7 +67,7 @@ router.post(
       from: 'NerdHub Kenya <NerdHubKenya@sandbox89dd7aa0a24e4a9ba739dc59f253ca24.mailgun.org>',
       to: `${user.firstName} ${user.lastName} <${user.email}>`,
       subject: `NerdHub Kenya - Verify Email`,
-      html: verifyEmailTemplate(user)
+      html: verifyEmailTemplate(user, confirmationCode)
     };
 
     mg()
