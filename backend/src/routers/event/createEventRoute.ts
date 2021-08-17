@@ -17,7 +17,7 @@ router.post(
         body.image &&
         body.date &&
         body.description &&
-        body.duration &&
+        body.time &&
         body.venue &&
         body.category
       )
@@ -46,7 +46,7 @@ router.post(
       image: body.image,
       date: body.date,
       description: body.description,
-      duration: body.duration,
+      time: body.time,
       venue: body.venue,
       category: body.category
     });
@@ -69,6 +69,7 @@ router.post(
       image: createdEvent._id,
       date: createdEvent.date,
       description: createdEvent.description,
+      time: createdEvent.time,
       price: createdEvent.price,
       isFeaturedEvent: createdEvent.isFeaturedEvent,
       country: createdEvent.country,

@@ -6,7 +6,7 @@ const eventSchema = new mongoose.Schema(
     image: { type: String, required: true },
     date: { type: Date, required: true },
     description: { type: String, required: true },
-    duration: { type: Number, required: true },
+    time: { type: String, required: true },
     price: { type: Number, required: true, default: 0 },
     isFeaturedEvent: { type: Boolean, default: false, required: true },
     country: { type: String, default: 'Kenya', required: true },
