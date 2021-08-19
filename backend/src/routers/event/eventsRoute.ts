@@ -9,13 +9,20 @@ router.get(
   '/',
   expressAsyncHandler(async (req: Request, res: Response) => {
     // handle expected query parameters
+    const name = req.query.name || '';
     const category = req.query.category || '';
     const venue = req.query.venue || '';
 
+    const nameFilter = name ? { name: { $regex: name, $options: 'i' } } : {};
     const categoryFilter = category ? { category } : '';
     const venueFilter = venue ? { venue } : '';
 
-    const events = await Event.find({ ...categoryFilter, ...venueFilter });
+    const events = await Event.find({
+      ...nameFilter,
+      ...categoryFilter,
+      ...venueFilter
+    });
+
     if (events.length !== 0) {
       res.status(200).send(events);
       logger.info(
