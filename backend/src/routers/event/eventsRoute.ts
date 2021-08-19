@@ -10,10 +10,12 @@ router.get(
   expressAsyncHandler(async (req: Request, res: Response) => {
     // handle expected query parameters
     const category = req.query.category || '';
+    const venue = req.query.venue || '';
 
     const categoryFilter = category ? { category } : '';
+    const venueFilter = venue ? { venue } : '';
 
-    const events = await Event.find({ ...categoryFilter });
+    const events = await Event.find({ ...categoryFilter, ...venueFilter });
     if (events.length !== 0) {
       res.status(200).send(events);
       logger.info(
