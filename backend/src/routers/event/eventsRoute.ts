@@ -8,7 +8,12 @@ const router = express.Router();
 router.get(
   '/',
   expressAsyncHandler(async (req: Request, res: Response) => {
-    const events = await Event.find({});
+    // handle expected query parameters
+    const category = req.query.category || '';
+
+    const categoryFilter = category ? { category } : '';
+
+    const events = await Event.find({ ...categoryFilter });
     if (events.length !== 0) {
       res.status(200).send(events);
       logger.info(
