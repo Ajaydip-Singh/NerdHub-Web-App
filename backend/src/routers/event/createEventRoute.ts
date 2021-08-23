@@ -1,13 +1,15 @@
 import express, { Request, Response } from 'express';
 import expressAsyncHandler from 'express-async-handler';
 import Event from '../../models/eventModel';
+import { isAuth, isAdmin } from '../../utils/general';
 import logger from '../../utils/logger';
 
 const router = express.Router();
 
 router.post(
   '/',
-  //   isAuth,
+  isAuth,
+  isAdmin,
   expressAsyncHandler(async (req: Request, res: Response) => {
     const body = req.body;
 
