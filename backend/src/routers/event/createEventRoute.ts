@@ -11,61 +11,21 @@ router.post(
   isAuth,
   isAdmin,
   expressAsyncHandler(async (req: Request, res: Response) => {
-    const body = req.body;
-
-    if (
-      !(
-        body.name &&
-        body.image &&
-        body.date &&
-        body.description &&
-        body.time &&
-        body.venue &&
-        body.category
-      )
-    ) {
-      res.status(400).send({ message: 'Please fill all required inputs.' });
-      logger.error(
-        `${req.ip} : ${req.method} : ${req.originalUrl} : ${res.statusCode} : Request does not contain all required body fields`
-      );
-    }
-
-    const previousEvent = await Event.findOne({ name: body.name });
-
-    if (previousEvent) {
-      res.status(409).send({
-        message:
-          'Event Already Exists with the Specified Name. Use another name.'
-      });
-      logger.error(
-        `${req.ip} : ${req.method} : ${req.originalUrl} : ${res.statusCode} : Event already exists with specified name.`
-      );
-      return;
-    }
-
     const event = new Event({
-      name: body.name,
-      image: body.image,
-      date: body.date,
-      description: body.description,
-      time: body.time,
-      venue: body.venue,
-      category: body.category
+      name: 'Sample Event' + Date.now(),
+      image: '/images/call_of_duty_ghosts.jpeg',
+      date: Date.now(),
+      description: 'Sample Event Description',
+      time: '14:00 PM - 16:00 PM',
+      venue: 'Sample Venue',
+      category: 'Sample Event',
+      backgroundColor: '#50d450',
+      borderColor: '#50d450'
     });
-
-    // handle optional attributes
-    body.price && (event.price = body.price);
-    body.isFeaturedEvent && (event.isFeaturedEvent = body.isFeaturedEvent);
-    body.country && (event.country = body.country);
-    body.city && (event.city = body.city);
-    body.isActive && (event.isActive = body.isActive);
-    body.actualNumberOfGuests &&
-      (event.actualNumberOfGuests = body.actualNumberOfGuests);
-    body.capacity && (event.capacity = body.capacity);
 
     const createdEvent = await event.save();
 
-    res.status(200).send({
+    res.send({
       _id: createdEvent._id,
       name: createdEvent.name,
       image: createdEvent._id,
@@ -84,6 +44,10 @@ router.post(
       backgroundColor: event.backgroundColor,
       borderColor: event.borderColor
     });
+
+    logger.info(
+      `${req.ip} : ${req.method} : ${req.originalUrl} : ${res.statusCode} : Created new event succesfully.`
+    );
   })
 );
 
