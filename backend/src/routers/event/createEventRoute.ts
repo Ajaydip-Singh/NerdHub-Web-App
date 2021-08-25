@@ -80,7 +80,9 @@ router.post(
       category: createdEvent.category,
       isActive: createdEvent.isActive,
       actualNumberOfGuests: createdEvent.actualNumberOfGuests,
-      capacity: createdEvent.capacity
+      capacity: createdEvent.capacity,
+      backgroundColor: event.backgroundColor,
+      borderColor: event.borderColor
     });
   })
 );

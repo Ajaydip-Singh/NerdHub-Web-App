@@ -41,6 +41,8 @@ router.put(
     event.actualNumberOfGuests =
       req.body.actualNumberOfGuests || event.actualNumberOfGuests;
     event.capacity = req.body.capacity || event.capacity;
+    event.backgroundColor = req.body.backgroundColor || event.backgroundColor;
+    event.borderColor = req.body.borderColor || event.borderColor;
 
     const updatedEvent = await event.save();
 
@@ -59,7 +61,9 @@ router.put(
       category: updatedEvent.category,
       isActive: updatedEvent.isActive,
       actualNumberOfGuests: updatedEvent.actualNumberOfGuests,
-      capacity: updatedEvent.capacity
+      capacity: updatedEvent.capacity,
+      backgroundColor: event.backgroundColor,
+      borderColor: event.borderColor
     });
 
     logger.info(

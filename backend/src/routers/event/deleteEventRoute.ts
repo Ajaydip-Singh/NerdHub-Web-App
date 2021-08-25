@@ -45,7 +45,9 @@ router.delete(
       category: deletedEvent.category,
       isActive: deletedEvent.isActive,
       actualNumberOfGuests: deletedEvent.actualNumberOfGuests,
-      capacity: deletedEvent.capacity
+      capacity: deletedEvent.capacity,
+      backgroundColor: event.backgroundColor,
+      borderColor: event.borderColor
     });
 
     logger.info(

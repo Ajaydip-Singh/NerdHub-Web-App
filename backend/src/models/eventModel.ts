@@ -16,7 +16,9 @@ const eventSchema = new mongoose.Schema(
     isActive: { type: Boolean, default: false, required: true },
     capacity: { type: Number, default: 10, required: true },
     registeredGuests: { type: [mongoose.Schema.Types.ObjectId], ref: 'User' },
-    actualNumberOfGuests: { type: Number, default: 0 }
+    actualNumberOfGuests: { type: Number, default: 0 },
+    backgroundColor: { type: String },
+    borderColor: { type: String }
   },
   {
     timestamps: true

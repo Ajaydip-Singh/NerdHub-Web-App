@@ -41,7 +41,8 @@ router.get(
       category: event.category,
       isActive: event.isActive,
       actualNumberOfGuests: event.actualNumberOfGuests,
-      capacity: event.capacity
+      capacity: event.capacity,
+      backgroundColor: event.backgroundColor
     });
 
     logger.info(
