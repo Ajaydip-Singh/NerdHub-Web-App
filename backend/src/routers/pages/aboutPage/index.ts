@@ -1,10 +1,11 @@
 import express from 'express';
-import getHomePageContent from './getAboutPageContent';
-import editHomePageContent from './editAboutPageContent';
+import getAboutPageContent from './getAboutPageContent';
+import editAboutPageContent from './editAboutPageContent';
+
 
 const router = express.Router();
 
-router.use('/home-page-content', getHomePageContent);
-router.use('/home-page-content', editHomePageContent);
+router.use('/about-page-content', getAboutPageContent);
+router.use('/about-page-content', editAboutPageContent);
 
 export default router;
