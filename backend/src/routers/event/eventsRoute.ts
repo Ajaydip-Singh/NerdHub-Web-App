@@ -12,15 +12,18 @@ router.get(
     const name = req.query.name || '';
     const category = req.query.category || '';
     const venue = req.query.venue || '';
+    const isFeaturedEvent = req.query.isFeaturedEvent || '';
 
     const nameFilter = name ? { name: { $regex: name, $options: 'i' } } : {};
     const categoryFilter = category ? { category } : '';
     const venueFilter = venue ? { venue } : '';
+    const isFeaturedFilter = isFeaturedEvent ? { isFeaturedEvent } : '';
 
     const events = await Event.find({
       ...nameFilter,
       ...categoryFilter,
-      ...venueFilter
+      ...venueFilter,
+      ...isFeaturedFilter
     });
 
     if (events.length !== 0) {
