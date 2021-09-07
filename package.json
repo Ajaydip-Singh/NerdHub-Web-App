@@ -25,6 +25,7 @@
     "mailgen": "^2.0.15",
     "mailgun-js": "^0.22.0",
     "mongoose": "^5.13.6",
+    "multer": "^1.4.3",
     "nodemon": "^2.0.12",
     "redux": "^4.1.0",
     "winston": "^3.3.3"
@@ -38,6 +39,7 @@
     "@types/express": "^4.17.13",
     "@types/jsonwebtoken": "^8.5.4",
     "@types/mailgun-js": "^0.22.12",
+    "@types/multer": "^1.4.7",
     "@types/node": "^16.4.13",
     "@types/winston": "^2.4.4",
     "@typescript-eslint/eslint-plugin": "^4.29.0",
