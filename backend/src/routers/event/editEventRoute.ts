@@ -27,7 +27,7 @@ router.put(
     }
 
     event.name = req.body.name || event.name;
-    event.image = req.body.image || event.image;
+    event.thumbnailImage = req.body.thumbnailImage || event.thumbnailImage;
     event.date = req.body.date || event.date;
     event.description = req.body.description || event.description;
     event.time = req.body.time || event.time;
@@ -49,7 +49,7 @@ router.put(
     res.status(200).send({
       _id: updatedEvent._id,
       name: updatedEvent.name,
-      image: updatedEvent._id,
+      thumbnailImage: updatedEvent._id,
       date: updatedEvent.date,
       description: updatedEvent.description,
       time: updatedEvent.time,

@@ -29,7 +29,7 @@ router.get(
     res.status(200).send({
       _id: event._id,
       name: event.name,
-      image: event._id,
+      thumbnailImage: event.thumbnailImage,
       date: event.date,
       description: event.description,
       time: event.time,

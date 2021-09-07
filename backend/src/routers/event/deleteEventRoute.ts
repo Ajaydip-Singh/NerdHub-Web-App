@@ -33,7 +33,7 @@ router.delete(
     res.status(200).send({
       _id: deletedEvent._id,
       name: deletedEvent.name,
-      image: deletedEvent._id,
+      thumbnailImage: deletedEvent.thumbnailImage,
       date: deletedEvent.date,
       description: deletedEvent.description,
       time: deletedEvent.time,

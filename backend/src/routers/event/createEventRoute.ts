@@ -13,7 +13,7 @@ router.post(
   expressAsyncHandler(async (req: Request, res: Response) => {
     const event = new Event({
       name: 'Sample Event' + Date.now(),
-      image: '/images/call_of_duty_ghosts.jpeg',
+      thumbnailImage: '/thumbnailImages/call_of_duty_ghosts.jpeg',
       date: Date.now(),
       description: 'Sample Event Description',
       time: '14:00 PM - 16:00 PM',
@@ -28,7 +28,7 @@ router.post(
     res.send({
       _id: createdEvent._id,
       name: createdEvent.name,
-      image: createdEvent._id,
+      thumbnailImage: createdEvent._id,
       date: createdEvent.date,
       description: createdEvent.description,
       time: createdEvent.time,
