@@ -19,7 +19,10 @@ router.post(
 
       try {
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        const image = await uploader.upload(file!);
+        const image = await uploader.upload(file!, {
+          public_id: req.file.fieldname,
+          overwrite: true
+        });
         res.send({ image });
 
         logger.info(
