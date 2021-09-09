@@ -35,6 +35,11 @@ router.put(
     product.countInStock = req.body.countInStock || product.countInStock;
     product.rating = req.body.rating || product.rating;
     product.numReviews = req.body.numReviews || product.numReviews;
+    product.borderColor = req.body.borderColor || product.borderColor;
+    product.borderHoverColor =
+      req.body.borderHoverColor || product.borderHoverColor;
+    product.backgroundColor =
+      req.body.backgroundColor || product.backgroundColor;
 
     const updatedproduct = await product.save();
 
