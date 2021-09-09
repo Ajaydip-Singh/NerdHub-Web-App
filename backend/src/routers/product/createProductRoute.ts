@@ -20,7 +20,10 @@ router.post(
       price: 0,
       countInStock: 0,
       rating: 0,
-      numReviews: 0
+      numReviews: 0,
+      borderColor: '#fff',
+      borderHoverColor: '#50d450',
+      backgroundColor: '#000'
     });
 
     const createdproduct = await product.save();
