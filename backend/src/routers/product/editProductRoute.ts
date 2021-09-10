@@ -17,7 +17,7 @@ router.put(
       return;
     }
 
-    const product = Product.findById(productId);
+    const product = await Product.findById(productId);
     if (!product) {
       res.status(404).send({ message: 'Product Not Found' });
       logger.error(
