@@ -4,9 +4,11 @@ import getProductRoute from './getProductRoute';
 import deleteProductRoute from './deleteProductRoute';
 import createProductRoute from './createProductRoute';
 import editProductRoute from './editProductRoute';
+import getProductsCategoriesRoute from './getProductsCategoriesRoute';
 
 const router = express.Router();
 
+router.use('/products', getProductsCategoriesRoute);
 router.use('/products', getProductsRoute);
 router.use('/products', getProductRoute);
 router.use('/products', deleteProductRoute);
