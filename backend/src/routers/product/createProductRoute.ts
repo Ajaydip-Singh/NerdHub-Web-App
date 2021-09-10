@@ -18,6 +18,7 @@ router.post(
       category: 'Sample category',
       description: 'Sample description',
       price: 0,
+      displayPrice: '<p>KES 0</p',
       countInStock: 0,
       rating: 0,
       numReviews: 0,

@@ -32,6 +32,7 @@ router.put(
     product.category = req.body.category || product.category;
     product.description = req.body.description || product.description;
     product.price = req.body.price || product.price;
+    product.displayPrice = req.body.displayPrice || product.displayPrice;
     product.countInStock = req.body.countInStock || product.countInStock;
     product.rating = req.body.rating || product.rating;
     product.numReviews = req.body.numReviews || product.numReviews;
