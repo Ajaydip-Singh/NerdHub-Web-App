@@ -35,6 +35,9 @@ router.put(
     product.countInStock = req.body.countInStock || product.countInStock;
     product.rating = req.body.rating || product.rating;
     product.numReviews = req.body.numReviews || product.numReviews;
+    product.isActive = req.body.isActive || product.isActive;
+    product.isFeaturedProduct =
+      req.body.isFeaturedProduct || product.isFeaturedProduct;
     product.borderColor = req.body.borderColor || product.borderColor;
     product.borderHoverColor =
       req.body.borderHoverColor || product.borderHoverColor;
