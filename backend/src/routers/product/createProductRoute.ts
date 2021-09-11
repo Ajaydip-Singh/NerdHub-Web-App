@@ -12,8 +12,8 @@ router.post(
   isAdmin,
   expressAsyncHandler(async (req: Request, res: Response) => {
     const product = new Product({
-      cardName: 'Sample product card name' + Date.now(),
-      pageName: 'Sample product page name' + Date.now(),
+      cardName: 'Sample product card name ' + Date.now(),
+      pageName: 'Sample product page name ' + Date.now(),
       image: '/images/call_of_duty_ghosts.jpeg',
       brand: 'Sample brand',
       category: 'Sample category',
