@@ -10,6 +10,7 @@ router.get(
   expressAsyncHandler(async (req: Request, res: Response) => {
     const name = req.query.name || '';
     const category = req.query.category || '';
+    const brand = req.query.brand || '';
     const order = req.query.order || '';
     const min =
       req.query.min && Number(req.query.min) !== 0 ? Number(req.query.min) : 0;
@@ -22,6 +23,7 @@ router.get(
 
     const nameFilter = name ? { name: { $regex: name, $options: 'i' } } : {};
     const categoryFilter = category ? { category } : {};
+    const brandFilter = brand ? { brand } : {};
     const priceFilter = min && max ? { price: { $gte: min, $lte: max } } : {};
     const ratingFilter = rating ? { rating: { $gte: rating } } : {};
     const sortOrder =
@@ -36,6 +38,7 @@ router.get(
     const products = await Product.find({
       ...nameFilter,
       ...categoryFilter,
+      ...brandFilter,
       ...priceFilter,
       ...ratingFilter
     }).sort(sortOrder);
