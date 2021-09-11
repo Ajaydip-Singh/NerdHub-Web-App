@@ -12,13 +12,15 @@ router.post(
   isAdmin,
   expressAsyncHandler(async (req: Request, res: Response) => {
     const product = new Product({
-      name: 'Sample product' + Date.now(),
+      cardName: 'Sample product card name' + Date.now(),
+      pageName: 'Sample product page name' + Date.now(),
       image: '/images/call_of_duty_ghosts.jpeg',
       brand: 'Sample brand',
       category: 'Sample category',
       description: 'Sample description',
       price: 0,
-      displayPrice: '<p>KES 0</p',
+      cardDisplayPrice: 'KES 0',
+      pageDisplayPrice: 'KES 0',
       countInStock: 0,
       rating: 0,
       numReviews: 0,

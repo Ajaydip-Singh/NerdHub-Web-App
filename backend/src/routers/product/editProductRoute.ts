@@ -26,13 +26,17 @@ router.put(
       return;
     }
 
-    product.name = req.body.name || product.name;
+    product.cardName = req.body.cardName || product.cardName;
+    product.pageName = req.body.pageName || product.pageName;
     product.image = req.body.image || product.image;
     product.brand = req.body.brand || product.brand;
     product.category = req.body.category || product.category;
     product.description = req.body.description || product.description;
     product.price = req.body.price || product.price;
-    product.displayPrice = req.body.displayPrice || product.displayPrice;
+    product.cardDisplayPrice =
+      req.body.cardDisplayPrice || product.cardDisplayPrice;
+    product.pageDisplayPrice =
+      req.body.pageDisplayPrice || product.pageDisplayPrice;
     product.countInStock = req.body.countInStock || product.countInStock;
     product.rating = req.body.rating || product.rating;
     product.numReviews = req.body.numReviews || product.numReviews;
