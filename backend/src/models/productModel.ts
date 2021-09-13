@@ -4,7 +4,8 @@ const productSchema = new mongoose.Schema(
   {
     cardName: { type: String, required: true, unique: true },
     pageName: { type: String, required: true },
-    image: { type: String, required: true },
+    thumbnailImage: { type: String, required: true },
+    images: { type: [String] },
     brand: { type: String, required: true },
     category: { type: String, required: true },
     description: { type: String, required: true },

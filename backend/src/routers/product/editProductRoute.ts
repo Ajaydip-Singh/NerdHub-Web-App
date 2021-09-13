@@ -28,7 +28,8 @@ router.put(
 
     product.cardName = req.body.cardName || product.cardName;
     product.pageName = req.body.pageName || product.pageName;
-    product.image = req.body.image || product.image;
+    product.thumbnailImage = req.body.thumbnailImage || product.thumbnailImage;
+    product.images = req.body.images || product.images;
     product.brand = req.body.brand || product.brand;
     product.category = req.body.category || product.category;
     product.description = req.body.description || product.description;

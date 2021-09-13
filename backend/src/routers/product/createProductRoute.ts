@@ -14,7 +14,7 @@ router.post(
     const product = new Product({
       cardName: 'Sample product card name ' + Date.now(),
       pageName: 'Sample product page name ' + Date.now(),
-      image: '/images/call_of_duty_ghosts.jpeg',
+      thumbnailImage: '/images/call_of_duty_ghosts.jpeg',
       brand: 'Sample brand',
       category: 'Sample category',
       description: 'Sample description',
