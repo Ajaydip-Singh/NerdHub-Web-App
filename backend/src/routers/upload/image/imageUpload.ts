@@ -2,7 +2,7 @@ import express, { Request, Response } from 'express';
 import expressAsyncHandler from 'express-async-handler';
 import { isAdmin, isAuth } from '../../../utils/general';
 import logger from '../../../utils/logger';
-import { dataUri, multerUploads } from '../../../utils/upload';
+import { dataUri, multerSingleUpload } from '../../../utils/upload';
 import { cloudinaryConfig, uploader } from '../../../config/cloudinaryConfig';
 
 const router = express.Router();
@@ -11,7 +11,7 @@ router.post(
   '/',
   isAuth,
   isAdmin,
-  multerUploads,
+  multerSingleUpload,
   cloudinaryConfig,
   expressAsyncHandler(async (req: Request, res: Response) => {
     if (req.file) {
