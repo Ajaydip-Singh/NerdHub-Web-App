@@ -5,7 +5,7 @@ export interface GetUserAuthInfoRequest extends Request {
   user?: JwtPayload | undefined | any;
 }
 
-export interface MulterFile {
+export interface MulterFile extends Request {
   fieldname: string;
   originalname: string;
   encoding: string;
@@ -18,5 +18,6 @@ export interface MulterFile {
 }
 
 export interface FileRequest extends Request {
-  file?: MulterFile | undefined | any;
+  file?: MulterFile | any;
+  files?: MulterFile[] | any;
 }
