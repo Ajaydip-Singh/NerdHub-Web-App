@@ -16,6 +16,6 @@ const cartPageSchema = new mongoose.Schema(
   }
 );
 
-const CartPageSchema = mongoose.model('CartPageSchema', cartPageSchema);
+const CartPageContent = mongoose.model('CartPageContent', cartPageSchema);
 
-export default CartPageSchema;
+export default CartPageContent;
