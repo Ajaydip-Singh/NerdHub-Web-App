@@ -1,5 +1,5 @@
 import express from 'express';
-import getProductsRoute from './getProductsRoute';
+import getProductsRoute from './getOrdersRoute';
 import getProductRoute from './getOrderRoute';
 import deleteProductRoute from './deleteOrderRoute';
 import createProductRoute from './createOrderRoute';
