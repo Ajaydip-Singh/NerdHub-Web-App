@@ -3,7 +3,7 @@ import getProductsRoute from './getProductsRoute';
 import getProductRoute from './getProductRoute';
 import deleteProductRoute from './deleteOrderRoute';
 import createProductRoute from './createOrderRoute';
-import editProductRoute from './editProductRoute';
+import editProductRoute from './editOrderDeliverRoute';
 import getProductsCategoriesRoute from './getProductsCategoriesRoute';
 import getProductsBrandRoute from './getProductsBrandsRoute';
 
