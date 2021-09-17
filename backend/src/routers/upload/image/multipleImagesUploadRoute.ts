@@ -18,11 +18,15 @@ router.post(
     if (req.files) {
       const files = multipleDataUri(req);
 
+      // get any tags to categorize images
+      const tags = req.query.tags || '';
+
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const uploadPromises = files.map((file) =>
         uploader.upload(file, {
           overwrite: false,
-          unique_filename: false
+          unique_filename: false,
+          tags
         })
       );
 

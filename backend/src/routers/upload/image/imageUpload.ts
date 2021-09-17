@@ -17,11 +17,15 @@ router.post(
     if (req.file) {
       const file = dataUri(req).content;
 
+      // get any tags to categorize images
+      const tags = req.query.tags || '';
+
       try {
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         const image = await uploader.upload(file!, {
           overwrite: false,
-          unique_filename: false
+          unique_filename: false,
+          tags
         });
         res.send({ image });
 
