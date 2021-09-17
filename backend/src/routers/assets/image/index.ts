@@ -1,10 +1,10 @@
 import express from 'express';
-import imageUploadRoute from './imageUpload';
-import multipleImagesUploadRoute from './multipleImagesUploadRoute';
+import uploadImageRoute from './uploadImageRoute';
+import uploadMultipleImagesRoute from './uploadMultipleImagesRoute';
 
 const router = express.Router();
 
-router.use('/image', multipleImagesUploadRoute);
-router.use('/image', imageUploadRoute);
+router.use('/image', uploadMultipleImagesRoute);
+router.use('/image', uploadImageRoute);
 
 export default router;
