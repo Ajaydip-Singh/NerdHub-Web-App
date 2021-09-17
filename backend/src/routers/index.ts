@@ -3,7 +3,7 @@ import userRouter from './user';
 import configRouter from './configRoute';
 import eventRouter from './event';
 import pagesRouter from './pages';
-import uploadRouter from './upload';
+import uploadRouter from './assets';
 import productRouter from './product';
 
 const router = express.Router();
