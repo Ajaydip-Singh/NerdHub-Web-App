@@ -5,6 +5,7 @@ import logger from '../../../utils/logger';
 import { multerMultipleUpload, multipleDataUri } from '../../../utils/upload';
 import { cloudinaryConfig, uploader } from '../../../config/cloudinaryConfig';
 import { FileRequest } from '../../../interfaces/express';
+import Gallery from '../../../models/galleryModel';
 
 const router = express.Router();
 
@@ -32,6 +33,15 @@ router.post(
 
       try {
         const imageResponses = await Promise.all(uploadPromises);
+
+        // Check if images were uploaded for gallery
+        if (req.query.gallery) {
+          const galleryImages = imageResponses.map((response) => {
+            return { url: response.url, tags: response.tags };
+          });
+          await Gallery.insertMany(galleryImages);
+        }
+
         res.send(imageResponses);
 
         logger.info(
