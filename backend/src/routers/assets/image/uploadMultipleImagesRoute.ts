@@ -37,7 +37,11 @@ router.post(
         // Check if images were uploaded for gallery
         if (req.query.gallery) {
           const galleryImages = imageResponses.map((response) => {
-            return { url: response.url, tags: response.tags };
+            return {
+              url: response.url,
+              publicId: response.public_id,
+              tags: response.tags
+            };
           });
           await Gallery.insertMany(galleryImages);
         }
