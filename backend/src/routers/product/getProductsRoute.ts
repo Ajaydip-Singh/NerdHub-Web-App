@@ -8,6 +8,9 @@ const router = express.Router();
 router.get(
   '/',
   expressAsyncHandler(async (req: Request, res: Response) => {
+    const pageSize = 10;
+    const page = Number(req.query.pageNumber) || 1;
+
     const name = req.query.name || '';
     const category = req.query.category || '';
     const brand = req.query.brand || '';
@@ -35,16 +38,27 @@ router.get(
         ? { rating: -1 }
         : { _id: -1 };
 
+    const count = await Product.count({
+      ...nameFilter,
+      ...categoryFilter,
+      ...brandFilter,
+      ...priceFilter,
+      ...ratingFilter
+    });
+
     const products = await Product.find({
       ...nameFilter,
       ...categoryFilter,
       ...brandFilter,
       ...priceFilter,
       ...ratingFilter
-    }).sort(sortOrder);
+    })
+      .sort(sortOrder)
+      .skip(pageSize * (page - 1))
+      .limit(pageSize);
 
     if (products.length !== 0) {
-      res.send(products);
+      res.send({ products, page, pages: Math.ceil(count / pageSize) });
       logger.info(
         `${req.ip} : ${req.method} : ${req.originalUrl} : ${res.statusCode} : Products sent succesfully`
       );
