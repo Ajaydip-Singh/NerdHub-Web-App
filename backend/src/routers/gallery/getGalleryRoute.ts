@@ -10,7 +10,7 @@ router.get(
   expressAsyncHandler(async (req: Request, res: Response) => {
     const tag = req.query.tag || '';
 
-    const tagFilter = tag ? { tag } : {};
+    const tagFilter = tag ? { tags: tag } : {};
     const gallery = await Gallery.find({
       ...tagFilter
     });

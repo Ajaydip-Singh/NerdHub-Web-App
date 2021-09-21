@@ -4,7 +4,7 @@ import getGalleryTagsRoute from './getGalleryTagsRoute';
 
 const router = express.Router();
 
-router.use('/gallery', getGalleryRoute);
 router.use('/gallery', getGalleryTagsRoute);
+router.use('/gallery', getGalleryRoute);
 
 export default router;

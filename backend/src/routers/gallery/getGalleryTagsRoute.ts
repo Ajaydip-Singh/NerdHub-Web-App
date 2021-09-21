@@ -8,7 +8,7 @@ const router = express.Router();
 router.get(
   '/tags',
   expressAsyncHandler(async (req: Request, res: Response) => {
-    const tags = await Gallery.find({}).distinct('tag');
+    const tags = await Gallery.find({}).distinct('tags');
     if (tags) {
       res.status(200).send(tags);
     } else {
