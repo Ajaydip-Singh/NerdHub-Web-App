@@ -9,7 +9,7 @@ router.get(
   '/',
   expressAsyncHandler(async (req: Request, res: Response) => {
     const pageSize = 10;
-    const page = Number(req.query.pageNumber) || 1;
+    const pageNumber = Number(req.query.pageNumber) || 1;
 
     const name = req.query.name || '';
     const category = req.query.category || '';
@@ -24,7 +24,9 @@ router.get(
         ? Number(req.query.rating)
         : 0;
 
-    const nameFilter = name ? { name: { $regex: name, $options: 'i' } } : {};
+    const nameFilter = name
+      ? { cardName: { $regex: name, $options: 'i' } }
+      : {};
     const categoryFilter = category ? { category } : {};
     const brandFilter = brand ? { brand } : {};
     const priceFilter = min && max ? { price: { $gte: min, $lte: max } } : {};
@@ -54,11 +56,11 @@ router.get(
       ...ratingFilter
     })
       .sort(sortOrder)
-      .skip(pageSize * (page - 1))
+      .skip(pageSize * (pageNumber - 1))
       .limit(pageSize);
 
     if (products.length !== 0) {
-      res.send({ products, page, pages: Math.ceil(count / pageSize) });
+      res.send({ products, pageNumber, pages: Math.ceil(count / pageSize) });
       logger.info(
         `${req.ip} : ${req.method} : ${req.originalUrl} : ${res.statusCode} : Products sent succesfully`
       );
