@@ -8,9 +8,8 @@ const router = express.Router();
 router.get(
   '/',
   expressAsyncHandler(async (req: Request, res: Response) => {
-    const pageSize = 2;
+    const pageSize = 16;
     const pageNumber = Number(req.query.pageNumber) || 1;
-    console.log(pageNumber);
 
     const tag = req.query.tag || '';
 
