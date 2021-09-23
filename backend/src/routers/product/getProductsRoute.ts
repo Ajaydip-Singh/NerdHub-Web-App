@@ -15,6 +15,7 @@ router.get(
     const category = req.query.category || '';
     const brand = req.query.brand || '';
     const order = req.query.order || '';
+    const isActive = req.query.isActive || '';
     const min =
       req.query.min && Number(req.query.min) !== 0 ? Number(req.query.min) : 0;
     const max =
@@ -31,6 +32,8 @@ router.get(
     const brandFilter = brand ? { brand } : {};
     const priceFilter = min && max ? { price: { $gte: min, $lte: max } } : {};
     const ratingFilter = rating ? { rating: { $gte: rating } } : {};
+    const isActiveFilter = isActive ? { isActive } : '';
+
     const sortOrder =
       order === 'lowest'
         ? { price: 1 }
@@ -45,7 +48,8 @@ router.get(
       ...categoryFilter,
       ...brandFilter,
       ...priceFilter,
-      ...ratingFilter
+      ...ratingFilter,
+      ...isActiveFilter
     });
 
     const products = await Product.find({
