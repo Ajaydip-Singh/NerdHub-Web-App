@@ -2,6 +2,12 @@ import mongoose from 'mongoose';
 
 const homePageSchema = new mongoose.Schema(
   {
+    sliderPageOneBackgroundImage: { type: String, required: true },
+    sliderPageTwoBackgroundImage: { type: String, required: true },
+    sliderPageThreeBackgroundImage: { type: String, required: true },
+    sliderPageOneContent: { type: String, required: true },
+    sliderPageTwoContent: { type: String, required: true },
+    sliderPageThreeContent: { type: String, required: true },
     videoHeading: { type: String, required: true },
     videoUrl: { type: String, required: true },
     videoThumbnail: { type: String, required: true },

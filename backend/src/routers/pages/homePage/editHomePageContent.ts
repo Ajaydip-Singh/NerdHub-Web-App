@@ -10,6 +10,21 @@ router.put(
   expressAsyncHandler(async (req: Request, res: Response) => {
     const homePageContent = await HomePageContent.findOne();
 
+    homePageContent.sliderPageOneBackgroundImage =
+      req.body.sliderPageOneBackgroundImage ||
+      homePageContent.sliderPageOneBackgroundImage;
+    homePageContent.sliderPageOneContent =
+      req.body.sliderPageOneContent || homePageContent.sliderPageOneContent;
+    homePageContent.sliderPageTwoBackgroundImage =
+      req.body.sliderPageTwoBackgroundImage ||
+      homePageContent.sliderPageTwoBackgroundImage;
+    homePageContent.sliderPageTwoContent =
+      req.body.sliderPageTwoContent || homePageContent.sliderPageTwoContent;
+    homePageContent.sliderPageThreeBackgroundImage =
+      req.body.sliderPageThreeBackgroundImage ||
+      homePageContent.sliderPageThreeBackgroundImage;
+    homePageContent.sliderPageTheeContent =
+      req.body.sliderPageTheeContent || homePageContent.sliderPageTheeContent;
     homePageContent.videoHeading =
       req.body.videoHeading || homePageContent.videoHeading;
     homePageContent.videoUrl = req.body.videoUrl || homePageContent.videoUrl;
