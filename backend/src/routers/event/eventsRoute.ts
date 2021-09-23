@@ -16,17 +16,20 @@ router.get(
     const category = req.query.category || '';
     const venue = req.query.venue || '';
     const isFeaturedEvent = req.query.isFeaturedEvent || '';
+    const isActive = req.query.isActive || '';
 
     const nameFilter = name ? { name: { $regex: name, $options: 'i' } } : {};
     const categoryFilter = category ? { category } : '';
     const venueFilter = venue ? { venue } : '';
     const isFeaturedFilter = isFeaturedEvent ? { isFeaturedEvent } : '';
+    const isActiveFilter = isActive ? { isActive } : '';
 
     const count = await Event.count({
       ...nameFilter,
       ...categoryFilter,
       ...venueFilter,
-      ...isFeaturedFilter
+      ...isFeaturedFilter,
+      ...isActiveFilter
     });
 
     const events = await Event.find({
