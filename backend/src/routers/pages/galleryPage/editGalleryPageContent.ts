@@ -1,6 +1,6 @@
 import express, { Request, Response } from 'express';
 import expressAsyncHandler from 'express-async-handler';
-import ContactPageContent from '../../../models/galleryPageModel';
+import GalleryPageContent from '../../../models/galleryPageModel';
 import logger from '../../../utils/logger';
 
 const router = express.Router();
@@ -8,7 +8,7 @@ const router = express.Router();
 router.put(
   '/',
   expressAsyncHandler(async (req: Request, res: Response) => {
-    const galleryPageContent = await ContactPageContent.findOne();
+    const galleryPageContent = await GalleryPageContent.findOne();
 
     galleryPageContent.galleryMainHeading =
       req.body.galleryMainHeading || galleryPageContent.galleryMainHeading;
