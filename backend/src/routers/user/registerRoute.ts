@@ -4,9 +4,10 @@ import bcrypt from 'bcrypt';
 import User from '../../models/userModel';
 import logger from '../../utils/logger';
 import generateToken from '../../utils/jwt';
-import { mailGenerator, mg } from '../../utils/mail/mail';
+import { mailGenerator } from '../../utils/mail/mail';
 import { confirmEmailTemplate } from '../../utils/mail/templates';
 import { generateRandomCode } from '../../utils/general';
+import nodemailer from 'nodemailer';
 
 const router = express.Router();
 
@@ -62,23 +63,28 @@ router.post(
     // Create jwt token for created user
     const token = generateToken(createdUser);
 
-    // Send verify email to user
-    const verifyEmail = {
-      from: 'NerdHub Kenya <NerdHubKenya@sandbox89dd7aa0a24e4a9ba739dc59f253ca24.mailgun.org>',
-      to: `${user.firstName} ${user.lastName} <${user.email}>`,
-      subject: `NerdHub Kenya - Verify Email`,
-      html: mailGenerator.generate(confirmEmailTemplate(user, confirmationCode))
-    };
+    const transport = nodemailer.createTransport({
+      host: process.env.MAIL_HOST,
+      port: process.env.MAIL_PORT,
+      auth: {
+        user: process.env.MAIL_USER,
+        pass: process.env.MAIL_PASS
+      }
+    });
 
-    mg()
-      .messages()
-      .send(verifyEmail, (error, body) => {
-        if (error) {
-          logger.error(`Error: Verification email not sent. ${error}`);
-        } else {
-          logger.info(`Verification email sent. ${body}`);
-        }
+    try {
+      await transport.sendMail({
+        from: process.env.MAIL_FROM,
+        to: `<${user.email}>`,
+        subject: `NerdHub Kenya - Verify Email`,
+        html: mailGenerator.generate(
+          confirmEmailTemplate(user, confirmationCode)
+        )
       });
+    } catch (err) {
+      res.status(404).send({ message: 'Registration Failed' });
+      await createdUser.remove();
+    }
 
     // Send user back to client in response
     res.status(200).send({
