@@ -14,6 +14,25 @@ export const generateRandomCode = (): string => {
   return code;
 };
 
+export const getTimeStamp = (): string => {
+  const date = new Date();
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  const hh = date.getHours();
+  const mm = date.getMinutes();
+  const ss = date.getSeconds();
+  return (
+    '' +
+    year +
+    (month < 10 ? '0' + month : month) +
+    (day < 10 ? '0' + day : day) +
+    (hh < 10 ? '0' + hh : hh) +
+    (mm < 10 ? '0' + mm : mm) +
+    (ss < 10 ? '0' + ss : ss)
+  );
+};
+
 export const isAuth = (
   req: GetUserAuthInfoRequest,
   res: Response,

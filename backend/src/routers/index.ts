@@ -6,6 +6,7 @@ import pagesRouter from './pages';
 import uploadRouter from './assets';
 import productRouter from './product';
 import galleryRouter from './gallery';
+import orderRouter from './order';
 
 const router = express.Router();
 
@@ -16,5 +17,6 @@ router.use('/', pagesRouter);
 router.use('/', uploadRouter);
 router.use('/', productRouter);
 router.use('/', galleryRouter);
+router.use('/', orderRouter);
 
 export default router;

@@ -1,16 +1,18 @@
 import express from 'express';
-import getProductsRoute from './getOrdersRoute';
-import getProductRoute from './getOrderRoute';
-import deleteProductRoute from './deleteOrderRoute';
-import createProductRoute from './createOrderRoute';
-import editProductRoute from './editOrderDeliverRoute';
+import getOrdersRoute from './getOrdersRoute';
+import getOrderRoute from './getOrderRoute';
+import deleteOrderRoute from './deleteOrderRoute';
+import createOrderRoute from './createOrderRoute';
+import editOrderRoute from './editOrderDeliverRoute';
+import mpesaPayOrderRoute from './mpesaPayOrderRoute';
 
 const router = express.Router();
 
-router.use('/orders', getProductsRoute);
-router.use('/orders', getProductRoute);
-router.use('/orders', deleteProductRoute);
-router.use('/orders', createProductRoute);
-router.use('/orders', editProductRoute);
+router.use('/orders', getOrdersRoute);
+router.use('/orders', getOrderRoute);
+router.use('/orders', deleteOrderRoute);
+router.use('/orders', createOrderRoute);
+router.use('/orders', editOrderRoute);
+router.use('/orders', mpesaPayOrderRoute);
 
 export default router;
