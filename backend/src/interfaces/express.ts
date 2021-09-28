@@ -3,6 +3,7 @@ import { JwtPayload } from 'jsonwebtoken';
 
 export interface GetUserAuthInfoRequest extends Request {
   user?: JwtPayload | undefined | any;
+  access_token?: string;
 }
 
 export interface MulterFile extends Request {
@@ -20,4 +21,8 @@ export interface MulterFile extends Request {
 export interface FileRequest extends Request {
   file?: MulterFile | any;
   files?: MulterFile[] | any;
+}
+
+export interface MpesaRequest extends Request {
+  access_token?: string;
 }
