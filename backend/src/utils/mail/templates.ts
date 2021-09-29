@@ -9,7 +9,7 @@ export const confirmEmailTemplate = (
       name: `${user.firstName} ${user.lastName}`,
       intro: "Welcome to NerdHub! We're very excited to have you.",
       action: {
-        instructions: `To get verify your email, please click on the button below.`,
+        instructions: `To verify your email, please click on the button below.`,
         button: {
           color: '#22BC66', // Optional action button color
           text: 'Confirm your account',
