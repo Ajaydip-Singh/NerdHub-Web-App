@@ -42,6 +42,11 @@ router.put(
       req.body.contactBackgroundColor || homePageContent.contactBackgroundColor;
     homePageContent.contactText =
       req.body.contactText || homePageContent.contactText;
+    homePageContent.locationFrameBorderColor =
+      req.body.locationFrameBorderColor ||
+      homePageContent.locationFrameBorderColor;
+    homePageContent.locationFrame =
+      req.body.locationFrame || homePageContent.locationFrame;
 
     const updatedhomePageContent = await homePageContent.save();
 

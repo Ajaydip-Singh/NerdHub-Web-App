@@ -16,7 +16,9 @@ const homePageSchema = new mongoose.Schema(
     videoBoxShadowColor: { type: String, required: true },
     eventBackgroundImage: { type: String, required: true },
     contactBackgroundColor: { type: String, required: true },
-    contactText: { type: String, required: true }
+    contactText: { type: String, required: true },
+    locationFrameBorderColor: { type: String, required: true },
+    locationFrame: { type: String, required: true }
   },
   {
     timestamps: true
