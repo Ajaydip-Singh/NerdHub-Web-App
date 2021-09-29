@@ -18,8 +18,10 @@ router.put(
     contactPageContent.contactMainBackgroundImage =
       req.body.contactMainBackgroundImage ||
       contactPageContent.contactMainBackgroundImage;
-    contactPageContent.formText =
-      req.body.formText || contactPageContent.formText;
+    contactPageContent.sectionOneText =
+      req.body.sectionOneText || contactPageContent.sectionOneText;
+    contactPageContent.sectionOneImage =
+      req.body.sectionOneImage || contactPageContent.sectionOneImage;
     contactPageContent.locationFrame =
       req.body.locationFrame || contactPageContent.locationFrame;
     contactPageContent.locationFrameBorderColor =
