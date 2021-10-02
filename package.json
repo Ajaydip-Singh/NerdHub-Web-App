@@ -13,6 +13,10 @@
   "license": "ISC",
   "dependencies": {
     "@reduxjs/toolkit": "^1.6.1",
+    "@types/qs": "^6.9.7",
+    "@types/uuid": "^8.3.1",
+    "@types/xml-js": "^1.0.0",
+    "@types/xmlbuilder": "^11.0.1",
     "axios": "^0.21.4",
     "bcrypt": "^5.0.1",
     "cloudinary": "^1.26.3",
@@ -30,8 +34,12 @@
     "multer": "^1.4.3",
     "nodemailer": "^6.6.5",
     "nodemon": "^2.0.12",
+    "oauth-1.0a": "^2.2.6",
+    "qs": "^6.10.1",
     "redux": "^4.1.0",
-    "winston": "^3.3.3"
+    "uuid": "^8.3.2",
+    "winston": "^3.3.3",
+    "xmlbuilder": "^15.1.1"
   },
   "events": {
     "start": "cls || clear"
