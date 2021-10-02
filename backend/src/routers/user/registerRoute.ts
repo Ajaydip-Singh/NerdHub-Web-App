@@ -93,6 +93,7 @@ router.post(
       lastName: createdUser.lastName,
       email: createdUser.email,
       phone: createdUser.phone,
+      isMember: createdUser.isMember,
       isAdmin: createdUser.isAdmin,
       token: token
     });

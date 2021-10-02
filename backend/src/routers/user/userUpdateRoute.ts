@@ -45,6 +45,7 @@ router.put(
 
     user.firstName = req.body.firstName || user.firstName;
     user.lastName = req.body.lastName || user.lastName;
+    user.isMember = req.body.isMember || user.isMember;
     user.phone = req.body.phone || '';
 
     if (req.body.password) {
@@ -59,6 +60,7 @@ router.put(
       lastName: updatedUser.lastName,
       email: updatedUser.email,
       phone: updatedUser.phone,
+      isMember: updatedUser.isMember,
       isAdmin: updatedUser.isAdmin,
       token: generateToken(updatedUser)
     });

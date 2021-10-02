@@ -57,6 +57,7 @@ router.post(
         lastName: user.lastName,
         email: user.email,
         phone: user.phone,
+        isMember: user.isMember,
         isAdmin: user.isAdmin,
         token: generateToken(user)
       });
@@ -101,6 +102,7 @@ router.post(
         lastName: oldUser.lastName,
         email: oldUser.email,
         phone: oldUser.phone,
+        isMember: oldUser.isMember,
         isAdmin: oldUser.isAdmin,
         token: generateToken(oldUser)
       });
@@ -118,6 +120,7 @@ router.post(
         lastName: updatedUser.lastName,
         email: updatedUser.email,
         phone: updatedUser.phone,
+        isMember: updatedUser.isMember,
         isAdmin: updatedUser.isAdmin,
         token: generateToken(updatedUser)
       });
@@ -155,6 +158,7 @@ router.post(
       lastName: createdUser.lastName,
       email: createdUser.email,
       phone: createdUser.phone,
+      isMember: createdUser.isMember,
       isAdmin: createdUser.isAdmin,
       token: generateToken(createdUser)
     });

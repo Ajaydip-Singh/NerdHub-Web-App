@@ -30,7 +30,8 @@ router.get(
     res.status(200).send({
       firstName: user.firstName,
       lastName: user.lastName,
-      phone: user.phone
+      phone: user.phone,
+      isMember: user.isMember
     });
   })
 );
