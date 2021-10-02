@@ -8,6 +8,7 @@ import productRouter from './product';
 import galleryRouter from './gallery';
 import orderRouter from './order';
 import pesapalRouter from './pesapal';
+import comicRouter from './comic';
 
 const router = express.Router();
 
@@ -20,5 +21,6 @@ router.use('/', productRouter);
 router.use('/', galleryRouter);
 router.use('/', orderRouter);
 router.use('/', pesapalRouter);
+router.use('/', comicRouter);
 
 export default router;
