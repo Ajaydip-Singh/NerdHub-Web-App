@@ -6,6 +6,7 @@ import cartPageContentRouter from './cartPage';
 import galleryPageContentRouter from './galleryPage';
 import membershipPageContentRouter from './membershipPage';
 import footerContentRouter from './footer';
+import shopPageContentRouter from './shopPage';
 
 const router = express.Router();
 
@@ -16,5 +17,6 @@ router.use('/pages', cartPageContentRouter);
 router.use('/pages', galleryPageContentRouter);
 router.use('/pages', membershipPageContentRouter);
 router.use('/pages', footerContentRouter);
+router.use('/pages', shopPageContentRouter);
 
 export default router;
