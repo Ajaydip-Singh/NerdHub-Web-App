@@ -14,6 +14,8 @@ router.put(
       req.body.cartMainHeading || cartPageContent.cartMainHeading;
     cartPageContent.cartBackgroundImage =
       req.body.cartBackgroundImage || cartPageContent.cartBackgroundImage;
+    cartPageContent.shippingInfoColor =
+      req.body.shippingInfoColor || cartPageContent.shippingInfoColor;
     cartPageContent.productCardBorderColor =
       req.body.productCardBorderColor || cartPageContent.productCardBorderColor;
     cartPageContent.productCardBackgroundColor =
