@@ -17,6 +17,8 @@ const productSchema = new mongoose.Schema(
     countInStock: { type: Number, required: true },
     rating: { type: Number, required: true },
     numReviews: { type: Number, required: true },
+    isCardActiveReviews: { type: Boolean, required: true, default: true },
+    isPageActiveReviews: { type: Boolean, required: true, default: true },
     isActive: { type: Boolean, required: true, default: true },
     isFeaturedProduct: { type: Boolean, required: true, default: false },
     borderColor: { type: String, required: true },

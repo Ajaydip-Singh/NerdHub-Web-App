@@ -43,6 +43,10 @@ router.put(
     product.countInStock = req.body.countInStock || product.countInStock;
     product.rating = req.body.rating || product.rating;
     product.numReviews = req.body.numReviews || product.numReviews;
+    product.isCardActiveReviews =
+      req.body.isCardActiveReviews || product.isCardActiveReviews;
+    product.isPageActiveReviews =
+      req.body.isPageActiveReviews || product.isPageActiveReviews;
     product.isActive = req.body.isActive || product.isActive;
     product.isFeaturedProduct =
       req.body.isFeaturedProduct || product.isFeaturedProduct;
