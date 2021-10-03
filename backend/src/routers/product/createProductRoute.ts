@@ -21,6 +21,7 @@ router.post(
       price: 0,
       cardDisplayPrice: 'KES 0',
       pageDisplayPrice: 'KES 0',
+      shippingInfo: 'Sample shipping info',
       countInStock: 0,
       rating: 0,
       numReviews: 0,

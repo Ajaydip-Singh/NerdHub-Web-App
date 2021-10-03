@@ -35,6 +35,7 @@ router.put(
     product.description = req.body.description || product.description;
     product.price = req.body.price || product.price;
     product.taxPrice = req.body.taxPrice || product.taxPrice;
+    product.shippingInfo = req.body.shippingInfo || product.shippingInfo;
     product.cardDisplayPrice =
       req.body.cardDisplayPrice || product.cardDisplayPrice;
     product.pageDisplayPrice =
