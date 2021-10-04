@@ -19,6 +19,8 @@ router.put(
     membershipPageContent.membershipMainContent =
       req.body.membershipMainContent ||
       membershipPageContent.membershipMainContent;
+    membershipPageContent.membershipFee =
+      req.body.membershipFee || membershipPageContent.membershipFee;
 
     const updatedMembershipPageContent = await membershipPageContent.save();
 
