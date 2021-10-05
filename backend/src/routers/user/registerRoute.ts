@@ -8,6 +8,7 @@ import { mailGenerator } from '../../utils/mail/mail';
 import { confirmEmailTemplate } from '../../utils/mail/templates';
 import { generateRandomCode } from '../../utils/general';
 import nodemailer from 'nodemailer';
+import SMTPTransport from 'nodemailer/lib/smtp-transport';
 
 const router = express.Router();
 
@@ -70,7 +71,7 @@ router.post(
         user: process.env.MAIL_USER,
         pass: process.env.MAIL_PASS
       }
-    });
+    } as SMTPTransport.Options);
 
     try {
       await transport.sendMail({
