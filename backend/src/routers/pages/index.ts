@@ -9,6 +9,7 @@ import footerContentRouter from './footer';
 import shopPageContentRouter from './shopPage';
 import productPageContentRouter from './productPage';
 import orderPageContentRouter from './orderPage';
+import comicPageContentRouter from './comicPage';
 
 const router = express.Router();
 
@@ -22,5 +23,6 @@ router.use('/pages', footerContentRouter);
 router.use('/pages', shopPageContentRouter);
 router.use('/pages', productPageContentRouter);
 router.use('/pages', orderPageContentRouter);
+router.use('/pages', comicPageContentRouter);
 
 export default router;
