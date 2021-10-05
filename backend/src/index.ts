@@ -38,7 +38,7 @@ app.use(
 );
 app.get('*', (_req: Request, res: Response) => {
   res.sendFile(
-    path.join(__dirname, '../../', '/Nerdhub-Frontend/build/index.html')
+    path.join(__dirname, '../../', '/NerdHub-Frontend/build/index.html')
   );
 });
 
