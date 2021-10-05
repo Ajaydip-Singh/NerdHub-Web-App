@@ -1,1 +1,1 @@
-web: node --experimental-modules backend/build/index.js
+web: node --experimental-modules ./backend/build/index.js
