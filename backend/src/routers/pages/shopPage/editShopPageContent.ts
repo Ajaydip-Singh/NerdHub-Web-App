@@ -13,6 +13,12 @@ router.put(
     shopPageContent.backgroundImage =
       req.body.backgroundImage || shopPageContent.backgroundImage;
 
+    shopPageContent.comingSoon =
+      req.body.comingSoon || shopPageContent.comingSoon;
+
+    shopPageContent.comingSoonText =
+      req.body.comingSoonText || shopPageContent.comingSoonText;
+
     const updatedShopPageContent = await shopPageContent.save();
 
     res.status(200).send(updatedShopPageContent);
