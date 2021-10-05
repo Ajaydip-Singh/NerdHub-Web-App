@@ -17,7 +17,8 @@ router.put(
     orderPageContent.shippingInfoColor =
       req.body.shippingInfoColor || orderPageContent.shippingInfoColor;
     orderPageContent.productCardBorderColor =
-      req.body.productCardBorderColor || orderPageContent.productCardBorderColor;
+      req.body.productCardBorderColor ||
+      orderPageContent.productCardBorderColor;
     orderPageContent.productCardBackgroundColor =
       req.body.productCardBackgroundColor ||
       orderPageContent.productCardBackgroundColor;
@@ -27,9 +28,31 @@ router.put(
     orderPageContent.productNameColor =
       req.body.productNameColor || orderPageContent.productNameColor;
     orderPageContent.productNameActiveColor =
-      req.body.productNameActiveColor || orderPageContent.productNameActiveColor;
+      req.body.productNameActiveColor ||
+      orderPageContent.productNameActiveColor;
     orderPageContent.productPriceColor =
       req.body.productPriceColor || orderPageContent.productPriceColor;
+    orderPageContent.tableBorderColor =
+      req.body.tableBorderColor || orderPageContent.tableBorderColor;
+    orderPageContent.tableEvenRowBackgroundColor =
+      req.body.tableEvenRowBackgroundColor ||
+      orderPageContent.tableEvenRowBackgroundColor;
+    orderPageContent.tableEvenRowTextColor =
+      req.body.tableEvenRowTextColor || orderPageContent.tableEvenRowTextColor;
+    orderPageContent.tableOddRowBackgroundColor =
+      req.body.tableOddRowBackgroundColor ||
+      orderPageContent.tableOddRowBackgroundColor;
+    orderPageContent.tableOddRowTextColor =
+      req.body.tableOddRowTextColor || orderPageContent.tableOddRowTextColor;
+    orderPageContent.checkoutButtonTextColor =
+      req.body.checkoutButtonTextColor ||
+      orderPageContent.checkoutButtonTextColor;
+    orderPageContent.checkoutButtonBackgroundColor =
+      req.body.checkoutButtonBackgroundColor ||
+      orderPageContent.checkoutButtonBackgroundColor;
+    orderPageContent.checkoutButtonBorderColor =
+      req.body.checkoutButtonBorderColor ||
+      orderPageContent.checkoutButtonBorderColor;
 
     const updatedorderPageContent = await orderPageContent.save();
 
