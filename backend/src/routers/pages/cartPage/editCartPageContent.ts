@@ -30,6 +30,27 @@ router.put(
       req.body.productNameActiveColor || cartPageContent.productNameActiveColor;
     cartPageContent.productPriceColor =
       req.body.productPriceColor || cartPageContent.productPriceColor;
+    cartPageContent.tableBorderColor =
+      req.body.tableBorderColor || cartPageContent.tableBorderColor;
+    cartPageContent.tableEvenRowBackgroundColor =
+      req.body.tableEvenRowBackgroundColor ||
+      cartPageContent.tableEvenRowBackgroundColor;
+    cartPageContent.tableEvenRowTextColor =
+      req.body.tableEvenRowTextColor || cartPageContent.tableEvenRowTextColor;
+    cartPageContent.tableOddRowBackgroundColor =
+      req.body.tableOddRowBackgroundColor ||
+      cartPageContent.tableOddRowBackgroundColor;
+    cartPageContent.tableOddRowTextColor =
+      req.body.tableOddRowTextColor || cartPageContent.tableOddRowTextColor;
+    cartPageContent.checkoutButtonTextColor =
+      req.body.checkoutButtonTextColor ||
+      cartPageContent.checkoutButtonTextColor;
+    cartPageContent.checkoutButtonBackgroundColor =
+      req.body.checkoutButtonBackgroundColor ||
+      cartPageContent.checkoutButtonBackgroundColor;
+    cartPageContent.checkoutButtonBorderColor =
+      req.body.checkoutButtonBorderColor ||
+      cartPageContent.checkoutButtonBorderColor;
 
     const updatedcartPageContent = await cartPageContent.save();
 
