@@ -33,9 +33,13 @@ app.use(
   }
 );
 
-app.use(express.static(path.join(__dirname, '/NerdHub-Frontend/build')));
+app.use(
+  express.static(path.join(__dirname, '../../', '/NerdHub-Frontend/build'))
+);
 app.get('*', (_req: Request, res: Response) => {
-  res.sendFile(path.join(__dirname, '/Nerdhub-Frontend/build/index.html'));
+  res.sendFile(
+    path.join(__dirname, '../../', '/Nerdhub-Frontend/build/index.html')
+  );
 });
 
 // app.get('/', (_req: Request, res: Response): void => {
