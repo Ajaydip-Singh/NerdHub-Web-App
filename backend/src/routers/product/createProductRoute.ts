@@ -24,7 +24,9 @@ router.post(
       shippingInfo: 'Sample shipping info',
       countInStock: 0,
       rating: 0,
+      ratingColor: '#50d450',
       numReviews: 0,
+      numReviewsColor: 'white',
       borderColor: '#fff',
       borderHoverColor: '#50d450',
       backgroundColor: '#000'

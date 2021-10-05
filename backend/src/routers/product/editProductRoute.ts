@@ -42,7 +42,10 @@ router.put(
       req.body.pageDisplayPrice || product.pageDisplayPrice;
     product.countInStock = req.body.countInStock || product.countInStock;
     product.rating = req.body.rating || product.rating;
+    product.ratingColor = req.body.ratingColor || product.ratingColor;
     product.numReviews = req.body.numReviews || product.numReviews;
+    product.numReviewsColor =
+      req.body.numReviewsColor || product.numReviewsColor;
     product.isCardActiveReviews =
       req.body.isCardActiveReviews || product.isCardActiveReviews;
     product.isPageActiveReviews =
