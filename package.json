@@ -4,7 +4,7 @@
   "description": "Nerdhub website",
   "main": "./backend/build/index.js",
   "scripts": {
-    "build": "cd Nerdhub-Frontend && yarn install && yarn run build",
+    "build": "cd NerdHub-Frontend && yarn install && yarn run build",
     "prettier": "npx prettier --config .prettierrc.json './backend/src/**/*.ts' --write",
     "lint": "eslint ./backend/src/**/*.ts --ext .ts",
     "start": "ts-node backend/src/index.ts"
