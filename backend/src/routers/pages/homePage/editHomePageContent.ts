@@ -23,8 +23,8 @@ router.put(
     homePageContent.sliderPageThreeBackgroundImage =
       req.body.sliderPageThreeBackgroundImage ||
       homePageContent.sliderPageThreeBackgroundImage;
-    homePageContent.sliderPageTheeContent =
-      req.body.sliderPageTheeContent || homePageContent.sliderPageTheeContent;
+    homePageContent.sliderPageThreeContent =
+      req.body.sliderPageThreeContent || homePageContent.sliderPageThreeContent;
     homePageContent.videoHeading =
       req.body.videoHeading || homePageContent.videoHeading;
     homePageContent.videoUrl = req.body.videoUrl || homePageContent.videoUrl;
