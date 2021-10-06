@@ -15,8 +15,13 @@ router.put(
     galleryPageContent.galleryBackgroundImage =
       req.body.galleryBackgroundImage ||
       galleryPageContent.galleryBackgroundImage;
-    galleryPageContent.itemBorderColor =
-      req.body.itemBorderColor || galleryPageContent.itemBorderColor;
+    galleryPageContent.buttonColor =
+      req.body.buttonColor || galleryPageContent.buttonColor;
+    galleryPageContent.buttonBorderColor =
+      req.body.buttonBorderColor || galleryPageContent.buttonBorderColor;
+    galleryPageContent.buttonBackgroundColor =
+      req.body.buttonBackgroundColor ||
+      galleryPageContent.buttonBackgroundColor;
 
     const updatedgalleryPageContent = await galleryPageContent.save();
 
