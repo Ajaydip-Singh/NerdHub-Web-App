@@ -40,6 +40,7 @@ router.post(
             return {
               url: response.url,
               publicId: response.public_id,
+              name: response.public_id,
               tags: response.tags
             };
           });
