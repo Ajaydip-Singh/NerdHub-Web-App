@@ -21,5 +21,8 @@ explore the demo).
 - Events Registration
 - [Pesapal](https://www.pesapal.com/) for payment solution in Nairobi, Kenya.
 
+## Walkthrough (not exhaustive)
+
+https://user-images.githubusercontent.com/41747177/136279026-8aa0b681-b420-44a1-a34c-88f606ab9378.mp4
 
 
