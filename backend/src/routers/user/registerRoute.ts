@@ -84,7 +84,9 @@ router.post(
       });
     } catch (err) {
       res.status(404).send({ message: 'Registration Failed' });
+      console.log(err);
       await createdUser.remove();
+      return;
     }
 
     // Send user back to client in response
