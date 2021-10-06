@@ -33,21 +33,23 @@ app.use(
   }
 );
 
-app.use(
-  express.static(path.join(__dirname, '../../', '/NerdHub-Frontend/build'))
-);
-app.get('*', (_req: Request, res: Response) => {
-  res.sendFile(
-    path.join(__dirname, '../../', '/NerdHub-Frontend/build/index.html')
+if (process.env.NODE_ENV === 'production') {
+  app.use(
+    express.static(path.join(__dirname, '../../', '/NerdHub-Frontend/build'))
   );
-});
-
-// app.get('/', (_req: Request, res: Response): void => {
-//   res.send('Hello World');
-//   logger.info(
-//     `${_req.ip} : ${_req.method} : ${_req.originalUrl} : ${res.statusCode} : Server sent hello world`
-//   );
-// });
+  app.get('*', (_req: Request, res: Response) => {
+    res.sendFile(
+      path.join(__dirname, '../../', '/NerdHub-Frontend/build/index.html')
+    );
+  });
+} else {
+  app.get('/', (_req: Request, res: Response): void => {
+    res.send('Hello World');
+    logger.info(
+      `${_req.ip} : ${_req.method} : ${_req.originalUrl} : ${res.statusCode} : Server sent hello world`
+    );
+  });
+}
 
 const port: number = Number(process.env.PORT) || 5000;
 
