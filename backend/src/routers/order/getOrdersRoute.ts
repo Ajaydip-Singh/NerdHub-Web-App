@@ -1,6 +1,6 @@
 import express, { Request, Response } from 'express';
 import expressAsyncHandler from 'express-async-handler';
-import Order from '../../models/productModel';
+import Order from '../../models/orderModel';
 import { isAdmin, isAuth } from '../../utils/general';
 import logger from '../../utils/logger';
 

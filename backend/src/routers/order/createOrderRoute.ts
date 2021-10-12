@@ -11,20 +11,18 @@ router.post(
   '/',
   isAuth,
   expressAsyncHandler(async (req: GetUserAuthInfoRequest, res: Response) => {
-    if (req.body.order.length === 0) {
+    if (req.body.orderItems.length === 0) {
       res.status(400).send({ message: 'Cart Is Empty' });
     } else {
       const order = new Order({
-        order: req.body.order,
+        orderItems: req.body.orderItems,
         shippingAddress: req.body.shippingAddress,
-        paymentMethod: req.body.paymentMethod,
-        itemsPrice: req.body.itemsPrice,
-        shippingPrice: req.body.shippingPrice,
+        paymentResult: req.body.paymentResult,
         totalPrice: req.body.totalPrice,
         user: req.user._id
       });
       const createdOrder = await order.save();
-      res.status(201).send(createdOrder);
+      res.status(200).send(createdOrder);
     }
 
     logger.info(
