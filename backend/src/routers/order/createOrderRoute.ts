@@ -16,11 +16,6 @@ router.post(
   '/',
   isAuth,
   expressAsyncHandler(async (req: GetUserAuthInfoRequest, res: Response) => {
-    if (req.body.orderItems.length === 0) {
-      res.status(400).send({ message: 'Cart Is Empty' });
-      return;
-    }
-
     const existingOrder = await Order.findById(req.body._id);
     if (existingOrder) {
       res.status(400).send({ message: 'Order exists already' });
@@ -33,7 +28,7 @@ router.post(
       shippingAddress: req.body.shippingAddress,
       paymentResult: req.body.paymentResult,
       totalPrice: req.body.totalPrice,
-      user: req.user._id
+      user: req.body.user
     });
     const createdOrder = await order.save();
     res.status(200).send(createdOrder);
@@ -47,7 +42,7 @@ router.post(
       }
     } as SMTPTransport.Options);
 
-    const user = await User.findById(req.user._id);
+    const user = await User.findById(req.body.user);
 
     try {
       await transport.sendMail({
@@ -65,7 +60,7 @@ router.post(
     }
 
     logger.info(
-      `${req.ip} : ${req.method} : ${req.originalUrl} : ${res.statusCode} : Order created succesfully succesfully.`
+      `${req.ip} : ${req.method} : ${req.originalUrl} : ${res.statusCode} : Order created succesfully.`
     );
   })
 );
