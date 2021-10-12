@@ -65,4 +65,18 @@ export class PesaPalClient {
 
     return url + '?' + qs.stringify(this.client.authorize(requestData));
   }
+
+  queryPaymentStatusByMerchantRef(merchantReference: string): string {
+    const url = 'https://www.pesapal.com/API/QueryPaymentStatusByMerchantRef';
+
+    const requestData = {
+      url,
+      method: 'GET',
+      data: {
+        pesapal_merchant_reference: merchantReference
+      }
+    };
+
+    return url + '?' + qs.stringify(this.client.authorize(requestData));
+  }
 }
