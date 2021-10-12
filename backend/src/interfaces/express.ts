@@ -26,3 +26,12 @@ export interface FileRequest extends Request {
 export interface MpesaRequest extends Request {
   access_token?: string;
 }
+
+export interface OrderItems {
+  id: string;
+  name: string;
+  quantity: number;
+  price: number;
+  taxPrice: number;
+  thumbnailImage: string;
+}
