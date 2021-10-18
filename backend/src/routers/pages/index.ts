@@ -13,6 +13,7 @@ import comicPageContentRouter from './comicPage';
 import eventPageContentRouter from './eventPage';
 import loginPageContentRouter from './loginPage';
 import registerPageContentRouter from './registerPage';
+import landingPageContentRouter from './landingPage';
 
 const router = express.Router();
 
@@ -30,5 +31,6 @@ router.use('/pages', comicPageContentRouter);
 router.use('/pages', eventPageContentRouter);
 router.use('/pages', loginPageContentRouter);
 router.use('/pages', registerPageContentRouter);
+router.use('/pages', landingPageContentRouter);
 
 export default router;
