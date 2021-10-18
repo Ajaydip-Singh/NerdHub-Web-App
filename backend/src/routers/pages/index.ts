@@ -12,6 +12,7 @@ import orderPageContentRouter from './orderPage';
 import comicPageContentRouter from './comicPage';
 import eventPageContentRouter from './eventPage';
 import loginPageContentRouter from './loginPage';
+import registerPageContentRouter from './registerPage';
 
 const router = express.Router();
 
@@ -28,5 +29,6 @@ router.use('/pages', orderPageContentRouter);
 router.use('/pages', comicPageContentRouter);
 router.use('/pages', eventPageContentRouter);
 router.use('/pages', loginPageContentRouter);
+router.use('/pages', registerPageContentRouter);
 
 export default router;
