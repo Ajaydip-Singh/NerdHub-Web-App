@@ -14,6 +14,7 @@ import eventPageContentRouter from './eventPage';
 import loginPageContentRouter from './loginPage';
 import registerPageContentRouter from './registerPage';
 import landingPageContentRouter from './landingPage';
+import socialMediaContentRouter from './socialMedia';
 
 const router = express.Router();
 
@@ -32,5 +33,6 @@ router.use('/pages', eventPageContentRouter);
 router.use('/pages', loginPageContentRouter);
 router.use('/pages', registerPageContentRouter);
 router.use('/pages', landingPageContentRouter);
+router.use('/pages', socialMediaContentRouter);
 
 export default router;
