@@ -1,10 +1,10 @@
 import mongoose from 'mongoose';
 
-const loginSchema = new mongoose.Schema(
+const loginPageSchema = new mongoose.Schema(
   {
     mainHeading: { type: String, required: true },
-    mainBackgoundImage: { type: String, required: true },
-    mainBackgoundColor: { type: String, required: true },
+    mainBackgroundImage: { type: String, required: true },
+    mainBackgroundColor: { type: String, required: true },
     inputBorderColor: { type: String, required: true, default: '#50d450' },
     inputBackgroundColor: { type: String, required: true, default: '#50d450' },
     inputTextColor: { type: String, required: true, default: '#50d450' },
@@ -33,6 +33,6 @@ const loginSchema = new mongoose.Schema(
   }
 );
 
-const Login = mongoose.model('Login', loginSchema);
+const LoginPageContent = mongoose.model('LoginPageContent', loginPageSchema);
 
-export default Login;
+export default LoginPageContent;
