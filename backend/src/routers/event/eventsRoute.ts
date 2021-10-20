@@ -36,7 +36,8 @@ router.get(
       ...nameFilter,
       ...categoryFilter,
       ...venueFilter,
-      ...isFeaturedFilter
+      ...isFeaturedFilter,
+      ...isActiveFilter
     })
       .skip(pageSize * (pageNumber - 1))
       .limit(pageSize);
