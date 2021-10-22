@@ -47,6 +47,7 @@ import RegisterPageScreen from './screens/AdminScreens/RegisterPageScreen/Regist
 import LandingPageScreen from './screens/AdminScreens/LandingPageScreen/LandingPageScreen';
 import SocialMediaPageScreen from './screens/AdminScreens/SocialMediaPageScreen/SocialMediaPageScreen';
 import OrdersListScreen from './screens/AdminScreens/OrdersListScreen/OrdersListScreen';
+import OrderDetailsScreen from './screens/PublicScreens/OrderDetailsScreen/OrderDetailsScreen';
 
 function App() {
   return (
@@ -70,6 +71,11 @@ function App() {
       <Route path="/contact" component={ContactScreen}></Route>
       <Route path="/membership" component={MembershipScreen}></Route>
       <Route path="/shop/products/:id" exact component={ProductScreen}></Route>
+      <Route
+        path="/shop/orders/:id"
+        exact
+        component={OrderDetailsScreen}
+      ></Route>
       <Route path="/shop/cart" exact component={CartScreen}></Route>
       <Route
         path="/shop/:name/:category/:brand/:pageNumber"
@@ -100,6 +106,7 @@ function App() {
         component={ShippingScreen}
       ></PrivateRoute>
       <PrivateRoute path="/shop/order" component={OrderScreen}></PrivateRoute>
+
       <AdminRoute path="/adminpanel" component={AdminPanelScreen}></AdminRoute>
       <AdminRoute
         path="/footer-admin"
