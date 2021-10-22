@@ -15,7 +15,7 @@ export default function ShippingScreen(props) {
   const { user } = userAuthentication;
 
   const cartSlice = useSelector((state) => state.cartSlice);
-  const { cart } = cartSlice;
+  const { cart, shippingAddress } = cartSlice;
 
   const [addressName, setAddressName] = useState('');
   const [address, setAddress] = useState('');
@@ -91,15 +91,15 @@ export default function ShippingScreen(props) {
       props.history.push('/shop');
     }
 
-    // if (shippingAddress) {
-    //   setAddressName(shippingAddress.name);
-    //   setAddress(shippingAddress.address);
-    //   setCity(shippingAddress.city);
-    //   setCountry(shippingAddress.country);
-    //   setPostalCode(shippingAddress.postalCode);
-    //   setValidForm(true);
-    // }
-  }, [dispatch, user, cart, props.history]);
+    if (shippingAddress) {
+      setAddressName(shippingAddress.name);
+      setAddress(shippingAddress.address);
+      setCity(shippingAddress.city);
+      setCountry(shippingAddress.country);
+      setPostalCode(shippingAddress.postalCode);
+      setValidForm(true);
+    }
+  }, [dispatch, user, shippingAddress, cart, props.history]);
 
   return (
     <div>
