@@ -65,6 +65,8 @@ import landingPageContentGetSlice from '../slices/pageSlices/landingPageContentS
 import landingPageContentUpdateSlice from '../slices/pageSlices/landingPageContentSlices/landingPageContentUpdateSlice';
 import socialMediaContentGetSlice from '../slices/pageSlices/socialMediaContentSlices/socialMediaContentGetSlice';
 import socialMediaContentUpdateSlice from '../slices/pageSlices/socialMediaContentSlices/socialMediaContentUpdateSlice';
+import ordersGetSlice from '../slices/shopSlices/ordersGetSlice';
+import orderDeleteSlice from '../slices/shopSlices/orderDeleteSlice';
 
 export const store = configureStore({
   preloadedState: {
@@ -153,6 +155,8 @@ export const store = configureStore({
     productsCategoriesGetSlice: productsCategoriesGetSlice,
     productsBrandsGetSlice: productsBrandsGetSlice,
     cartSlice: cartSlice,
-    orderCreateSlice: orderCreateSlice
+    orderCreateSlice: orderCreateSlice,
+    ordersGetSlice: ordersGetSlice,
+    orderDeleteSlice: orderDeleteSlice
   }
 });
