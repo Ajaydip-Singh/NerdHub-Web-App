@@ -122,10 +122,10 @@ export default function OrdersListScreen(props) {
                       className="small"
                       type="button"
                       onClick={() =>
-                        props.history.push(`/orders-admin/${order._id}/edit`)
+                        props.history.push(`/shop/orders/${order._id}`)
                       }
                     >
-                      Edit
+                      View
                     </button>
                     <button type="button" onClick={() => deleteHandler(order)}>
                       Delete
