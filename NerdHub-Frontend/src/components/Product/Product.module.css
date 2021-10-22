@@ -1,0 +1,32 @@
+.card {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  margin: 1rem;
+  transition: 300ms ease-in-out;
+  cursor: pointer;
+}
+
+.medium {
+  max-width: 21rem;
+  object-fit: cover;
+  width: 400px;
+  height: 250px;
+}
+
+@media (max-width: 680px) {
+  .medium {
+    max-width: 100%;
+  }
+}
+
+.card-body {
+  padding: 1rem;
+}
+
+.card-body > * {
+  margin-bottom: 0.5rem;
+}
+
+.product_name {
+  padding: 0.2rem 0;
+}

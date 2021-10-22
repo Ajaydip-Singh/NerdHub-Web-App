@@ -1,0 +1,71 @@
+.product_image {
+  grid-area: image;
+  cursor: pointer;
+  border: 2px solid transparent;
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+}
+
+.fullscreen {
+  position: fixed;
+  display: grid;
+  place-content: center;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 2;
+}
+
+.image_normal {
+  height: 400px;
+  padding: 0.5rem;
+}
+
+@media (max-width: 800px) {
+  .image_normal {
+    height: 40vh;
+  }
+}
+
+.image_fullscreen {
+  width: 90%;
+  max-height: 90vh;
+  padding: 0.25rem;
+  margin: auto auto;
+}
+
+.small_images_container {
+  margin-top: 0.5rem;
+  gap: 0.3rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.image_button {
+  outline: none;
+  border: 2px solid transparent;
+  padding: 0;
+  width: 80px;
+  height: 60px;
+}
+
+.image_button:not(:last-of-type) {
+  margin-right: 0.5rem;
+}
+
+.small_image {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  object-fit: cover;
+}
+
+.description_background {
+  padding: 0.5rem 1rem;
+  max-width: max-content;
+  margin: 0 auto;
+}

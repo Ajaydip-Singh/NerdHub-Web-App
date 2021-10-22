@@ -1,0 +1,57 @@
+.hero_section {
+  display: grid;
+  place-content: center;
+  height: 40vh;
+  margin-top: 4.375rem;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.heading {
+  font-size: 4rem;
+  color: #fff;
+}
+
+@media (max-width: 800px) {
+  .heading {
+    padding: 0.5rem;
+  }
+}
+
+.upload_images {
+  margin-bottom: 1rem;
+}
+
+.button {
+  display: block;
+  padding: 0.2rem 0.5rem;
+  background-color: #000;
+  color: #50d450;
+  margin-bottom: 0.5rem;
+  outline: none;
+  border: 1px solid #50d450;
+}
+
+.input {
+  padding: 0.5rem;
+  margin: 0.5rem 0.1rem;
+  width: 300px;
+  background-color: #000;
+  box-shadow: none;
+  color: #fff;
+  outline: 1px solid #0de80e;
+  border: 2px solid #000;
+  box-shadow: 0 14px 28px rgba(10, 78, 25, 0.25),
+    0 10px 10px rgba(7, 63, 22, 0.22);
+  transition: border 500ms linear, ease 500ms;
+}
+
+@media (max-width: 800px) {
+  .input {
+    width: 200px;
+  }
+}
+
+.input:hover,
+.input:focus {
+  border: 2px solid #0de80e;
+}

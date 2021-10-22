@@ -1,0 +1,29 @@
+.social_list {
+  max-width: max-content;
+}
+
+.social_list_item {
+  margin: 0.5rem 0;
+}
+
+.social_link {
+  text-decoration: none;
+  color: #fff;
+  transition: all 500ms linear, ease 500ms;
+}
+
+.social_link:hover,
+.social_link:focus {
+  color: #50d450;
+}
+
+.social_link_dark {
+  text-decoration: none;
+  color: #000;
+  transition: all 500ms linear, ease 500ms;
+}
+
+.social_link_dark:hover,
+.social_link_dark:focus {
+  color: #fff;
+}

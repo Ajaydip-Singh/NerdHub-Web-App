@@ -1,0 +1,66 @@
+.hero_section {
+  display: grid;
+  place-content: center;
+  height: 30vh;
+  margin-top: 4.375rem;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.main_wrapper {
+  background-size: cover;
+  object-fit: cover;
+  background-position: center;
+  background-color: #000;
+  margin-top: 70px;
+}
+
+@media (max-width: 800px) {
+  .main_wrapper {
+    padding-bottom: 4rem;
+  }
+}
+
+.nav_button {
+  background: transparent;
+  outline: none;
+}
+
+.gallery {
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.gallery_wrapper {
+  min-height: 60vh;
+}
+
+/* FilterBox */
+.filterbox {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  margin: 0 auto;
+  max-width: max-content;
+}
+
+.filter_button_wrapper {
+  margin: 0.5rem 0;
+}
+
+.label {
+  display: inline;
+  font-size: 0.7rem;
+}
+
+.filter_button {
+  font-size: 0.7rem;
+  padding: 0.3rem;
+  outline: none;
+  border: 1px solid #0de80e;
+  background-color: #0de80e;
+}
+
+.filter_button:not(:last-of-type) {
+  margin-right: 0.2rem;
+}

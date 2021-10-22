@@ -1,0 +1,58 @@
+.hero_section {
+  display: grid;
+  place-content: center;
+  height: 40vh;
+  margin-top: 70px;
+  background-size: cover;
+  background-position: center;
+}
+
+.main_section {
+  background-size: cover;
+  background-position: center;
+}
+
+.heading {
+  font-size: 4rem;
+  color: #fff;
+}
+
+.wrapper {
+  padding: 2rem 0;
+  max-width: 70rem;
+  margin: 0 auto;
+}
+
+.wrapper:first-of-type {
+  padding: 4rem 0 2rem;
+}
+
+.contact_info {
+  font-size: 1.7rem;
+  color: #fff;
+  text-transform: uppercase;
+  margin-bottom: 0;
+}
+
+.socials {
+  margin: 0 0 3rem;
+}
+
+.image_container {
+  display: grid;
+  place-content: center;
+}
+
+.image {
+  max-width: 100%;
+  min-height: 300px;
+  object-fit: cover;
+}
+
+.map {
+  width: 100%;
+  height: 400px;
+  padding: 0.2rem;
+  filter: brightness(0.8);
+  margin-bottom: 3rem;
+}

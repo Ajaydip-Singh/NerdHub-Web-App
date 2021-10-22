@@ -1,0 +1,45 @@
+.main_wrapper {
+  margin-top: 70px;
+  background-color: #fff;
+  min-height: calc(100vh - 70px);
+  color: #000;
+}
+
+.hero_section {
+  display: grid;
+  place-content: center;
+  height: 30vh;
+  margin-top: 4.375rem;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+.heading {
+  font-size: 4rem;
+  color: #50d450;
+}
+
+.wrapper {
+  max-width: max-content;
+  margin: 1rem auto;
+}
+
+.editor_wrapper {
+  max-width: 40rem;
+  padding: 1rem;
+  margin: 0 auto;
+}
+
+.button {
+  outline: none;
+  min-width: 90px;
+  border: 2px solid #000;
+  background-color: #fff;
+  padding: 0.3rem 1rem;
+  cursor: pointer;
+  transition: 300ms ease-in-out;
+}
+
+.button:hover,
+.button:focus {
+  border: 2px solid #50d450;
+  color: #50d450;
+}

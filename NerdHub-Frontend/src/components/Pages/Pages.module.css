@@ -1,0 +1,16 @@
+.pages_container {
+  display: flex;
+  max-width: max-content;
+  margin: 0.5rem auto;
+}
+
+.page_link {
+  display: block;
+  text-decoration: none;
+  margin: 0.5rem;
+}
+
+.active_page_link {
+  color: #000;
+  background-color: #50d450;
+}

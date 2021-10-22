@@ -1,0 +1,34 @@
+.main_wrapper {
+  margin-top: 70px;
+  padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  display: grid;
+  place-content: center;
+  width: 280px;
+  height: 280px;
+  background-color: #50d450;
+  margin: 1rem;
+}
+
+.card_link {
+  display: block;
+  text-decoration: none;
+  color: #000;
+  font-size: 2rem;
+  border: 2px solid transparent;
+  text-shadow: 1px 1px #000;
+  transition: 500ms ease-in-out;
+}
+
+.card_link:hover,
+.card_link:focus {
+  border: 2px solid #50d450;
+  text-decoration: none;
+  color: #000;
+}

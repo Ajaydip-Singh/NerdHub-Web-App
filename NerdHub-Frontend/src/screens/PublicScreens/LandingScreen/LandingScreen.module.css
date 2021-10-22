@@ -1,0 +1,11 @@
+.wrapper {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+}
+
+.logo {
+  cursor: pointer;
+  width: 300px;
+  display: block;
+}

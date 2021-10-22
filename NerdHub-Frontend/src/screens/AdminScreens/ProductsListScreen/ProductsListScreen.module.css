@@ -1,0 +1,28 @@
+.hero_section {
+  display: grid;
+  place-content: center;
+  height: 40vh;
+  margin-top: 4.375rem;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.heading {
+  font-size: 4rem;
+  color: #fff;
+}
+
+@media (max-width: 800px) {
+  .heading {
+    padding: 0.5rem;
+  }
+}
+
+.button {
+  display: block;
+  padding: 0.2rem 0.5rem;
+  background-color: #000;
+  color: #50d450;
+  margin-bottom: 0.5rem;
+  outline: none;
+  border: 1px solid #50d450;
+}

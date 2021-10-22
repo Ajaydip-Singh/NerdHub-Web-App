@@ -1,0 +1,12 @@
+.next_icon,
+.prev_icon {
+  transition: transform 300ms ease-in-out;
+}
+
+.next_icon:hover {
+  transform: translateX(3px);
+}
+
+.prev_icon:hover {
+  transform: translateX(-3px);
+}

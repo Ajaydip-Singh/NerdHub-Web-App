@@ -1,0 +1,19 @@
+.footer {
+  padding: 4rem;
+  background: #50d450;
+  color: #000;
+}
+
+.footer_heading {
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+}
+
+.footer_list_item {
+  margin: 0.5rem 0;
+}
+
+.footer_link {
+  text-decoration: none;
+}

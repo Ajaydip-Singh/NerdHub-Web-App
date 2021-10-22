@@ -1,0 +1,130 @@
+.screen {
+  position: relative;
+}
+
+@media (max-width: 800px) {
+  .screen {
+    padding-bottom: 4rem;
+  }
+}
+
+.event_full_screen {
+  height: 100vh;
+}
+
+.main_wrapper {
+  position: relative;
+  background-size: cover;
+  object-fit: cover;
+  background-position: center;
+  background-repeat: repeat-y;
+  margin-top: 70px;
+  flex-basis: 800px;
+  flex-wrap: wrap;
+  gap: 2rem;
+  min-height: calc(100vh - 70px);
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 800px) {
+  .main_wrapper {
+    min-height: calc(100vh - 135px);
+  }
+}
+
+.comingSoon_wrapper {
+  position: absolute;
+  top: calc(50% - 70px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.events_wrapper {
+  display: grid;
+  place-items: center;
+  min-height: 50vh;
+}
+
+.filterbox {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  margin: 0 auto;
+  max-width: max-content;
+}
+
+.wrapper {
+  max-width: max-content;
+}
+
+.input {
+  padding: 0.5rem;
+  width: 300px;
+  margin: 0 auto;
+  box-shadow: none;
+  transition: border 500ms linear, ease 500ms;
+}
+
+@media (max-width: 800px) {
+  .input {
+    width: 200px;
+  }
+}
+
+.search_button {
+  position: relative;
+  margin: 0 auto;
+  padding: 0.5rem;
+}
+
+.search_button::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 100%;
+  left: 0;
+  top: 0;
+  transition: width 1s linear, ease 1s;
+}
+
+.search_button:hover::after,
+.search_button:focus::after,
+.search_button:active::after {
+  width: 100%;
+}
+
+.filter_button_wrapper {
+  margin: 0.5rem 0;
+}
+
+.label {
+  display: inline;
+  font-size: 0.7rem;
+}
+
+.filter_button {
+  font-size: 0.7rem;
+  padding: 0.3rem;
+  outline: none;
+}
+
+.filter_button:not(:last-of-type) {
+  margin-right: 0.2rem;
+}
+
+.events_list_item {
+  margin: 7rem 0;
+}
+
+/* Placeholder */
+::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: var(--placeholder-color);
+}
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: var(--placeholder-color);
+}
+::placeholder {
+  color: var(--placeholder-color);
+}

@@ -1,0 +1,111 @@
+@media (max-width: 800px) {
+  .screen {
+    padding-bottom: 4rem;
+  }
+}
+.hero_section {
+  display: grid;
+  place-content: center;
+  height: 30vh;
+  margin-top: 4.375rem;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.main_wrapper {
+  background-size: cover;
+  background-position: top;
+  padding: 2rem 0;
+}
+
+.wrapper {
+  padding: 2rem 1rem;
+  max-width: 60rem;
+  margin: 0 auto;
+}
+
+.join_section {
+  text-align: center;
+}
+
+.form {
+  outline: none;
+  border: none;
+  max-width: max-content;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+label {
+  display: block;
+}
+
+.input {
+  padding: 0.5rem;
+  width: 300px;
+  margin: 0 auto 1rem;
+  background-color: #000;
+  box-shadow: none;
+  color: #fff;
+  outline: 1px solid #0de80e;
+  border: 2px solid #000;
+  box-shadow: 0 14px 28px rgba(10, 78, 25, 0.25),
+    0 10px 10px rgba(7, 63, 22, 0.22);
+  transition: border 500ms linear, ease 500ms;
+}
+
+.input:hover,
+.input:focus {
+  border: 2px solid #0de80e;
+}
+
+.input:disabled,
+.input[disabled] {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.submit_button {
+  position: relative;
+  width: 300px;
+  margin: 1rem 0;
+  padding: 0.5rem 1rem;
+  background-color: #0de80e;
+  color: #000;
+  outline: none;
+  border: 1px solid #000;
+}
+
+.submit_button::after {
+  content: '';
+  background-color: rgba(18, 24, 20, 0.15);
+  position: absolute;
+  width: 0;
+  height: 100%;
+  left: 0;
+  top: 0;
+  transition: width 1s linear, ease 1s;
+}
+
+.submit_button:disabled,
+.submit_button[disabled] {
+  pointer-events: none;
+  background-color: #224b22;
+}
+
+.submit_button:hover::after,
+.submit_button:focus::after,
+.submit_button:active::after {
+  width: 100%;
+}
+
+.link {
+  text-decoration: none;
+  outline: none;
+}
+
+.link:hover,
+.link:focus {
+  text-decoration: none;
+  outline: none;
+  color: #0de80e;
+}
