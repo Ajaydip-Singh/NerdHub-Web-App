@@ -15,7 +15,7 @@ export default function ShippingScreen(props) {
   const { user } = userAuthentication;
 
   const cartSlice = useSelector((state) => state.cartSlice);
-  const { cart, shippingAddress } = cartSlice;
+  const { cart } = cartSlice;
 
   const [addressName, setAddressName] = useState('');
   const [address, setAddress] = useState('');
@@ -29,7 +29,7 @@ export default function ShippingScreen(props) {
   const [countryError, setCountryError] = useState('');
   const [postalCodeError, setPostalCodeError] = useState('');
 
-  const [validForm, setValidForm] = useState(true);
+  const [validForm, setValidForm] = useState(false);
 
   const validateTextInput = (input, field, setField, setFieldError) => {
     setField(input);
@@ -42,15 +42,11 @@ export default function ShippingScreen(props) {
       setFieldError(`Enter Valid ${field}`);
     }
     setValidForm(isFormValid());
-    console.log(`form is valid: ${validForm}`);
   };
 
   const validatePostalCode = (input) => {
     setPostalCode(input);
-    if (
-      validator.isLength(input, { min: 3 }) &&
-      validator.isAlpha(input, [{ options: ' ' }])
-    ) {
+    if (validator.isLength(input, { min: 3 })) {
       setPostalCodeError('');
     } else {
       setPostalCodeError('Enter Valid Postal Code');
@@ -66,7 +62,10 @@ export default function ShippingScreen(props) {
       countryError,
       postalCodeError
     ].every((err) => err === '');
-    return value;
+    const notEmpty = [addressName, address, city, country, postalCode].every(
+      (input) => input.length !== 0
+    );
+    return value && notEmpty;
   };
 
   const dispatch = useDispatch();
@@ -92,14 +91,15 @@ export default function ShippingScreen(props) {
       props.history.push('/shop');
     }
 
-    if (shippingAddress) {
-      setAddressName(shippingAddress.name);
-      setAddress(shippingAddress.address);
-      setCity(shippingAddress.city);
-      setCountry(shippingAddress.country);
-      setPostalCode(shippingAddress.postalCode);
-    }
-  }, [dispatch, user, shippingAddress, cart, props.history]);
+    // if (shippingAddress) {
+    //   setAddressName(shippingAddress.name);
+    //   setAddress(shippingAddress.address);
+    //   setCity(shippingAddress.city);
+    //   setCountry(shippingAddress.country);
+    //   setPostalCode(shippingAddress.postalCode);
+    //   setValidForm(true);
+    // }
+  }, [dispatch, user, cart, props.history]);
 
   return (
     <div>
