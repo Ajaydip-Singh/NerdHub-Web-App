@@ -67,6 +67,7 @@ import socialMediaContentGetSlice from '../slices/pageSlices/socialMediaContentS
 import socialMediaContentUpdateSlice from '../slices/pageSlices/socialMediaContentSlices/socialMediaContentUpdateSlice';
 import ordersGetSlice from '../slices/shopSlices/ordersGetSlice';
 import orderDeleteSlice from '../slices/shopSlices/orderDeleteSlice';
+import orderGetSlice from '../slices/shopSlices/orderGetSlice';
 
 export const store = configureStore({
   preloadedState: {
@@ -157,6 +158,7 @@ export const store = configureStore({
     cartSlice: cartSlice,
     orderCreateSlice: orderCreateSlice,
     ordersGetSlice: ordersGetSlice,
-    orderDeleteSlice: orderDeleteSlice
+    orderDeleteSlice: orderDeleteSlice,
+    orderGetSlice: orderGetSlice
   }
 });
