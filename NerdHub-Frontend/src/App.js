@@ -46,6 +46,7 @@ import LoginPageScreen from './screens/AdminScreens/LoginPageScreen/LoginPageScr
 import RegisterPageScreen from './screens/AdminScreens/RegisterPageScreen/RegisterPageScreen';
 import LandingPageScreen from './screens/AdminScreens/LandingPageScreen/LandingPageScreen';
 import SocialMediaPageScreen from './screens/AdminScreens/SocialMediaPageScreen/SocialMediaPageScreen';
+import OrdersListScreen from './screens/AdminScreens/OrdersListScreen/OrdersListScreen';
 
 function App() {
   return (
@@ -138,6 +139,16 @@ function App() {
       <AdminRoute
         path="/products-admin/:id/edit"
         component={ProductEditScreen}
+        exact
+      ></AdminRoute>
+      <AdminRoute
+        path="/orders-admin"
+        component={OrdersListScreen}
+        exact
+      ></AdminRoute>
+      <AdminRoute
+        path="/orders-admin/:pageNumber"
+        component={OrdersListScreen}
         exact
       ></AdminRoute>
       <AdminRoute
