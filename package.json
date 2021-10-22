@@ -5,6 +5,7 @@
   "main": "./backend/build/index.js",
   "scripts": {
     "build": "npx tsc && cd NerdHub-Frontend && yarn install && yarn run build",
+    "dev": "nodemon --watch './**/*.ts' --exec 'ts-node' backend/src/index.ts",
     "prettier": "npx prettier --config .prettierrc.json './backend/src/**/*.ts' --write",
     "lint": "eslint ./backend/src/**/*.ts --ext .ts"
   },
