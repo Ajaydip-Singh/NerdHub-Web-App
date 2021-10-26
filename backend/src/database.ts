@@ -18,7 +18,9 @@ const initializeDatabase = (url: string): void => {
       useCreateIndex: true
     })
     .then(() => logger.info(`Connection to database succesful at ${url}`))
-    .catch(() => logger.error(`Connection to database failed at ${url}`));
+    .catch((err) =>
+      logger.error(`Connection to database failed ${err.message}`)
+    );
 };
 
 export default initializeDatabase;
