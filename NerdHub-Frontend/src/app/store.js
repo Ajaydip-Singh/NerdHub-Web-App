@@ -68,6 +68,10 @@ import socialMediaContentUpdateSlice from '../slices/pageSlices/socialMediaConte
 import ordersGetSlice from '../slices/shopSlices/ordersGetSlice';
 import orderDeleteSlice from '../slices/shopSlices/orderDeleteSlice';
 import orderGetSlice from '../slices/shopSlices/orderGetSlice';
+import eventOrderCreateSlice from '../slices/eventOrderSlices/eventOrderCreateSlice';
+import eventOrdersGetSlice from '../slices/eventOrderSlices/eventOrdersGetSlice';
+import eventOrderDeleteSlice from '../slices/eventOrderSlices/eventOrderDeleteSlice';
+import eventOrderGetSlice from '../slices/eventOrderSlices/eventOrderGetSlice';
 
 export const store = configureStore({
   preloadedState: {
@@ -159,6 +163,10 @@ export const store = configureStore({
     orderCreateSlice: orderCreateSlice,
     ordersGetSlice: ordersGetSlice,
     orderDeleteSlice: orderDeleteSlice,
-    orderGetSlice: orderGetSlice
+    orderGetSlice: orderGetSlice,
+    eventOrderCreateSlice: eventOrderCreateSlice,
+    eventOrdersGetSlice: eventOrdersGetSlice,
+    eventOrderDeleteSlice: eventOrderDeleteSlice,
+    eventOrderGetSlice: eventOrderGetSlice
   }
 });
