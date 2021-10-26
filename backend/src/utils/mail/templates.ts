@@ -123,3 +123,35 @@ export const shopOrderReceiptEmailTemplate = (
     }
   };
 };
+
+export const shopEventOrderReceiptEmailTemplate = (
+  user: User,
+  event: any
+): any => {
+  return {
+    body: {
+      name: `${user.firstName} ${user.lastName}`,
+      intro: `Your Event Order has been processed successfully.`,
+      table: {
+        data: [event],
+        columns: {
+          // Optionally, customize the column widths
+          customWidth: {
+            name: '50%',
+            total: '25%'
+          }
+        }
+      },
+      action: {
+        instructions:
+          'We will send you an email upon successful payment of event registration. In the meanwhile you can check the status of your order and more in your orders dashboard:',
+        button: {
+          color: '#3869D4',
+          text: 'Go to Orders Dashboard',
+          link: `${process.env.DOMAIN}/my-orders`
+        }
+      },
+      outro: 'We thank you for your order.'
+    }
+  };
+};
