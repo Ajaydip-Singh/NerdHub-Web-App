@@ -104,8 +104,8 @@ export default function Sidebar(props) {
         {user ? (
           <ul className={`column_f align-center ${styles.side_bar_list}`}>
             <li className={styles.side_bar_list_item}>
-              <Link to="/my-events" className={addLinkStyling(props.my_events)}>
-                My Events
+              <Link to="/my-orders" className={addLinkStyling(props.my_orders)}>
+                My Orders
               </Link>
             </li>
             <li className={styles.side_bar_list_item}>
