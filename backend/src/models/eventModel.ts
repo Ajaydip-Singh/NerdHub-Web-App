@@ -9,6 +9,7 @@ const eventSchema = new mongoose.Schema(
     description: { type: String, required: true },
     time: { type: String, required: true },
     price: { type: Number, required: true, default: 0 },
+    taxPrice: { type: Number, required: true, default: 0 },
     isFeaturedEvent: { type: Boolean, default: false, required: true },
     country: { type: String, default: 'Kenya', required: true },
     city: { type: String, default: 'Nairobi', required: true },

@@ -32,6 +32,7 @@ router.put(
     event.description = req.body.description || event.description;
     event.time = req.body.time || event.time;
     event.price = req.body.price || event.price;
+    event.taxPrice = req.body.taxPrice || event.taxPrice;
     event.isFeaturedEvent = req.body.isFeaturedEvent || event.isFeaturedEvent;
     event.country = req.body.country || event.country;
     event.city = req.body.city || event.city;
