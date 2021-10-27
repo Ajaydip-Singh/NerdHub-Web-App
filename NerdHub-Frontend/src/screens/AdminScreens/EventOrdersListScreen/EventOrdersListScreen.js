@@ -88,17 +88,6 @@ export default function EventOrdersListScreen(props) {
                   <td>{eventOrder.isPaid ? 'True' : 'False'}</td>
                   <td>
                     <button
-                      className="small"
-                      type="button"
-                      onClick={() =>
-                        props.history.push(
-                          `/shop/eventOrders/${eventOrder._id}`
-                        )
-                      }
-                    >
-                      View
-                    </button>
-                    <button
                       type="button"
                       onClick={() => deleteHandler(eventOrder)}
                     >
