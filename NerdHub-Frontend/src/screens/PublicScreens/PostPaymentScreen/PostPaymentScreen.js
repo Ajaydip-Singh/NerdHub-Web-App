@@ -11,6 +11,7 @@ import BottomNav from '../../../components/BottomNav/BottomNav';
 import { Link } from 'react-router-dom';
 import { createEventOrder } from '../../../slices/eventOrderSlices/eventOrderCreateSlice';
 import { createOrder } from '../../../slices/shopSlices/orderCreateSlice';
+import { createMembershipOrder } from '../../../slices/membershipOrderSlices/membershipOrderCreateSlice';
 
 export default function PostPaymentScreen(props) {
   const pesapal_transaction_tracking_id = props.location.search
@@ -43,6 +44,20 @@ export default function PostPaymentScreen(props) {
           createEventOrder({
             _id: pesapal_merchant_reference,
             event: eventId,
+            paymentResult: {
+              reference: pesapal_merchant_reference,
+              transaction_id: pesapal_transaction_tracking_id,
+              status: 'Pending'
+            },
+            totalPrice: price,
+            user: user._id
+          })
+        );
+      } else if (pesapal_merchant_reference.includes('-')) {
+        const price = pesapal_merchant_reference.split('-')[0];
+        dispatch(
+          createMembershipOrder({
+            _id: pesapal_merchant_reference,
             paymentResult: {
               reference: pesapal_merchant_reference,
               transaction_id: pesapal_transaction_tracking_id,
