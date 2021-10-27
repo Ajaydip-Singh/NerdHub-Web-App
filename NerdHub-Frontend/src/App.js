@@ -48,6 +48,7 @@ import LandingPageScreen from './screens/AdminScreens/LandingPageScreen/LandingP
 import SocialMediaPageScreen from './screens/AdminScreens/SocialMediaPageScreen/SocialMediaPageScreen';
 import OrdersListScreen from './screens/AdminScreens/OrdersListScreen/OrdersListScreen';
 import OrderDetailsScreen from './screens/PublicScreens/OrderDetailsScreen/OrderDetailsScreen';
+import EventOrdersListScreen from './screens/AdminScreens/EventOrdersListScreen/EventOrdersListScreen';
 
 function App() {
   return (
@@ -156,6 +157,16 @@ function App() {
       <AdminRoute
         path="/orders-admin/:pageNumber"
         component={OrdersListScreen}
+        exact
+      ></AdminRoute>
+      <AdminRoute
+        path="/event-orders-admin"
+        component={EventOrdersListScreen}
+        exact
+      ></AdminRoute>
+      <AdminRoute
+        path="/event-orders-admin/:pageNumber"
+        component={EventOrdersListScreen}
         exact
       ></AdminRoute>
       <AdminRoute
