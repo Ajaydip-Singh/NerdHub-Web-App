@@ -17,14 +17,24 @@ export default function Event(props) {
   const [fullscreen, setFullScreen] = useState(focus ? true : false);
 
   const registerHandler = async () => {
+    const totalPrice = parseFloat(event.price) + parseFloat(event.taxPrice);
     const { data } = await axios.post('/api/pesapal/order/post', {
-      Amount: event.price,
+      Amount: totalPrice,
       Type: 'MERCHANT',
       Description: `Nerdhub Event Registration: ${stripHtml(event.name)}`,
-      Reference: '1234',
+      Reference: `${user._id}/${event._id}/${totalPrice}/${Date.now()}`,
       Email: user.email,
       FirstName: user.firstName,
-      LastName: user.lastName
+      LastName: user.lastName,
+      LineItems: [
+        {
+          UniqueId: event._id,
+          Particulars: stripHtml(event.name),
+          Quantity: 1,
+          Unitcost: totalPrice,
+          Subtotal: totalPrice,
+        }
+      ]
     });
     window.location.href = data;
   };
@@ -91,7 +101,6 @@ export default function Event(props) {
                 </li>
               </ul>
             </div>
-            {/* <p className={styles.event_description}>{event.description}</p> */}
             <div
               className={`ql-editor ${
                 !fullscreen ? `${styles.event_description}` : ''
@@ -133,7 +142,11 @@ export default function Event(props) {
                     onClick={registerHandler}
                   >
                     Register for{' '}
-                    {event.price !== 0 ? `KSh ${event.price}` : 'Free'}
+                    {event.price !== 0
+                      ? `KSh ${
+                          parseFloat(event.price) + parseFloat(event.taxPrice)
+                        }`
+                      : 'Free'}
                   </button>
                 ) : (
                   <Link
@@ -142,7 +155,11 @@ export default function Event(props) {
                     to={`/login?redirect=events/${event._id}`}
                   >
                     Register for{' '}
-                    {event.price !== 0 ? `KSh ${event.price}` : 'Free'}
+                    {event.price !== 0
+                      ? `KSh ${
+                          parseFloat(event.price) + parseFloat(event.taxPrice)
+                        }`
+                      : 'Free'}
                   </Link>
                 )}
               </div>
