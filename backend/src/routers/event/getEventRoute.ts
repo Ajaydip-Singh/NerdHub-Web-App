@@ -34,6 +34,7 @@ router.get(
       description: event.description,
       time: event.time,
       price: event.price,
+      taxPrice: event.taxPrice,
       isFeaturedEvent: event.isFeaturedEvent,
       country: event.country,
       city: event.city,

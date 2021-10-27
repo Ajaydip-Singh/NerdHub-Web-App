@@ -55,6 +55,7 @@ router.put(
       description: updatedEvent.description,
       time: updatedEvent.time,
       price: updatedEvent.price,
+      taxPrice: updatedEvent.taxPrice,
       isFeaturedEvent: updatedEvent.isFeaturedEvent,
       country: updatedEvent.country,
       city: updatedEvent.city,
