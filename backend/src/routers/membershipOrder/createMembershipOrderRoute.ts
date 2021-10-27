@@ -51,7 +51,7 @@ router.post(
         to: `<${user.email}>`,
         subject: `Nerdhub: Membership Order ${req.body._id} received`,
         html: mailGenerator.generate(
-          shopMembershipOrderReceiptEmailTemplate(user)
+          shopMembershipOrderReceiptEmailTemplate(user, req.body.totalPrice)
         )
       });
     } catch (err) {

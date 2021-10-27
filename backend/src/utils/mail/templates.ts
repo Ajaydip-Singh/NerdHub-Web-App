@@ -156,13 +156,16 @@ export const shopEventOrderReceiptEmailTemplate = (
   };
 };
 
-export const shopMembershipOrderReceiptEmailTemplate = (user: User): any => {
+export const shopMembershipOrderReceiptEmailTemplate = (
+  user: User,
+  price: string
+): any => {
   return {
     body: {
       name: `${user.firstName} ${user.lastName}`,
       intro: `Your event registration is being processed.`,
       table: {
-        data: ['NerdHub Membership'],
+        data: [{ name: 'NerdHub Membership', price: `${price} KES` }],
         columns: {
           // Optionally, customize the column widths
           customWidth: {
