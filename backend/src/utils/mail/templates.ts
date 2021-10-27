@@ -35,7 +35,7 @@ export const shopPaymentReceiptEmailTemplateSuccess = (
         button: {
           color: '#3869D4',
           text: `Go to Orders Dashboard`,
-          link: `${process.env.DOMAIN}/shop`
+          link: `${process.env.DOMAIN}/my-orders`
         }
       }
     },
@@ -94,7 +94,7 @@ export const shopOrderReceiptEmailTemplate = (
   return {
     body: {
       name: `${user.firstName} ${user.lastName}`,
-      intro: `Your order has been processed successfully.`,
+      intro: `Your order is being processed.`,
       table: {
         data: items,
         columns: {
@@ -112,7 +112,7 @@ export const shopOrderReceiptEmailTemplate = (
       },
       action: {
         instructions:
-          'We will send you an email upon successful payment of order. In the meanwhile you can check the status of your order and more in your orders dashboard:',
+          'We will send you an email upon successful payment of the order. In the meanwhile you can check the status of your order and more in your orders dashboard:',
         button: {
           color: '#3869D4',
           text: 'Go to Orders Dashboard',
@@ -131,7 +131,7 @@ export const shopEventOrderReceiptEmailTemplate = (
   return {
     body: {
       name: `${user.firstName} ${user.lastName}`,
-      intro: `Your Event Order has been processed successfully.`,
+      intro: `Your event registration is being processed.`,
       table: {
         data: [event],
         columns: {
@@ -144,7 +144,7 @@ export const shopEventOrderReceiptEmailTemplate = (
       },
       action: {
         instructions:
-          'We will send you an email upon successful payment of event registration. In the meanwhile you can check the status of your order and more in your orders dashboard:',
+          'We will send you an email upon successful payment of the event registration. In the meanwhile you can check the status of your order and more in your orders dashboard:',
         button: {
           color: '#3869D4',
           text: 'Go to Orders Dashboard',
