@@ -55,6 +55,9 @@ export default function AdminPanelScreen() {
         <Link to="/orders-admin" className={styles.card_link}>
           <div className={styles.card}>Orders</div>
         </Link>
+        <Link to="/event-orders-admin" className={styles.card_link}>
+          <div className={styles.card}>Event Orders</div>
+        </Link>
         <Link to="/comics-admin" className={styles.card_link}>
           <div className={styles.card}>Comics</div>
         </Link>
