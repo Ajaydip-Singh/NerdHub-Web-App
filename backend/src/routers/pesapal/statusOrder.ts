@@ -13,6 +13,7 @@ import {
   shopPaymentReceiptEmailTemplateSuccess
 } from '../../utils/mail/templates';
 import logger from '../../utils/logger';
+import EventOrder from '../../models/eventOrderModel';
 
 const router = express.Router();
 
@@ -22,7 +23,19 @@ router.get(
     const pesapal_notification_type = req.query.pesapal_notification_type;
     const pesapal_transaction_tracking_id =
       req.query.pesapal_transaction_tracking_id;
-    const pesapal_merchant_reference = req.query.pesapal_merchant_reference;
+    const pesapal_merchant_reference = req.query
+      .pesapal_merchant_reference as string;
+
+    if (
+      !pesapal_notification_type ||
+      !pesapal_transaction_tracking_id ||
+      !pesapal_merchant_reference
+    ) {
+      res
+        .status(400)
+        .send({ message: 'Request missing key query parameters.' });
+      return;
+    }
 
     if ((pesapal_notification_type as string) == 'CHANGE') {
       const client = new PesaPalClient();
@@ -41,17 +54,26 @@ router.get(
         }
       } as SMTPTransport.Options);
 
-      if (data == 'pesapal_response_data=COMPLETED') {
-        const order = await Order.findById(pesapal_merchant_reference);
+      let order;
 
+      if (pesapal_merchant_reference.includes('/')) {
+        order = await EventOrder.findById(pesapal_merchant_reference);
+      } else {
+        order = await Order.findById(pesapal_merchant_reference);
+      }
+
+      // Get User to send confirmation that order is paid
+      const user = await User.findById(order.user._id);
+
+      if (
+        data == 'pesapal_response_data=COMPLETED' &&
+        pesapal_merchant_reference
+      ) {
         if (!order.isPaid) {
           order.paymentResult.status = 'COMPLETED';
           order.isPaid = true;
           order.paidAt = Date.now();
           const updatedOrder = await order.save();
-
-          // Send confirmation to user that order is paid
-          const user = await User.findById(order.user._id);
 
           try {
             await transport.sendMail({
@@ -70,8 +92,6 @@ router.get(
         }
       } else if (data == 'pesapal_response_data=FAILED') {
         // Send failure to user since order failed
-        const order = await Order.findById(pesapal_merchant_reference);
-        const user = await User.findById(order.user._id);
 
         try {
           await transport.sendMail({
