@@ -12,7 +12,6 @@ import { getMembershipPageContent } from '../../../slices/pageSlices/membershipP
 import LoadingBox from '../../../components/LoadingBox/LoadingBox';
 import MessageBox from '../../../components/MessageBox/MessageBox';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 
 export default function MembershipScreen(props) {
   const [formVisible, setFormVisible] = useState(false);
@@ -35,14 +34,24 @@ export default function MembershipScreen(props) {
 
   const membershipRegisterHandler = async (e) => {
     e.preventDefault();
+    const price = content && parseFloat(content.membershipFee);
     const { data } = await axios.post('/api/pesapal/order/post', {
-      Amount: content && content.membershipFee,
+      Amount: price,
       Type: 'MERCHANT',
-      Description: `Nerdhub Membership Registration`,
-      Reference: '1234503sg',
+      Description: 'Nerdhub Membership Registration',
+      Reference: `${price}-${Date.now()}`,
       Email: user.email,
       FirstName: user.firstName,
-      LastName: user.lastName
+      LastName: user.lastName,
+      LineItems: [
+        {
+          UniqueId: `${user._id}${Date.now()}`,
+          Particulars: `Membership Registration for ${user.name}`,
+          Quantity: 1,
+          Unitcost: price,
+          Subtotal: price
+        }
+      ]
     });
     window.location.href = data;
   };
