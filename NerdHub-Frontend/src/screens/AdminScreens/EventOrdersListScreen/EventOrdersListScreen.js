@@ -71,6 +71,7 @@ export default function EventOrdersListScreen(props) {
             <thead>
               <tr>
                 <th>ID</th>
+                <th>Transaction ID</th>
                 <th>User</th>
                 <th>Date</th>
                 <th>Total</th>
@@ -82,6 +83,7 @@ export default function EventOrdersListScreen(props) {
               {eventOrders.map((eventOrder) => (
                 <tr key={eventOrder._id}>
                   <td>{eventOrder._id}</td>
+                  <td>{eventOrder.paymentResult.transaction_id}</td>
                   <td>{eventOrder.user.email}</td>
                   <td>{eventOrder.createdAt.substring(0, 10)}</td>
                   <td>{`${eventOrder.totalPrice} KES`}</td>

@@ -67,6 +67,7 @@ export default function OrdersListScreen(props) {
             <thead>
               <tr>
                 <th>ID</th>
+                <th>Transaction ID</th>
                 <th>User</th>
                 <th>Date</th>
                 <th>Total</th>
@@ -79,6 +80,7 @@ export default function OrdersListScreen(props) {
               {orders.map((order) => (
                 <tr key={order._id}>
                   <td>{order._id}</td>
+                  <td>{order.paymentResult.transaction_id}</td>
                   <td>{order.user.email}</td>
                   <td>{order.createdAt.substring(0, 10)}</td>
                   <td>{`${order.totalPrice} KES`}</td>
