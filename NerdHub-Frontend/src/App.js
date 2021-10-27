@@ -49,6 +49,7 @@ import SocialMediaPageScreen from './screens/AdminScreens/SocialMediaPageScreen/
 import OrdersListScreen from './screens/AdminScreens/OrdersListScreen/OrdersListScreen';
 import OrderDetailsScreen from './screens/PublicScreens/OrderDetailsScreen/OrderDetailsScreen';
 import EventOrdersListScreen from './screens/AdminScreens/EventOrdersListScreen/EventOrdersListScreen';
+import MembershipOrdersListScreen from './screens/AdminScreens/MembershipOrdersListScreen/MembershipOrdersListScreen';
 
 function App() {
   return (
@@ -169,6 +170,17 @@ function App() {
         component={EventOrdersListScreen}
         exact
       ></AdminRoute>
+      <AdminRoute
+        path="/membership-orders-admin"
+        component={MembershipOrdersListScreen}
+        exact
+      ></AdminRoute>
+      <AdminRoute
+        path="/membership-orders-admin/:pageNumber"
+        component={MembershipOrdersListScreen}
+        exact
+      ></AdminRoute>
+
       <AdminRoute
         path="/events-admin/:pageNumber"
         component={EventsPageScreen}
