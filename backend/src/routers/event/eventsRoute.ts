@@ -24,7 +24,7 @@ router.get(
     const isFeaturedFilter = isFeaturedEvent ? { isFeaturedEvent } : '';
     const isActiveFilter = isActive ? { isActive } : '';
 
-    const count = await Event.count({
+    const count = await Event.countDocuments({
       ...nameFilter,
       ...categoryFilter,
       ...venueFilter,
@@ -39,6 +39,7 @@ router.get(
       ...isFeaturedFilter,
       ...isActiveFilter
     })
+      .sort({ _id: -1 })
       .skip(pageSize * (pageNumber - 1))
       .limit(pageSize);
 

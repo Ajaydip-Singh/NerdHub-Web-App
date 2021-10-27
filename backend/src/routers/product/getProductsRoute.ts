@@ -41,7 +41,7 @@ router.get(
         ? { price: -1 }
         : order === 'toprated'
         ? { rating: -1 }
-        : { _id: 1 };
+        : { _id: -1 };
 
     const count = await Product.count({
       ...nameFilter,

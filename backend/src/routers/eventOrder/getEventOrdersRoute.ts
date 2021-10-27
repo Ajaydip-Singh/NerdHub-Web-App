@@ -14,7 +14,7 @@ router.get(
     const pageSize = 5;
     const pageNumber = Number(req.query.pageNumber) || 1;
 
-    const count = await EventOrder.count({}).populate('user', 'email');
+    const count = await EventOrder.countDocuments({}).populate('user', 'email');
     const eventOrders = await EventOrder.find({})
       .populate('user', 'email')
       .sort({ _id: -1 })

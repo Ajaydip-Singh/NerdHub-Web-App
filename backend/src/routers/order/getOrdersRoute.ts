@@ -14,9 +14,10 @@ router.get(
     const pageSize = 5;
     const pageNumber = Number(req.query.pageNumber) || 1;
 
-    const count = await Order.count({}).populate('user', 'email');
+    const count = await Order.countDocuments({}).populate('user', 'email');
     const orders = await Order.find({})
       .populate('user', 'email')
+      .sort({ _id: -1 })
       .skip(pageSize * (pageNumber - 1))
       .limit(pageSize);
 

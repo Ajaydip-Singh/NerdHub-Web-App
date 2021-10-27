@@ -15,13 +15,14 @@ router.get(
 
     const tagFilter = tag ? { tags: tag } : {};
 
-    const count = await Gallery.count({
+    const count = await Gallery.countDocuments({
       ...tagFilter
     });
 
     const gallery = await Gallery.find({
       ...tagFilter
     })
+      .sort({ _id: -1 })
       .skip(pageSize * (pageNumber - 1))
       .limit(pageSize);
 

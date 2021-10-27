@@ -20,7 +20,7 @@ router.get(
     const categoryFilter = category ? { category } : '';
     const isActiveFilter = isActive ? { isActive } : '';
 
-    const count = await Comic.count({
+    const count = await Comic.countDocuments({
       ...nameFilter,
       ...categoryFilter,
       ...isActiveFilter
@@ -30,6 +30,7 @@ router.get(
       ...nameFilter,
       ...categoryFilter
     })
+      .sort({ _id: -1 })
       .skip(pageSize * (pageNumber - 1))
       .limit(pageSize);
 
