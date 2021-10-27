@@ -155,3 +155,32 @@ export const shopEventOrderReceiptEmailTemplate = (
     }
   };
 };
+
+export const shopMembershipOrderReceiptEmailTemplate = (user: User): any => {
+  return {
+    body: {
+      name: `${user.firstName} ${user.lastName}`,
+      intro: `Your event registration is being processed.`,
+      table: {
+        data: ['NerdHub Membership'],
+        columns: {
+          // Optionally, customize the column widths
+          customWidth: {
+            name: '50%',
+            total: '25%'
+          }
+        }
+      },
+      action: {
+        instructions:
+          'We will send you an email upon successful payment of the membership registration. In the meanwhile you can check the status of your order and more in your orders dashboard:',
+        button: {
+          color: '#3869D4',
+          text: 'Go to Orders Dashboard',
+          link: `${process.env.DOMAIN}/my-orders`
+        }
+      },
+      outro: 'We thank you for your order.'
+    }
+  };
+};
