@@ -29,13 +29,6 @@ export default function OrdersListScreen(props) {
     error: errorDelete
   } = orderDeleteSlice;
 
-  const orderCreateSlice = useSelector((state) => state.orderCreateSlice);
-  const {
-    status: statusCreate,
-    order: orderCreate,
-    error: errorCreate
-  } = orderCreateSlice;
-
   const createHandler = () => {
     dispatch(createOrder({}));
   };
@@ -56,16 +49,8 @@ export default function OrdersListScreen(props) {
   }, [dispatch, orderDelete]);
 
   useEffect(() => {
-    return () => {
-      if (orderCreate) {
-        dispatch(resetCreateOrder());
-      }
-    };
-  }, [dispatch, orderCreate]);
-
-  useEffect(() => {
     dispatch(getOrders({ pageNumber }));
-  }, [dispatch, orderDelete, orderCreate, pageNumber]);
+  }, [dispatch, orderDelete, pageNumber]);
 
   return (
     <div>
@@ -74,23 +59,12 @@ export default function OrdersListScreen(props) {
         <h1 className={styles.heading}>Orders Page</h1>
       </div>
       <div className="table_wrapper">
-        {orderCreate && (
-          <MessageBox variant="success">Order Created Succesfully</MessageBox>
-        )}
-        {errorCreate && <MessageBox variant="danger">{errorCreate}</MessageBox>}
-
         {statusDelete === 'loading' && <LoadingBox></LoadingBox>}
         {orderDelete && (
           <MessageBox variant="success">Order Deleted Succesfully</MessageBox>
         )}
         {errorDelete && <MessageBox variant="danger">{errorDelete}</MessageBox>}
-        <button type="button" onClick={createHandler} className={styles.button}>
-          {statusCreate === 'loading' ? (
-            <LoadingBox></LoadingBox>
-          ) : (
-            'Create Order'
-          )}
-        </button>
+
         {status === 'loading' ? (
           <LoadingBox></LoadingBox>
         ) : error ? (
