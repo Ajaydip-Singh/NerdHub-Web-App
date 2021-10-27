@@ -3,13 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import MediaQuery from 'react-responsive';
 import Header from '../../../components/Header/Header';
 import { getCartPageContent } from '../../../slices/pageSlices/cartPageContentSlices/cartPageContentGetSlice';
-import { emptyCart } from '../../../slices/shopSlices/cartSlice';
 import { motion } from 'framer-motion';
 import styles from './PostPaymentScreen.module.css';
 import { pageVariant, sectionVariant } from '../../../animate';
 import Footer from '../../../components/Footer/Footer';
 import BottomNav from '../../../components/BottomNav/BottomNav';
 import { Link } from 'react-router-dom';
+import { createEventOrder } from '../../../slices/eventOrderSlices/eventOrderCreateSlice';
 import { createOrder } from '../../../slices/shopSlices/orderCreateSlice';
 
 export default function PostPaymentScreen(props) {
@@ -35,26 +35,47 @@ export default function PostPaymentScreen(props) {
   }, [dispatch]);
 
   useEffect(() => {
-    dispatch(
-      createOrder({
-        _id: pesapal_merchant_reference,
-        orderItems: cart,
-        shippingAddress: shippingAddress,
-        paymentResult: {
-          reference: pesapal_merchant_reference,
-          transaction_id: pesapal_transaction_tracking_id,
-          status: 'Pending'
-        },
-        totalPrice: cart.reduce(
-          (a, c) =>
-            a +
-            (parseFloat(c.price) + parseFloat(c.taxPrice)) *
-              parseFloat(c.quantity),
-          0
-        ),
-        user: user._id
-      })
-    );
+    if (pesapal_merchant_reference && pesapal_transaction_tracking_id) {
+      if (pesapal_merchant_reference.includes('/')) {
+        const eventId = pesapal_merchant_reference.split('/')[1];
+        const price = pesapal_merchant_reference.split('/')[2];
+        dispatch(
+          createEventOrder({
+            _id: pesapal_merchant_reference,
+            event: eventId,
+            paymentResult: {
+              reference: pesapal_merchant_reference,
+              transaction_id: pesapal_transaction_tracking_id,
+              status: 'Pending'
+            },
+            totalPrice: price,
+            user: user._id
+          })
+        );
+      } else {
+        dispatch(createEventOrder());
+        dispatch(
+          createOrder({
+            _id: pesapal_merchant_reference,
+            orderItems: cart,
+            shippingAddress: shippingAddress,
+            paymentResult: {
+              reference: pesapal_merchant_reference,
+              transaction_id: pesapal_transaction_tracking_id,
+              status: 'Pending'
+            },
+            totalPrice: cart.reduce(
+              (a, c) =>
+                a +
+                (parseFloat(c.price) + parseFloat(c.taxPrice)) *
+                  parseFloat(c.quantity),
+              0
+            ),
+            user: user._id
+          })
+        );
+      }
+    }
   }, [
     dispatch,
     cart,
@@ -105,7 +126,8 @@ export default function PostPaymentScreen(props) {
             Your payment is being processed. We will notify you once it has
             completed.
             <br />
-            <Link to="/shop">Continue Shopping</Link>
+            <Link to="/shop">Continue Shopping</Link> or{' '}
+            <Link to="/events">Explore upcoming events</Link>
           </p>
         </div>
       </motion.div>
