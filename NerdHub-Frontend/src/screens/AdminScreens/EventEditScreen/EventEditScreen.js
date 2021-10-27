@@ -26,6 +26,7 @@ export default function EventEditScreen(props) {
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
   const [price, setPrice] = useState('');
+  const [taxPrice, setTaxPrice] = useState('');
   const [isFeaturedEvent, setIsFeaturedEvent] = useState('');
   const [country, setCountry] = useState('');
   const [city, setCity] = useState('');
@@ -61,6 +62,7 @@ export default function EventEditScreen(props) {
         date,
         time,
         price,
+        taxPrice,
         isFeaturedEvent,
         country,
         city,
@@ -97,6 +99,7 @@ export default function EventEditScreen(props) {
       setDate(new Date(event.date));
       setTime(event.time);
       setPrice(event.price);
+      setTaxPrice(event.taxPrice);
       setIsFeaturedEvent(event.isFeaturedEvent);
       setCountry(event.country);
       setCity(event.city);
@@ -176,6 +179,14 @@ export default function EventEditScreen(props) {
                 <input
                   value={price}
                   onChange={(e) => setPrice(e.target.value)}
+                  placeholder="Enter price in Ksh"
+                ></input>
+              </div>
+              <div className="editor_wrapper">
+                <h3>Tax Price</h3>
+                <input
+                  value={taxPrice}
+                  onChange={(e) => setTaxPrice(e.target.value)}
                   placeholder="Enter price in Ksh"
                 ></input>
               </div>
