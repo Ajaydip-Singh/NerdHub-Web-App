@@ -15,11 +15,14 @@ export const deleteEventOrder = createAsyncThunk(
     } = getState();
 
     try {
-      const { data } = await axios.delete(`/api/event-orders/${eventOrderId}`, {
-        headers: {
-          Authorization: `Bearer ${user.token}`
+      const { data } = await axios.delete(
+        `/api/event-orders/${encodeURIComponent(eventOrderId)}`,
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`
+          }
         }
-      });
+      );
       return data;
     } catch (err) {
       if (!err.response) {
