@@ -17,6 +17,7 @@ router.get(
     const count = await EventOrder.count({}).populate('user', 'email');
     const eventOrders = await EventOrder.find({})
       .populate('user', 'email')
+      .sort({ _id: -1 })
       .skip(pageSize * (pageNumber - 1))
       .limit(pageSize);
 
