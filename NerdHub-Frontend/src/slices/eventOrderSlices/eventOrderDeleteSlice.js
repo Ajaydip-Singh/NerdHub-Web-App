@@ -34,7 +34,7 @@ export const eventOrderDeleteSlice = createSlice({
   name: 'eventOrderDelete',
   initialState,
   reducers: {
-    resetDeleteOrder: (state) => {
+    resetDeleteEventOrder: (state) => {
       state.status = 'idle';
       state.eventOrder = null;
       state.error = null;
@@ -62,6 +62,6 @@ export const eventOrderDeleteSlice = createSlice({
   }
 });
 
-export const { resetDeleteOrder } = eventOrderDeleteSlice.actions;
+export const { resetDeleteEventOrder } = eventOrderDeleteSlice.actions;
 
 export default eventOrderDeleteSlice.reducer;
