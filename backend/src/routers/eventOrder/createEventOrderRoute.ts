@@ -9,6 +9,7 @@ import { mailGenerator } from '../../utils/mail/mail';
 import SMTPTransport from 'nodemailer/lib/smtp-transport';
 import { shopEventOrderReceiptEmailTemplate } from '../../utils/mail/templates';
 import User from '../../models/userModel';
+import Event from '../../models/eventModel';
 
 const router = express.Router();
 
@@ -42,6 +43,11 @@ router.post(
     } as SMTPTransport.Options);
 
     const user = await User.findById(req.body.user);
+    const event = await Event.findById(req.body.event);
+
+    const stripHtml = (html: any) => {
+      return html.replace(/<\s*[^>]*>/gi, '');
+    };
 
     try {
       await transport.sendMail({
@@ -49,7 +55,10 @@ router.post(
         to: `<${user.email}>`,
         subject: `Nerdhub: Event Order ${req.body._id} received`,
         html: mailGenerator.generate(
-          shopEventOrderReceiptEmailTemplate(user, req.body.event)
+          shopEventOrderReceiptEmailTemplate(user, {
+            name: stripHtml(event.name),
+            price: req.body.totalPrice + ' KES'
+          })
         )
       });
     } catch (err) {
