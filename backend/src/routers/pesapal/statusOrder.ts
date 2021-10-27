@@ -14,6 +14,7 @@ import {
 } from '../../utils/mail/templates';
 import logger from '../../utils/logger';
 import EventOrder from '../../models/eventOrderModel';
+import MembershipOrder from '../../models/membershipOrderModel';
 
 const router = express.Router();
 
@@ -58,6 +59,8 @@ router.get(
 
       if (pesapal_merchant_reference.includes('/')) {
         order = await EventOrder.findById(pesapal_merchant_reference);
+      } else if (pesapal_merchant_reference.includes('-')) {
+        order = await MembershipOrder.findById(pesapal_merchant_reference);
       } else {
         order = await Order.findById(pesapal_merchant_reference);
       }
