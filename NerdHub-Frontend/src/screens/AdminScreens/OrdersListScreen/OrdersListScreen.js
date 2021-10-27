@@ -6,10 +6,6 @@ import LoadingBox from '../../../components/LoadingBox/LoadingBox';
 import MessageBox from '../../../components/MessageBox/MessageBox';
 import Pages from '../../../components/Pages/Pages';
 import {
-  createOrder,
-  resetCreateOrder
-} from '../../../slices/shopSlices/orderCreateSlice';
-import {
   deleteOrder,
   resetDeleteOrder
 } from '../../../slices/shopSlices/orderDeleteSlice';
@@ -29,9 +25,6 @@ export default function OrdersListScreen(props) {
     error: errorDelete
   } = orderDeleteSlice;
 
-  const createHandler = () => {
-    dispatch(createOrder({}));
-  };
   const dispatch = useDispatch();
   const deleteHandler = (order) => {
     if (window.confirm(`Are you sure you want to delete ${order.name}`)) {
