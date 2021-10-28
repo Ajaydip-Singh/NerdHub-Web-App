@@ -21,6 +21,7 @@ export default function Carousel(props) {
     <AliceCarousel
       mouseTracking={true}
       keyboardNavigation={true}
+      swipeDelta={100}
       animationDuration={800}
       renderNextButton={() => nextIcon}
       renderPrevButton={() => prevIcon}
