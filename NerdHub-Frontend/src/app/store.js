@@ -76,6 +76,8 @@ import membershipOrderCreateSlice from '../slices/membershipOrderSlices/membersh
 import membershipOrdersGetSlice from '../slices/membershipOrderSlices/membershipOrdersGetSlice';
 import membershipOrderDeleteSlice from '../slices/membershipOrderSlices/membershipOrderDeleteSlice';
 import membershipOrderGetSlice from '../slices/membershipOrderSlices/membershipOrderGetSlice';
+import orderHistoryPageContentUpdateSlice from '../slices/pageSlices/orderHistoryPageContentSlices/orderHistoryPageContentUpdateSlice';
+import orderHistoryPageContentGetSlice from '../slices/pageSlices/orderHistoryPageContentSlices/orderHistoryPageContentGetSlice';
 import ordersUsersGetSlice from '../slices/shopSlices/ordersUserGetSlice';
 import eventOrdersUserGetSlice from '../slices/eventOrderSlices/eventOrdersUserGetSlice';
 
@@ -142,6 +144,8 @@ export const store = configureStore({
     galleryPageContentUpdateSlice: galleryPageContentUpdateSlice,
     membershipPageContentGetSlice: membershipPageContentGetSlice,
     membershipPageContentUpdateSlice: membershipPageContentUpdateSlice,
+    orderHistoryPageContentGetSlice: orderHistoryPageContentGetSlice,
+    orderHistoryPageContentUpdateSlice: orderHistoryPageContentUpdateSlice,
     footerContentGetSlice: footerContentGetSlice,
     footerContentUpdateSlice: footerContentUpdateSlice,
     socialMediaContentGetSlice: socialMediaContentGetSlice,
