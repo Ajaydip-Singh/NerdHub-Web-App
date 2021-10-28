@@ -51,6 +51,7 @@ import OrderDetailsScreen from './screens/PublicScreens/OrderDetailsScreen/Order
 import EventOrdersListScreen from './screens/AdminScreens/EventOrdersListScreen/EventOrdersListScreen';
 import MembershipOrdersListScreen from './screens/AdminScreens/MembershipOrdersListScreen/MembershipOrdersListScreen';
 import OrderHistoryPageScreen from './screens/AdminScreens/OrderHistoryPageScreen/OrderHistoryPageScreen';
+import OrdersHistoryScreen from './screens/PublicScreens/OrdersHistoryScreen/OrdersHistoryScreen';
 
 function App() {
   return (
@@ -99,6 +100,11 @@ function App() {
         component={ComicsScreen}
       ></MemberRoute>
       <MemberRoute path="/comics" exact component={ComicsScreen}></MemberRoute>
+      <MemberRoute
+        path="/my-orders"
+        exact
+        component={OrdersHistoryScreen}
+      ></MemberRoute>
       <PrivateRoute path="/profile" component={ProfileScreen}></PrivateRoute>
       <PrivateRoute
         path="/shop/postpayment"

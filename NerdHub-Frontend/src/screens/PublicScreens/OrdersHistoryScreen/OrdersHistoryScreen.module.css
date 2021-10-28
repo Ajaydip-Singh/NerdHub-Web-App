@@ -1,0 +1,67 @@
+@media (max-width: 800px) {
+  .screen {
+    padding-bottom: 4rem;
+  }
+}
+
+.main_wrapper {
+  padding: 2rem;
+  max-width: max-content;
+  margin: 0 auto;
+}
+
+.hero_section {
+  display: grid;
+  place-content: center;
+  height: 30vh;
+  margin-top: 4.375rem;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.heading {
+  font-size: 4rem;
+  color: #fff;
+}
+
+.button {
+  display: block;
+  padding: 0.2rem 0.5rem;
+  background-color: #000;
+  color: #50d450;
+  margin-bottom: 0.5rem;
+  outline: none;
+  border: 1px solid #50d450;
+}
+
+/* Table Styles */
+.table_wrapper {
+  overflow-x: auto;
+  margin: 0 0.5rem;
+}
+
+.table {
+  width: 100%;
+  border: 1px solid transparent;
+  border-color: var(--table-color-border);
+}
+
+.table tbody tr:nth-of-type(odd) {
+  background-color: var(--table-color-odd);
+  color: var(--table-text-color-odd);
+}
+
+.table tbody tr:nth-of-type(even) {
+  background-color: var(--table-color-even);
+  color: var(--table-text-color-even);
+}
+
+.table tr th {
+  padding: 0.5rem;
+}
+
+.table td {
+  text-align: left;
+  border: 0.1rem solid transparent;
+  border-color: var(--table-color-border);
+  padding: 1rem;
+}
