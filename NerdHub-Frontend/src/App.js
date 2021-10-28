@@ -100,11 +100,11 @@ function App() {
         component={ComicsScreen}
       ></MemberRoute>
       <MemberRoute path="/comics" exact component={ComicsScreen}></MemberRoute>
-      <MemberRoute
+      <PrivateRoute
         path="/my-orders"
         exact
         component={OrdersHistoryScreen}
-      ></MemberRoute>
+      ></PrivateRoute>
       <PrivateRoute path="/profile" component={ProfileScreen}></PrivateRoute>
       <PrivateRoute
         path="/shop/postpayment"
