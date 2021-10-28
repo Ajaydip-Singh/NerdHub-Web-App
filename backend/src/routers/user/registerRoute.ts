@@ -85,6 +85,9 @@ router.post(
     } catch (err) {
       res.status(404).send({ message: 'Registration Failed' });
       await createdUser.remove();
+      logger.error(
+        `${req.ip} : ${req.method} : ${req.originalUrl} : ${res.statusCode} : ${err}`
+      );
       return;
     }
 
