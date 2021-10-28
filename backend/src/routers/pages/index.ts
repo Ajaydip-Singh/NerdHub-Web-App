@@ -12,6 +12,7 @@ import orderPageContentRouter from './orderPage';
 import comicPageContentRouter from './comicPage';
 import eventPageContentRouter from './eventPage';
 import loginPageContentRouter from './loginPage';
+import orderHistoryPageContentRouter from './orderHistoryPage';
 import registerPageContentRouter from './registerPage';
 import landingPageContentRouter from './landingPage';
 import socialMediaContentRouter from './socialMedia';
@@ -33,6 +34,7 @@ router.use('/pages', eventPageContentRouter);
 router.use('/pages', loginPageContentRouter);
 router.use('/pages', registerPageContentRouter);
 router.use('/pages', landingPageContentRouter);
+router.use('/pages', orderHistoryPageContentRouter);
 router.use('/pages', socialMediaContentRouter);
 
 export default router;
