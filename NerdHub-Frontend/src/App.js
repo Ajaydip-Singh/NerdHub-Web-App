@@ -50,6 +50,7 @@ import OrdersListScreen from './screens/AdminScreens/OrdersListScreen/OrdersList
 import OrderDetailsScreen from './screens/PublicScreens/OrderDetailsScreen/OrderDetailsScreen';
 import EventOrdersListScreen from './screens/AdminScreens/EventOrdersListScreen/EventOrdersListScreen';
 import MembershipOrdersListScreen from './screens/AdminScreens/MembershipOrdersListScreen/MembershipOrdersListScreen';
+import OrderHistoryPageScreen from './screens/AdminScreens/OrderHistoryPageScreen/OrderHistoryPageScreen';
 
 function App() {
   return (
@@ -269,6 +270,11 @@ function App() {
       <AdminRoute
         path="/login-page-content-admin"
         component={LoginPageScreen}
+        exact
+      ></AdminRoute>
+      <AdminRoute
+        path="/orderHistory-page-content-admin"
+        component={OrderHistoryPageScreen}
         exact
       ></AdminRoute>
       <AdminRoute
