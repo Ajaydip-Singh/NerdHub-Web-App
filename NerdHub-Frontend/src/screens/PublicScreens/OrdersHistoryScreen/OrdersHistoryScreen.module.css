@@ -10,6 +10,12 @@
   margin: 0 auto;
 }
 
+.min_height {
+  display: grid;
+  padding-top: 5rem;
+  min-height: 50vh;
+}
+
 .hero_section {
   display: grid;
   place-content: center;

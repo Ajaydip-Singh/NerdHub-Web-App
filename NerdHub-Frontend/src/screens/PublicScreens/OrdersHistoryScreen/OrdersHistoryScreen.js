@@ -170,8 +170,10 @@ export default function OrdersHistoryScreen(props) {
                     </div>
                   </>
                 ) : (
-                  <div className="ql-editor">
-                    {content && parse(content.noOrdersAvailable)}
+                  <div className={styles.min_height}>
+                    <div className="ql-editor">
+                      {content && parse(content.noOrdersAvailable)}
+                    </div>
                   </div>
                 )}
               </div>
