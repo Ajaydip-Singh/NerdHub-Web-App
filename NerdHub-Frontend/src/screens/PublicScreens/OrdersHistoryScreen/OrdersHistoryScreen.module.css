@@ -65,3 +65,22 @@
   border-color: var(--table-color-border);
   padding: 1rem;
 }
+
+.table button {
+  margin: 0 0.2rem;
+  padding: 0.2rem 0.5rem;
+  outline: none;
+  border: 1px solid transparent;
+}
+
+.table tbody tr:nth-of-type(odd) button {
+  background-color: var(--table-color-even);
+  color: var(--table-text-color-even);
+  border-color: var(--table-color-border);
+}
+
+.table tbody tr:nth-of-type(even) button {
+  background-color: var(--table-color-odd);
+  color: var(--table-text-color-odd);
+  border-color: var(--table-color-border);
+}
