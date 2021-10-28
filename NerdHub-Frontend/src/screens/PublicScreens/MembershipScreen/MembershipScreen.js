@@ -118,7 +118,7 @@ export default function MembershipScreen(props) {
               </div>
             </section>
           </div>
-          {!user.isMember && (
+          {(!user || !user.isMember) && (
             <>
               <div className={styles.join_section}>
                 <button
