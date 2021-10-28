@@ -8,6 +8,7 @@
   width: 100%;
   height: 100%;
   transition: transform 700ms linear, ease 700ms;
+  overflow-y: auto;
 }
 
 .logo {
@@ -22,6 +23,8 @@
 
 .side_bar_content {
   background-color: #000;
+  padding-bottom: 5rem;
+  overflow-y: auto;
 }
 
 @media (max-width: 800px) {

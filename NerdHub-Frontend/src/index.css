@@ -149,6 +149,12 @@ ul {
   }
 }
 
+@media (max-width: 321px) {
+  :root {
+    font-size: 12px;
+  }
+}
+
 /* Alerts */
 .success {
   color: #20a020;
