@@ -4,6 +4,12 @@
   margin: 0;
 }
 
+.register_wrapper {
+  padding: 3rem 0;
+  margin: 5rem 0;
+  overflow-y: auto;
+}
+
 .info_box {
   background-size: cover;
   background-position: bottom;

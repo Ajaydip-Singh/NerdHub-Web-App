@@ -137,59 +137,63 @@ export default function RegisterScreen(props) {
                 : { backgroundColor: content && content.mainBackgroundColor }
             }
           >
-            <div className="ql-editor">
-              <div className={styles.title}>
-                {content && parse(content.mainHeading)}
+            <div className={styles.register_wrapper}>
+              <div className="ql-editor">
+                <div className={styles.title}>
+                  {content && parse(content.mainHeading)}
+                </div>
               </div>
-            </div>
-            {error && <MessageBox variant="danger">{error}</MessageBox>}
-            {createdUser && (
-              <MessageBox variant="success">
-                Success. Verify Email In Inbox.
-              </MessageBox>
-            )}
-            <form onSubmit={onSubmitHandler} className={styles.form}>
-              <div>
-                {firstNameError && (
-                  <MessageBox validation>{firstNameError}</MessageBox>
-                )}
-                <input
-                  style={{
-                    backgroundColor: content && content.inputBackgroundColor,
-                    color: content && content.inputTextColor,
-                    outline: `1px solid ${content && content.inputBorderColor}`,
-                    border: `2px solid ${content && content.inputBorderColor}`
-                  }}
-                  className={`${styles.input} ${
-                    firstNameError ? `${styles.val_danger}` : ``
-                  }`}
-                  placeholder="Enter first name"
-                  type="text"
-                  name="first_name"
-                  onChange={(e) => validateFirstName(e.target.value)}
-                ></input>
-              </div>
-              <div>
-                {lastNameError && (
-                  <MessageBox validation>{lastNameError}</MessageBox>
-                )}
-                <input
-                  style={{
-                    backgroundColor: content && content.inputBackgroundColor,
-                    color: content && content.inputTextColor,
-                    outline: `1px solid ${content && content.inputBorderColor}`,
-                    border: `2px solid ${content && content.inputBorderColor}`
-                  }}
-                  className={`${styles.input} ${
-                    lastNameError ? `${styles.val_danger}` : ``
-                  }`}
-                  placeholder="Enter last name"
-                  type="text"
-                  name="last_name"
-                  onChange={(e) => validateLastName(e.target.value)}
-                ></input>
-              </div>
-              <div>
+              {error && <MessageBox variant="danger">{error}</MessageBox>}
+              {createdUser && (
+                <MessageBox variant="success">
+                  Success. Verify Email In Inbox.
+                </MessageBox>
+              )}
+              <form onSubmit={onSubmitHandler} className={styles.form}>
+                <div>
+                  {firstNameError && (
+                    <MessageBox validation>{firstNameError}</MessageBox>
+                  )}
+                  <input
+                    style={{
+                      backgroundColor: content && content.inputBackgroundColor,
+                      color: content && content.inputTextColor,
+                      outline: `1px solid ${
+                        content && content.inputBorderColor
+                      }`,
+                      border: `2px solid ${content && content.inputBorderColor}`
+                    }}
+                    className={`${styles.input} ${
+                      firstNameError ? `${styles.val_danger}` : ``
+                    }`}
+                    placeholder="Enter first name"
+                    type="text"
+                    name="first_name"
+                    onChange={(e) => validateFirstName(e.target.value)}
+                  ></input>
+                </div>
+                <div>
+                  {lastNameError && (
+                    <MessageBox validation>{lastNameError}</MessageBox>
+                  )}
+                  <input
+                    style={{
+                      backgroundColor: content && content.inputBackgroundColor,
+                      color: content && content.inputTextColor,
+                      outline: `1px solid ${
+                        content && content.inputBorderColor
+                      }`,
+                      border: `2px solid ${content && content.inputBorderColor}`
+                    }}
+                    className={`${styles.input} ${
+                      lastNameError ? `${styles.val_danger}` : ``
+                    }`}
+                    placeholder="Enter last name"
+                    type="text"
+                    name="last_name"
+                    onChange={(e) => validateLastName(e.target.value)}
+                  ></input>
+                </div>
                 {emailError && <MessageBox validation>{emailError}</MessageBox>}
                 <input
                   style={{
@@ -206,86 +210,91 @@ export default function RegisterScreen(props) {
                   name="email"
                   onChange={(e) => validateEmail(e.target.value)}
                 ></input>
-              </div>
-              <div>
-                {passwordError && (
-                  <MessageBox validation>{passwordError}</MessageBox>
-                )}
-                <input
-                  style={{
-                    backgroundColor: content && content.inputBackgroundColor,
-                    color: content && content.inputTextColor,
-                    outline: `1px solid ${content && content.inputBorderColor}`,
-                    border: `2px solid ${content && content.inputBorderColor}`
-                  }}
-                  className={`${styles.input} ${
-                    passwordError ? `${styles.val_danger}` : ``
-                  }`}
-                  placeholder="Enter password"
-                  type="password"
-                  name="password"
-                  onChange={(e) => validatePassword(e.target.value)}
-                ></input>
-              </div>
-              <div>
-                {confirmPasswordError && (
-                  <MessageBox validation>{confirmPasswordError}</MessageBox>
-                )}
-                <input
-                  style={{
-                    backgroundColor: content && content.inputBackgroundColor,
-                    color: content && content.inputTextColor,
-                    outline: `1px solid ${content && content.inputBorderColor}`,
-                    border: `2px solid ${content && content.inputBorderColor}`
-                  }}
-                  className={`${styles.input} ${
-                    confirmPasswordError ? `${styles.val_danger}` : ``
-                  }`}
-                  placeholder="Confirm password"
-                  type="password"
-                  name="confirm_password"
-                  onChange={(e) => validateConfirmPassword(e.target.value)}
-                ></input>
-              </div>
-              <div>
-                <button
-                  style={{
-                    '--button-text-color':
-                      content && content.registerButtonTextColor,
-                    '--button-background-color':
-                      content && content.registerButtonBackgroundColor,
-                    '--button-border-color':
-                      content && content.registerButtonTextColor
-                  }}
-                  className={styles.submit_button}
-                  type="submit"
-                >
-                  {status === 'loading' ? (
-                    <LoadingBox></LoadingBox>
-                  ) : (
-                    `Register`
+                <div>
+                  {passwordError && (
+                    <MessageBox validation>{passwordError}</MessageBox>
                   )}
-                </button>
-              </div>
-              <p className="mt-1">
-                <div className="ql-editor mb-2">
-                  {content && parse(content.newAccountText)}
+                  <input
+                    style={{
+                      backgroundColor: content && content.inputBackgroundColor,
+                      color: content && content.inputTextColor,
+                      outline: `1px solid ${
+                        content && content.inputBorderColor
+                      }`,
+                      border: `2px solid ${content && content.inputBorderColor}`
+                    }}
+                    className={`${styles.input} ${
+                      passwordError ? `${styles.val_danger}` : ``
+                    }`}
+                    placeholder="Enter password"
+                    type="password"
+                    name="password"
+                    onChange={(e) => validatePassword(e.target.value)}
+                  ></input>
                 </div>
-                <Link
-                  style={{
-                    '--link-text-color': content && content.signUpLinkTextColor,
-                    '--link-background-color':
-                      content && content.signUpLinkBackgroundColor,
-                    '--link-border-color':
-                      content && content.signUpLinkBorderColor
-                  }}
-                  className={`border_bottom ${styles.link}`}
-                  to="/login"
-                >
-                  Login
-                </Link>
-              </p>
-            </form>
+                <div>
+                  {confirmPasswordError && (
+                    <MessageBox validation>{confirmPasswordError}</MessageBox>
+                  )}
+                  <input
+                    style={{
+                      backgroundColor: content && content.inputBackgroundColor,
+                      color: content && content.inputTextColor,
+                      outline: `1px solid ${
+                        content && content.inputBorderColor
+                      }`,
+                      border: `2px solid ${content && content.inputBorderColor}`
+                    }}
+                    className={`${styles.input} ${
+                      confirmPasswordError ? `${styles.val_danger}` : ``
+                    }`}
+                    placeholder="Confirm password"
+                    type="password"
+                    name="confirm_password"
+                    onChange={(e) => validateConfirmPassword(e.target.value)}
+                  ></input>
+                </div>
+                <div>
+                  <button
+                    style={{
+                      '--button-text-color':
+                        content && content.registerButtonTextColor,
+                      '--button-background-color':
+                        content && content.registerButtonBackgroundColor,
+                      '--button-border-color':
+                        content && content.registerButtonTextColor
+                    }}
+                    className={styles.submit_button}
+                    type="submit"
+                  >
+                    {status === 'loading' ? (
+                      <LoadingBox></LoadingBox>
+                    ) : (
+                      `Register`
+                    )}
+                  </button>
+                </div>
+                <p className="mt-1">
+                  <div className="ql-editor mb-2">
+                    {content && parse(content.newAccountText)}
+                  </div>
+                  <Link
+                    style={{
+                      '--link-text-color':
+                        content && content.signUpLinkTextColor,
+                      '--link-background-color':
+                        content && content.signUpLinkBackgroundColor,
+                      '--link-border-color':
+                        content && content.signUpLinkBorderColor
+                    }}
+                    className={`border_bottom ${styles.link}`}
+                    to="/login"
+                  >
+                    Login
+                  </Link>
+                </p>
+              </form>
+            </div>
           </div>
         </motion.section>
       )}
