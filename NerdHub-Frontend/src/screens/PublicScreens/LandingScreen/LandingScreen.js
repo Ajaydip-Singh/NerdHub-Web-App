@@ -49,7 +49,7 @@ export default function LandingScreen(props) {
               height="100vh"
               width="100vw"
               playing={true}
-              onEnded={onEnded}
+              onEnded={() => onEnded()}
             />
           ) : (
             props.history.push('/home')
