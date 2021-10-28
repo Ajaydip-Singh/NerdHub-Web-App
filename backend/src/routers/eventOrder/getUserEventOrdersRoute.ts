@@ -10,7 +10,7 @@ router.get(
   '/mine',
   isAuth,
   expressAsyncHandler(async (req: Request, res: Response) => {
-    const pageSize = 5;
+    const pageSize = 25;
     const pageNumber = Number(req.query.pageNumber) || 1;
 
     const userId = req.query.userId;

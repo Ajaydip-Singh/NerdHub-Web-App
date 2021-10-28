@@ -10,13 +10,14 @@ router.get(
   '/mine',
   isAuth,
   expressAsyncHandler(async (req: Request, res: Response) => {
-    const pageSize = 5;
+    const pageSize = 25;
     const pageNumber = Number(req.query.pageNumber) || 1;
 
     const userId = req.query.userId;
 
-    const count = await Order.count({ user: userId });
+    const count = await Order.countDocuments({ user: userId });
     const orders = await Order.find({ user: userId })
+      .sort({ id: -1 })
       .skip(pageSize * (pageNumber - 1))
       .limit(pageSize);
 
