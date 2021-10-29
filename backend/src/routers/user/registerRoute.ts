@@ -86,7 +86,7 @@ router.post(
       res.status(500).send({ message: 'Registration Failed' });
       await createdUser.remove();
       logger.error(
-        `${req.ip} : ${req.method} : ${req.originalUrl} : ${res.statusCode} : ${err}`
+        `${req.ip} : ${req.method} : ${req.originalUrl} : ${res.statusCode} : Email not sent. Using port ${process.env.MAIL_PORT}: ${err}`
       );
       return;
     }
