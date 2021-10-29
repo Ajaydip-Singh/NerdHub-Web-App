@@ -118,74 +118,75 @@ export default function MembershipScreen(props) {
               </div>
             </section>
           </div>
-          {(!user || !user.isMember) && (
-            <>
-              <div className={styles.join_section}>
-                <button
-                  onClick={membershipHandler}
-                  className="button border_bottom"
-                >
-                  Become a Member
-                </button>
-              </div>
-              <AnimatePresence>
-                {formVisible && (
-                  <motion.form
-                    onSubmit={membershipRegisterHandler}
-                    initial={{ opacity: 0, x: '-100vw' }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 1 }}
-                    exit={{ opacity: 0, x: '100vw' }}
-                    className={styles.form}
+          {(!user ||
+            !user.isMember) && (
+              <>
+                <div className={styles.join_section}>
+                  <button
+                    onClick={membershipHandler}
+                    className="button border_bottom"
                   >
-                    <div>
-                      <label htmlFor="first_name">First Name</label>
-                      <input
-                        className={styles.input}
-                        placeholder="Enter first name"
-                        type="text"
-                        id="first_name"
-                        name="first_name"
-                        disabled
-                        value={user && user.firstName}
-                      ></input>
-                    </div>
-                    <div>
-                      <label htmlFor="last_name">Last Name</label>
-                      <input
-                        className={styles.input}
-                        placeholder="Enter last name"
-                        type="text"
-                        id="last_name"
-                        name="last_name"
-                        disabled
-                        value={user && user.lastName}
-                      ></input>
-                    </div>
-                    <div>
-                      <label htmlFor="email">Email</label>
-                      <input
-                        className={styles.input}
-                        placeholder="Enter email"
-                        type="text"
-                        id="email"
-                        name="email"
-                        disabled
-                        value={user && user.email}
-                      ></input>
-                    </div>
+                    Become a Member
+                  </button>
+                </div>
+                <AnimatePresence>
+                  {formVisible && (
+                    <motion.form
+                      onSubmit={membershipRegisterHandler}
+                      initial={{ opacity: 0, x: '-100vw' }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 1 }}
+                      exit={{ opacity: 0, x: '100vw' }}
+                      className={styles.form}
+                    >
+                      <div>
+                        <label htmlFor="first_name">First Name</label>
+                        <input
+                          className={styles.input}
+                          placeholder="Enter first name"
+                          type="text"
+                          id="first_name"
+                          name="first_name"
+                          disabled
+                          value={user && user.firstName}
+                        ></input>
+                      </div>
+                      <div>
+                        <label htmlFor="last_name">Last Name</label>
+                        <input
+                          className={styles.input}
+                          placeholder="Enter last name"
+                          type="text"
+                          id="last_name"
+                          name="last_name"
+                          disabled
+                          value={user && user.lastName}
+                        ></input>
+                      </div>
+                      <div>
+                        <label htmlFor="email">Email</label>
+                        <input
+                          className={styles.input}
+                          placeholder="Enter email"
+                          type="text"
+                          id="email"
+                          name="email"
+                          disabled
+                          value={user && user.email}
+                        ></input>
+                      </div>
 
-                    <div>
-                      <button className={styles.submit_button} type="submit">
-                        Pay Membership Fee (KES{' '}
-                        {content && content.membershipFee})
-                      </button>
-                    </div>
-                  </motion.form>
-                )}
-              </AnimatePresence>
-            </>
-          )}
+                      <div>
+                        <button className={styles.submit_button} type="submit">
+                          Pay Membership Fee (KES{' '}
+                          {content && content.membershipFee})
+                        </button>
+                      </div>
+                    </motion.form>
+                  )}
+                </AnimatePresence>
+              </>
+            )}
         </motion.div>
       )}
 
