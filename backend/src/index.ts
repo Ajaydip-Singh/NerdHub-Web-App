@@ -5,7 +5,6 @@ import logger from './utils/logger';
 import routes from './routers';
 import initializeDatabase from './database';
 import path from 'path';
-import helmet from 'helmet';
 
 // Configure dotenv to use ev from .env
 dotenv.config();
@@ -15,7 +14,6 @@ const app: Application = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(helmet());
 
 // Configure mongoose
 const DB_URL = process.env.MONGODB_URL || 'mongodb://localhost:27017/nerdhub';

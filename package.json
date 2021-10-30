@@ -27,7 +27,6 @@
     "express": "^4.17.1",
     "express-async-handler": "^1.1.4",
     "generate-password": "^1.6.1",
-    "helmet": "^4.6.0",
     "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^3.1.2",
     "mailgen": "^2.0.15",
