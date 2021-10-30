@@ -23,10 +23,6 @@ export interface FileRequest extends Request {
   files?: MulterFile[] | any;
 }
 
-export interface MpesaRequest extends Request {
-  access_token?: string;
-}
-
 export interface OrderItems {
   id: string;
   name: string;
