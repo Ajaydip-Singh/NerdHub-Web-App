@@ -8,10 +8,13 @@ import styles from './PostPaymentScreen.module.css';
 import { pageVariant, sectionVariant } from '../../../animate';
 import Footer from '../../../components/Footer/Footer';
 import BottomNav from '../../../components/BottomNav/BottomNav';
-import { Link } from 'react-router-dom';
 import { createEventOrder } from '../../../slices/eventOrderSlices/eventOrderCreateSlice';
 import { createOrder } from '../../../slices/shopSlices/orderCreateSlice';
 import { createMembershipOrder } from '../../../slices/membershipOrderSlices/membershipOrderCreateSlice';
+import { getPostPaymentPageContent } from '../../../slices/pageSlices/postPaymentPageContentSlices/postPaymentPageContentGetSlice';
+import LoadingBox from '../../../components/LoadingBox/LoadingBox';
+import MessageBox from '../../../components/MessageBox/MessageBox';
+import parse from 'html-react-parser';
 
 export default function PostPaymentScreen(props) {
   const pesapal_transaction_tracking_id = props.location.search
@@ -25,6 +28,11 @@ export default function PostPaymentScreen(props) {
   const userAuthentication = useSelector((state) => state.userAuthentication);
   const { user } = userAuthentication;
 
+  const postPaymentPageContentGetSlice = useSelector(
+    (state) => state.postPaymentPageContentGetSlice
+  );
+  const { status, content, error } = postPaymentPageContentGetSlice;
+
   const cartSlice = useSelector((state) => state.cartSlice);
   const { cart, shippingAddress } = cartSlice;
 
@@ -33,6 +41,7 @@ export default function PostPaymentScreen(props) {
 
   useEffect(() => {
     dispatch(getCartPageContent({}));
+    dispatch(getPostPaymentPageContent({}));
   }, [dispatch]);
 
   useEffect(() => {
@@ -103,49 +112,56 @@ export default function PostPaymentScreen(props) {
   return (
     <div className={styles.screen}>
       <Header shop></Header>
-      <motion.div
-        style={{
-          backgroundImage: `url(/images/destruction_long.jpeg)`
-        }}
-        variants={pageVariant}
-        initial="initial"
-        animate="final"
-      >
+      {status === 'loading' ? (
+        <LoadingBox></LoadingBox>
+      ) : error ? (
+        <MessageBox variant="danger">{error}</MessageBox>
+      ) : (
         <motion.div
-          className={styles.hero_section}
-          initial={{ opacity: 0, x: '-100vw' }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1.2 }}
-          variants={sectionVariant}
-          whileHover="hover"
+          style={{
+            backgroundImage: `url(${content && content.backgroundImage})`
+          }}
+          variants={pageVariant}
+          initial="initial"
+          animate="final"
         >
           <motion.div
-            drag
-            dragConstraints={{ top: 10, left: 10, right: 10, bottom: 10 }}
-            dragTransition={{ bounceStiffness: 200, bounceDamping: 10 }}
-            whileHover={{ x: 1.5, scale: 1.2 }}
-            transition={{ yoyo: 5 }}
-            whileDrag={{ scale: 1.2 }}
+            className={styles.hero_section}
+            initial={{ opacity: 0, x: '-100vw' }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1.2 }}
+            variants={sectionVariant}
+            whileHover="hover"
           >
-            <h1>Thank you for your purchase</h1>
+            <motion.div
+              drag
+              dragConstraints={{ top: 10, left: 10, right: 10, bottom: 10 }}
+              dragTransition={{ bounceStiffness: 200, bounceDamping: 10 }}
+              whileHover={{ x: 1.5, scale: 1.2 }}
+              transition={{ yoyo: 5 }}
+              whileDrag={{ scale: 1.2 }}
+            >
+              <div className="ql-editor">
+                {content && parse(content.mainText)}
+              </div>
+            </motion.div>
           </motion.div>
+          <div className={styles.main_body}>
+            <p
+              style={{
+                margin: '0 auto',
+                maxWidth: 'max-content',
+                padding: '2rem'
+              }}
+            >
+              <div className="ql-editor">
+                {content && parse(content.infoText)}
+              </div>
+            </p>
+          </div>
         </motion.div>
-        <div className={styles.main_body}>
-          <p
-            style={{
-              margin: '0 auto',
-              maxWidth: 'max-content',
-              padding: '2rem'
-            }}
-          >
-            Your payment is being processed. We will notify you once it has
-            completed.
-            <br />
-            <Link to="/shop">Continue Shopping</Link> or{' '}
-            <Link to="/events">Explore upcoming events</Link>
-          </p>
-        </div>
-      </motion.div>
+      )}
+
       <MediaQuery minWidth={800}>
         <Footer></Footer>
       </MediaQuery>
