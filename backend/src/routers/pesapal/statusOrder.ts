@@ -37,6 +37,8 @@ router.get(
       return;
     }
 
+    let responseData;
+
     if ((pesapal_notification_type as string) == 'CHANGE') {
       const client = new PesaPalClient();
       const request = client.queryPaymentStatusByMerchantRef(
@@ -44,6 +46,7 @@ router.get(
       );
 
       const { data } = await axios.get(request);
+      responseData = data;
 
       let order;
 
@@ -110,11 +113,17 @@ router.get(
         await order.remove();
       }
     }
-    res.status(200).send({
-      pesapal_notification_type,
-      pesapal_transaction_tracking_id,
-      pesapal_merchant_reference
-    });
+    if (req.query.admin) {
+      res.status(200).send({
+        status: responseData.split('=')[1]
+      });
+    } else {
+      res.status(200).send({
+        pesapal_notification_type,
+        pesapal_transaction_tracking_id,
+        pesapal_merchant_reference
+      });
+    }
     return;
   })
 );
