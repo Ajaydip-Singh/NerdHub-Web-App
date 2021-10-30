@@ -80,6 +80,8 @@ import orderHistoryPageContentUpdateSlice from '../slices/pageSlices/orderHistor
 import orderHistoryPageContentGetSlice from '../slices/pageSlices/orderHistoryPageContentSlices/orderHistoryPageContentGetSlice';
 import ordersUsersGetSlice from '../slices/shopSlices/ordersUserGetSlice';
 import eventOrdersUserGetSlice from '../slices/eventOrderSlices/eventOrdersUserGetSlice';
+import postPaymentPageContentGetSlice from '../slices/pageSlices/postPaymentPageContentSlices/postPaymentPageContentGetSlice';
+import postPaymentPageContentUpdateSlice from '../slices/pageSlices/postPaymentPageContentSlices/postPaymentPageContentUpdateSlice';
 
 export const store = configureStore({
   preloadedState: {
@@ -122,6 +124,8 @@ export const store = configureStore({
     loginPageContentUpdateSlice: loginPageContentUpdateSlice,
     landingPageContentGetSlice: landingPageContentGetSlice,
     landingPageContentUpdateSlice: landingPageContentUpdateSlice,
+    postPaymentPageContentGetSlice: postPaymentPageContentGetSlice,
+    postPaymentPageContentUpdateSlice: postPaymentPageContentUpdateSlice,
     registerPageContentGetSlice: registerPageContentGetSlice,
     registerPageContentUpdateSlice: registerPageContentUpdateSlice,
     aboutPageContentGetSlice: aboutPageContentGetSlice,
