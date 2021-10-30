@@ -116,7 +116,7 @@ export const shopOrderReceiptEmailTemplate = (
         button: {
           color: '#3869D4',
           text: 'Go to Orders Dashboard',
-          link: 'https://mailgen.js/confirm?s=d9729feb74992cc3482b350163a1a010'
+          link: `${process.env.DOMAIN}/my-orders`
         }
       },
       outro: 'We thank you for your order.'
