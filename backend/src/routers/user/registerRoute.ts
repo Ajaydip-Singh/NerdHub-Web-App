@@ -7,7 +7,7 @@ import generateToken from '../../utils/jwt';
 import { mailGenerator } from '../../utils/mail/mail';
 import { confirmEmailTemplate } from '../../utils/mail/templates';
 import { generateRandomCode } from '../../utils/general';
-import sgMail from '../../config/sendGridConfig';
+import sgMail from '@sendgrid/mail';
 
 const router = express.Router();
 
@@ -69,6 +69,8 @@ router.post(
       subject: `NerdHub Kenya - Verify Email`,
       html: mailGenerator.generate(confirmEmailTemplate(user, confirmationCode))
     };
+
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY as string);
 
     try {
       await sgMail.send(<any>msg);
