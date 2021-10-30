@@ -53,6 +53,7 @@ import MembershipOrdersListScreen from './screens/AdminScreens/MembershipOrdersL
 import OrderHistoryPageScreen from './screens/AdminScreens/OrderHistoryPageScreen/OrderHistoryPageScreen';
 import OrdersHistoryScreen from './screens/PublicScreens/OrdersHistoryScreen/OrdersHistoryScreen';
 import PostPaymentPageScreen from './screens/AdminScreens/postPaymentPageScreen/postPaymentPageScreen';
+import OrderStatusScreen from './screens/AdminScreens/OrderStatusScreen/OrderStatusScreen';
 
 function App() {
   return (
@@ -202,6 +203,16 @@ function App() {
       <AdminRoute
         path="/events-admin/:id/edit"
         component={EventEditScreen}
+        exact
+      ></AdminRoute>
+      <AdminRoute
+        path="/orders-status-admin/"
+        component={OrderStatusScreen}
+        exact
+      ></AdminRoute>
+      <AdminRoute
+        path="/orders-status-admin/:order/:transaction"
+        component={OrderStatusScreen}
         exact
       ></AdminRoute>
       <AdminRoute

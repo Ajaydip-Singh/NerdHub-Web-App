@@ -70,6 +70,9 @@ export default function AdminPanelScreen() {
         <Link to="/membership-orders-admin" className={styles.card_link}>
           <div className={styles.card}>Membership Orders</div>
         </Link>
+        <Link to="/orders-status-admin" className={styles.card_link}>
+          <div className={styles.card}>Check Order Status</div>
+        </Link>
         <Link to="/comics-admin" className={styles.card_link}>
           <div className={styles.card}>Comics</div>
         </Link>
