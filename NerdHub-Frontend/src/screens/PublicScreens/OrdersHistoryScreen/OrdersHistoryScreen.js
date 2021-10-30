@@ -65,109 +65,116 @@ export default function OrdersHistoryScreen(props) {
                 </div>
               </div>
               <div className={styles.main_wrapper}>
-                {orders &&
-                orders.length !== 0 &&
-                eventOrders &&
-                eventOrders.length !== 0 ? (
+                {(orders && orders.length !== 0) ||
+                (eventOrders && eventOrders.length !== 0) ? (
                   <>
-                    <div className="ql-editor">
-                      {content && parse(content.ordersMainHeading)}
-                    </div>
-                    <div className={styles.table_wrapper}>
-                      <table
-                        className={styles.table}
-                        style={{
-                          '--table-color-border':
-                            content && content.tableBorderColor,
-                          '--table-color-even':
-                            content && content.tableEvenRowBackgroundColor,
-                          '--table-text-color-even':
-                            content && content.tableEvenRowTextColor,
-                          '--table-color-odd':
-                            content && content.tableOddRowBackgroundColor,
-                          '--table-text-color-odd':
-                            content && content.tableOddRowTextColor
-                        }}
-                      >
-                        <thead>
-                          <tr>
-                            <th>ID</th>
-                            <th>Date</th>
-                            <th>Total</th>
-                            <th>Paid</th>
-                            <th>Delivered</th>
-                            <th>Actions</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {orders &&
-                            orders.map((order) => (
-                              <tr key={order._id}>
-                                <td>{order._id}</td>
-                                <td>{order.createdAt.substring(0, 10)}</td>
-                                <td>{`${order.totalPrice} KES`}</td>
-                                <td>{order.isPaid ? 'True' : 'False'}</td>
-                                <td>{order.isDelivered ? 'True' : 'False'}</td>
-                                <td>
-                                  <button
-                                    className="small"
-                                    type="button"
-                                    onClick={() =>
-                                      props.history.push(
-                                        `/shop/orders/${order._id}`
-                                      )
-                                    }
-                                  >
-                                    View
-                                  </button>
-                                </td>
+                    {orders && orders.length !== 0 && (
+                      <>
+                        <div className="ql-editor">
+                          {content && parse(content.ordersMainHeading)}
+                        </div>
+                        <div className={styles.table_wrapper}>
+                          <table
+                            className={styles.table}
+                            style={{
+                              '--table-color-border':
+                                content && content.tableBorderColor,
+                              '--table-color-even':
+                                content && content.tableEvenRowBackgroundColor,
+                              '--table-text-color-even':
+                                content && content.tableEvenRowTextColor,
+                              '--table-color-odd':
+                                content && content.tableOddRowBackgroundColor,
+                              '--table-text-color-odd':
+                                content && content.tableOddRowTextColor
+                            }}
+                          >
+                            <thead>
+                              <tr>
+                                <th>ID</th>
+                                <th>Date</th>
+                                <th>Total</th>
+                                <th>Paid</th>
+                                <th>Delivered</th>
+                                <th>Actions</th>
                               </tr>
-                            ))}
-                        </tbody>
-                      </table>
-                    </div>
+                            </thead>
+                            <tbody>
+                              {orders &&
+                                orders.map((order) => (
+                                  <tr key={order._id}>
+                                    <td>{order._id}</td>
+                                    <td>{order.createdAt.substring(0, 10)}</td>
+                                    <td>{`${order.totalPrice} KES`}</td>
+                                    <td>{order.isPaid ? 'True' : 'False'}</td>
+                                    <td>
+                                      {order.isDelivered ? 'True' : 'False'}
+                                    </td>
+                                    <td>
+                                      <button
+                                        className="small"
+                                        type="button"
+                                        onClick={() =>
+                                          props.history.push(
+                                            `/shop/orders/${order._id}`
+                                          )
+                                        }
+                                      >
+                                        View
+                                      </button>
+                                    </td>
+                                  </tr>
+                                ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      </>
+                    )}
                     <br />
-                    <div className="ql-editory">
-                      {content && parse(content.eventsMainHeading)}
-                    </div>
-
-                    <div className={styles.table_wrapper}>
-                      <table
-                        className={styles.table}
-                        style={{
-                          '--table-color-border':
-                            content && content.tableBorderColor,
-                          '--table-color-even':
-                            content && content.tableEvenRowBackgroundColor,
-                          '--table-text-color-even':
-                            content && content.tableEvenRowTextColor,
-                          '--table-color-odd':
-                            content && content.tableOddRowBackgroundColor,
-                          '--table-text-color-odd':
-                            content && content.tableOddRowTextColor
-                        }}
-                      >
-                        <thead>
-                          <tr>
-                            <th>ID</th>
-                            <th>Date</th>
-                            <th>Total</th>
-                            <th>Paid</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {eventOrders &&
-                            eventOrders.map((order) => (
-                              <tr key={order._id}>
-                                <td>{order._id}</td>
-                                <td>{order.createdAt.substring(0, 10)}</td>
-                                <td>{`${order.totalPrice} KES`}</td>
-                                <td>{order.isPaid ? 'True' : 'False'}</td>
+                    {eventOrders && eventOrders.length !== 0 && (
+                      <>
+                        <div className="ql-editory">
+                          {content && parse(content.eventsMainHeading)}
+                        </div>
+                        <div className={styles.table_wrapper}>
+                          <table
+                            className={styles.table}
+                            style={{
+                              '--table-color-border':
+                                content && content.tableBorderColor,
+                              '--table-color-even':
+                                content && content.tableEvenRowBackgroundColor,
+                              '--table-text-color-even':
+                                content && content.tableEvenRowTextColor,
+                              '--table-color-odd':
+                                content && content.tableOddRowBackgroundColor,
+                              '--table-text-color-odd':
+                                content && content.tableOddRowTextColor
+                            }}
+                          >
+                            <thead>
+                              <tr>
+                                <th>ID</th>
+                                <th>Date</th>
+                                <th>Total</th>
+                                <th>Paid</th>
                               </tr>
-                            ))}
-                        </tbody>
-                      </table>
-                    </div>
+                            </thead>
+                            <tbody>
+                              {eventOrders &&
+                                eventOrders.map((order) => (
+                                  <tr key={order._id}>
+                                    <td>{order._id}</td>
+                                    <td>{order.createdAt.substring(0, 10)}</td>
+                                    <td>{`${order.totalPrice} KES`}</td>
+                                    <td>{order.isPaid ? 'True' : 'False'}</td>
+                                  </tr>
+                                ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      </>
+                    )}
                   </>
                 ) : (
                   <div className={styles.min_height}>
