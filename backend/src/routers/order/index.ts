@@ -5,11 +5,13 @@ import deleteOrderRoute from './deleteOrderRoute';
 import createOrderRoute from './createOrderRoute';
 import editOrderRoute from './editOrderDeliverRoute';
 import getUserOrdersRoute from './getUserOrdersRoute';
+import editOrderDeliverRoute from './editOrderDeliverRoute';
 
 const router = express.Router();
 
 router.use('/orders', getOrdersRoute);
 router.use('/orders', getUserOrdersRoute);
+router.use('/orders', editOrderDeliverRoute);
 router.use('/orders', getOrderRoute);
 router.use('/orders', deleteOrderRoute);
 router.use('/orders', createOrderRoute);
