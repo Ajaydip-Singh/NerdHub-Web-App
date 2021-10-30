@@ -84,7 +84,27 @@ export default function OrdersListScreen(props) {
                   <td>{order.user.email}</td>
                   <td>{order.createdAt.substring(0, 10)}</td>
                   <td>{`${order.totalPrice} KES`}</td>
-                  <td>{order.isPaid ? 'True' : 'False'}</td>
+                  <td>
+                    {!order.isPaid ? (
+                      <button
+                        className="small"
+                        type="button"
+                        onClick={() =>
+                          props.history.push(
+                            `/orders-status-admin/${encodeURIComponent(
+                              order._id
+                            )}/${encodeURIComponent(
+                              order.paymentResult.transaction_id
+                            )}`
+                          )
+                        }
+                      >
+                        Check status
+                      </button>
+                    ) : (
+                      'True'
+                    )}
+                  </td>
                   <td>{order.isDelivered ? 'True' : 'False'}</td>
                   <td>
                     <button

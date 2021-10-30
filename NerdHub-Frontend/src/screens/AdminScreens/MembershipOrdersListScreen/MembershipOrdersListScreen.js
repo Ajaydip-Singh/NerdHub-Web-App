@@ -91,7 +91,27 @@ export default function MembershipOrdersListScreen(props) {
                   <td>{membershipOrder.user.email}</td>
                   <td>{membershipOrder.createdAt.substring(0, 10)}</td>
                   <td>{`${membershipOrder.totalPrice} KES`}</td>
-                  <td>{membershipOrder.isPaid ? 'True' : 'False'}</td>
+                  <td>
+                    {!membershipOrder.isPaid ? (
+                      <button
+                        className="small"
+                        type="button"
+                        onClick={() =>
+                          props.history.push(
+                            `/orders-status-admin/${encodeURIComponent(
+                              membershipOrder._id
+                            )}/${encodeURIComponent(
+                              membershipOrder.paymentResult.transaction_id
+                            )}`
+                          )
+                        }
+                      >
+                        Check status
+                      </button>
+                    ) : (
+                      'True'
+                    )}
+                  </td>
                   <td>
                     <button
                       type="button"

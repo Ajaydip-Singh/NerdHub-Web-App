@@ -13,8 +13,10 @@ import { useParams } from 'react-router';
 export default function OrderStatusScreen() {
   const { order = '', transaction = '' } = useParams();
 
-  const [orderId, setOrderId] = useState(order);
-  const [transactionId, setTransationId] = useState(transaction);
+  const [orderId, setOrderId] = useState(decodeURIComponent(order));
+  const [transactionId, setTransationId] = useState(
+    decodeURIComponent(transaction)
+  );
 
   const orderStatusGetSlice = useSelector((state) => state.orderStatusGetSlice);
   const { status, orderStatus, error } = orderStatusGetSlice;
