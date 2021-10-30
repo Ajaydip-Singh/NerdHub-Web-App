@@ -83,6 +83,7 @@ import eventOrdersUserGetSlice from '../slices/eventOrderSlices/eventOrdersUserG
 import postPaymentPageContentGetSlice from '../slices/pageSlices/postPaymentPageContentSlices/postPaymentPageContentGetSlice';
 import postPaymentPageContentUpdateSlice from '../slices/pageSlices/postPaymentPageContentSlices/postPaymentPageContentUpdateSlice';
 import orderStatusGetSlice from '../slices/shopSlices/orderStatusGetSlice';
+import orderEditDeliverySlice from '../slices/shopSlices/editOrderDeliverySlice';
 
 export const store = configureStore({
   preloadedState: {
@@ -181,6 +182,7 @@ export const store = configureStore({
     orderDeleteSlice: orderDeleteSlice,
     orderGetSlice: orderGetSlice,
     orderStatusGetSlice: orderStatusGetSlice,
+    orderEditDeliverySlice: orderEditDeliverySlice,
     eventOrderCreateSlice: eventOrderCreateSlice,
     eventOrdersGetSlice: eventOrdersGetSlice,
     eventOrdersUserGetSlice: eventOrdersUserGetSlice,

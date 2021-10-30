@@ -6,6 +6,10 @@ import LoadingBox from '../../../components/LoadingBox/LoadingBox';
 import MessageBox from '../../../components/MessageBox/MessageBox';
 import Pages from '../../../components/Pages/Pages';
 import {
+  editOrderDelivery,
+  resetEditOrderDelivery
+} from '../../../slices/shopSlices/editOrderDeliverySlice';
+import {
   deleteOrder,
   resetDeleteOrder
 } from '../../../slices/shopSlices/orderDeleteSlice';
@@ -25,6 +29,15 @@ export default function OrdersListScreen(props) {
     error: errorDelete
   } = orderDeleteSlice;
 
+  const orderEditDeliverySlice = useSelector(
+    (state) => state.orderEditDeliverySlice
+  );
+  const {
+    status: statusDelivery,
+    order: orderDelivery,
+    error: errorDelivery
+  } = orderEditDeliverySlice;
+
   const dispatch = useDispatch();
   const deleteHandler = (order) => {
     if (window.confirm(`Are you sure you want to delete ${order.name}`)) {
@@ -35,6 +48,7 @@ export default function OrdersListScreen(props) {
   // Cleanup orders page on unmount
   useEffect(() => {
     return () => {
+      dispatch(resetEditOrderDelivery());
       if (orderDelete) {
         dispatch(resetDeleteOrder());
       }
@@ -43,7 +57,7 @@ export default function OrdersListScreen(props) {
 
   useEffect(() => {
     dispatch(getOrders({ pageNumber }));
-  }, [dispatch, orderDelete, pageNumber]);
+  }, [dispatch, orderDelete, orderDelivery, pageNumber]);
 
   return (
     <div>
@@ -53,11 +67,17 @@ export default function OrdersListScreen(props) {
       </div>
       <div className="table_wrapper">
         {statusDelete === 'loading' && <LoadingBox></LoadingBox>}
+        {statusDelivery === 'loading' && <LoadingBox></LoadingBox>}
         {orderDelete && (
           <MessageBox variant="success">Order Deleted Succesfully</MessageBox>
         )}
+        {orderDelivery && (
+          <MessageBox variant="success">Order Delivery Updated</MessageBox>
+        )}
+        {errorDelivery && (
+          <MessageBox variant="danger">{errorDelivery}</MessageBox>
+        )}
         {errorDelete && <MessageBox variant="danger">{errorDelete}</MessageBox>}
-
         {status === 'loading' ? (
           <LoadingBox></LoadingBox>
         ) : error ? (
@@ -105,7 +125,21 @@ export default function OrdersListScreen(props) {
                       'True'
                     )}
                   </td>
-                  <td>{order.isDelivered ? 'True' : 'False'}</td>
+                  <td>
+                    {order.isDelivered ? (
+                      'True'
+                    ) : (
+                      <button
+                        className="small"
+                        type="button"
+                        onClick={() => {
+                          dispatch(editOrderDelivery(order._id));
+                        }}
+                      >
+                        Mark as Delivered (Irreversible)
+                      </button>
+                    )}
+                  </td>
                   <td>
                     <button
                       className="small"
