@@ -12,7 +12,8 @@ import Header from '../../../components/Header/Header';
 import styles from './LoginScreen.module.css';
 import {
   googleLoginUser,
-  loginUser
+  loginUser,
+  resetLoginErrors
 } from '../../../slices/userSlices/userAuthenticationSlice';
 import MessageBox from '../../../components/MessageBox/MessageBox';
 import LoadingBox from '../../../components/LoadingBox/LoadingBox';
@@ -77,6 +78,12 @@ export default function LoginScreen(props) {
     e.preventDefault();
     dispatch(loginUser({ email, password }));
   };
+
+  useEffect(() => {
+    return () => {
+      dispatch(resetLoginErrors());
+    };
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(getLoginPageContent({}));

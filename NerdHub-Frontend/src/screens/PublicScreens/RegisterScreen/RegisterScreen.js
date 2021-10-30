@@ -7,7 +7,10 @@ import Header from '../../../components/Header/Header';
 import styles from './RegisterScreen.module.css';
 import LoadingBox from '../../../components/LoadingBox/LoadingBox';
 import MessageBox from '../../../components/MessageBox/MessageBox';
-import { registerUser } from '../../../slices/userSlices/userRegisterSlice';
+import {
+  registerUser,
+  resetRegisterUser
+} from '../../../slices/userSlices/userRegisterSlice';
 import { useEffect, useState } from 'react';
 import { getRegisterPageContent } from '../../../slices/pageSlices/registerPageContentSlices/registerPageContentGetSlice';
 import parse from 'html-react-parser';
@@ -90,6 +93,13 @@ export default function RegisterScreen(props) {
   const { status, createdUser, error } = userRegister;
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    return () => {
+      dispatch(resetRegisterUser());
+    };
+  }, [dispatch]);
+
   useEffect(() => {
     dispatch(getRegisterPageContent({}));
   }, [dispatch]);

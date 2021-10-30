@@ -49,6 +49,9 @@ export default function AdminPanelScreen() {
         >
           <div className={styles.card}>Order History Page</div>
         </Link>
+        <Link to="/postPayment-page-content-admin" className={styles.card_link}>
+          <div className={styles.card}>PostPayment Page</div>
+        </Link>
         <Link to="/register-page-content-admin" className={styles.card_link}>
           <div className={styles.card}>Register Page</div>
         </Link>

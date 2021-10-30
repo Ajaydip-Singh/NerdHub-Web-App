@@ -15,6 +15,7 @@ import loginPageContentRouter from './loginPage';
 import orderHistoryPageContentRouter from './orderHistoryPage';
 import registerPageContentRouter from './registerPage';
 import landingPageContentRouter from './landingPage';
+import postPaymentPageContentRouter from './postPaymentPage';
 import socialMediaContentRouter from './socialMedia';
 
 const router = express.Router();
@@ -34,6 +35,7 @@ router.use('/pages', eventPageContentRouter);
 router.use('/pages', loginPageContentRouter);
 router.use('/pages', registerPageContentRouter);
 router.use('/pages', landingPageContentRouter);
+router.use('/pages', postPaymentPageContentRouter);
 router.use('/pages', orderHistoryPageContentRouter);
 router.use('/pages', socialMediaContentRouter);
 

@@ -52,6 +52,9 @@ export const userAuthenticationSlice = createSlice({
     logoutUser: (state) => {
       localStorage.removeItem('user');
       state.user = null;
+    },
+    resetLoginErrors: (state) => {
+      state.error = null;
     }
   },
   extraReducers: (builder) => {
@@ -97,6 +100,6 @@ export const userAuthenticationSlice = createSlice({
   }
 });
 
-export const { logoutUser } = userAuthenticationSlice.actions;
+export const { logoutUser, resetLoginErrors } = userAuthenticationSlice.actions;
 
 export default userAuthenticationSlice.reducer;
