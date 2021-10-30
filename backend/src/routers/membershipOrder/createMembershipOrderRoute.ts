@@ -4,11 +4,10 @@ import expressAsyncHandler from 'express-async-handler';
 import MembershipOrder from '../../models/membershipOrderModel';
 import { isAuth } from '../../utils/general';
 import logger from '../../utils/logger';
-import nodemailer from 'nodemailer';
 import { mailGenerator } from '../../utils/mail/mail';
-import SMTPTransport from 'nodemailer/lib/smtp-transport';
 import User from '../../models/userModel';
 import { shopMembershipOrderReceiptEmailTemplate } from '../../utils/mail/templates';
+import sgMail from '@sendgrid/mail';
 
 const router = express.Router();
 
@@ -34,26 +33,21 @@ router.post(
     const createdMembershipOrder = await membershipOrder.save();
     res.status(200).send(createdMembershipOrder);
 
-    const transport = nodemailer.createTransport({
-      host: process.env.MAIL_HOST,
-      port: process.env.MAIL_PORT,
-      auth: {
-        user: process.env.MAIL_USER,
-        pass: process.env.MAIL_PASS
-      }
-    } as SMTPTransport.Options);
-
     const user = await User.findById(req.body.user);
 
+    const msg = {
+      from: process.env.MAIL_FROM,
+      to: `<${user.email}>`,
+      subject: `Nerdhub: Membership Order ${req.body._id} received`,
+      html: mailGenerator.generate(
+        shopMembershipOrderReceiptEmailTemplate(user, req.body.totalPrice)
+      )
+    };
+
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY as string);
+
     try {
-      await transport.sendMail({
-        from: process.env.MAIL_FROM,
-        to: `<${user.email}>`,
-        subject: `Nerdhub: Membership Order ${req.body._id} received`,
-        html: mailGenerator.generate(
-          shopMembershipOrderReceiptEmailTemplate(user, req.body.totalPrice)
-        )
-      });
+      await sgMail.send(<any>msg);
     } catch (err) {
       logger.error(
         `${req.ip} : ${req.method} : ${req.originalUrl} : ${res.statusCode} : Cannot send membershipOrder placement receipt email`

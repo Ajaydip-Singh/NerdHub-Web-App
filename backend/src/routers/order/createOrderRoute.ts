@@ -4,11 +4,10 @@ import expressAsyncHandler from 'express-async-handler';
 import Order from '../../models/orderModel';
 import { isAuth } from '../../utils/general';
 import logger from '../../utils/logger';
-import nodemailer from 'nodemailer';
 import { mailGenerator } from '../../utils/mail/mail';
-import SMTPTransport from 'nodemailer/lib/smtp-transport';
 import { shopOrderReceiptEmailTemplate } from '../../utils/mail/templates';
 import User from '../../models/userModel';
+import sgMail from '@sendgrid/mail';
 
 const router = express.Router();
 
@@ -33,26 +32,21 @@ router.post(
     const createdOrder = await order.save();
     res.status(200).send(createdOrder);
 
-    const transport = nodemailer.createTransport({
-      host: process.env.MAIL_HOST,
-      port: process.env.MAIL_PORT,
-      auth: {
-        user: process.env.MAIL_USER,
-        pass: process.env.MAIL_PASS
-      }
-    } as SMTPTransport.Options);
-
     const user = await User.findById(req.body.user);
 
+    const msg = {
+      from: process.env.MAIL_FROM,
+      to: `<${user.email}>`,
+      subject: `Nerdhub:  Order ${req.body._id} received`,
+      html: mailGenerator.generate(
+        shopOrderReceiptEmailTemplate(user, req.body.orderItems)
+      )
+    };
+
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY as string);
+
     try {
-      await transport.sendMail({
-        from: process.env.MAIL_FROM,
-        to: `<${user.email}>`,
-        subject: `Nerdhub:  Order ${req.body._id} received`,
-        html: mailGenerator.generate(
-          shopOrderReceiptEmailTemplate(user, req.body.orderItems)
-        )
-      });
+      await sgMail.send(<any>msg);
     } catch (err) {
       logger.error(
         `${req.ip} : ${req.method} : ${req.originalUrl} : ${res.statusCode} : Cannot send order placement receipt email`

@@ -2,8 +2,6 @@ import { Request, Response } from 'express';
 import expressAsyncHandler from 'express-async-handler';
 import express from 'express';
 import axios from 'axios';
-import nodemailer from 'nodemailer';
-import SMTPTransport from 'nodemailer/lib/smtp-transport';
 import { PesaPalClient } from '../../utils/pesaPal';
 import Order from '../../models/orderModel';
 import { mailGenerator } from '../../utils/mail/mail';
@@ -15,6 +13,7 @@ import {
 import logger from '../../utils/logger';
 import EventOrder from '../../models/eventOrderModel';
 import MembershipOrder from '../../models/membershipOrderModel';
+import sgMail from '@sendgrid/mail';
 
 const router = express.Router();
 
@@ -46,15 +45,6 @@ router.get(
 
       const { data } = await axios.get(request);
 
-      const transport = nodemailer.createTransport({
-        host: process.env.MAIL_HOST,
-        port: process.env.MAIL_PORT,
-        auth: {
-          user: process.env.MAIL_USER,
-          pass: process.env.MAIL_PASS
-        }
-      } as SMTPTransport.Options);
-
       let order;
 
       if (pesapal_merchant_reference.includes('/')) {
@@ -68,6 +58,9 @@ router.get(
       // Get User to send confirmation that order is paid
       const user = await User.findById(order.user._id);
 
+      // Setup sgMail
+      sgMail.setApiKey(process.env.SENDGRID_API_KEY as string);
+
       if (
         data == 'pesapal_response_data=COMPLETED' &&
         pesapal_merchant_reference
@@ -78,15 +71,17 @@ router.get(
           order.paidAt = Date.now();
           const updatedOrder = await order.save();
 
+          const msg = {
+            from: process.env.MAIL_FROM,
+            to: `<${user.email}>`,
+            subject: `Nerdhub: Payment Received for Order ${updatedOrder._id}`,
+            html: mailGenerator.generate(
+              shopPaymentReceiptEmailTemplateSuccess(user, updatedOrder._id)
+            )
+          };
+
           try {
-            await transport.sendMail({
-              from: process.env.MAIL_FROM,
-              to: `<${user.email}>`,
-              subject: `Nerdhub: Payment Received for Order ${updatedOrder._id}`,
-              html: mailGenerator.generate(
-                shopPaymentReceiptEmailTemplateSuccess(user, updatedOrder._id)
-              )
-            });
+            await sgMail.send(<any>msg);
           } catch (err) {
             logger.error(
               `${req.ip} : ${req.method} : ${req.originalUrl} : ${res.statusCode} : Cannot send order payment receipt success email`
@@ -96,15 +91,17 @@ router.get(
       } else if (data == 'pesapal_response_data=FAILED') {
         // Send failure to user since order failed
 
+        const msg = {
+          from: process.env.MAIL_FROM,
+          to: `<${user.email}>`,
+          subject: `Nerdhub: Payment Failed for Order ${order._id}`,
+          html: mailGenerator.generate(
+            shopPaymentReceiptEmailTemplateFail(user, order._id)
+          )
+        };
+
         try {
-          await transport.sendMail({
-            from: process.env.MAIL_FROM,
-            to: `<${user.email}>`,
-            subject: `Nerdhub: Payment Failed for Order ${order._id}`,
-            html: mailGenerator.generate(
-              shopPaymentReceiptEmailTemplateFail(user, order._id)
-            )
-          });
+          await sgMail.send(<any>msg);
         } catch (err) {
           logger.error(
             `${req.ip} : ${req.method} : ${req.originalUrl} : ${res.statusCode} : Cannot send order payment receipt failure email`
