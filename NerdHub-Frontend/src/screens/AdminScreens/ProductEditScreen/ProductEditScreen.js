@@ -28,6 +28,7 @@ export default function ProductEditScreen(props) {
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
   const [taxPrice, setTaxPrice] = useState('');
+  const [shippingPrice, setShippingPrice] = useState('');
   const [shippingInfo, setShippingInfo] = useState('');
   const [cardDisplayPrice, setCardDisplayPrice] = useState('');
   const [pageDisplayPrice, setPageDisplayPrice] = useState('');
@@ -71,6 +72,7 @@ export default function ProductEditScreen(props) {
         description,
         price,
         taxPrice,
+        shippingPrice,
         shippingInfo,
         cardDisplayPrice,
         pageDisplayPrice,
@@ -115,6 +117,7 @@ export default function ProductEditScreen(props) {
       setDescription(product.description);
       setPrice(product.price);
       setTaxPrice(product.taxPrice);
+      setShippingPrice(product.shippingPrice);
       setShippingInfo(product.shippingInfo);
       setCardDisplayPrice(product.cardDisplayPrice);
       setPageDisplayPrice(product.pageDisplayPrice);
@@ -244,6 +247,14 @@ export default function ProductEditScreen(props) {
                 <input
                   value={taxPrice}
                   onChange={(e) => setTaxPrice(e.target.value)}
+                  placeholder="Enter tax price in Ksh"
+                ></input>
+              </div>
+              <div className="editor_wrapper">
+                <h3>Shipping Price</h3>
+                <input
+                  value={shippingPrice}
+                  onChange={(e) => setShippingPrice(e.target.value)}
                   placeholder="Enter tax price in Ksh"
                 ></input>
               </div>

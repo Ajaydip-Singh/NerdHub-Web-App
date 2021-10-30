@@ -61,7 +61,9 @@ export default function OrderScreen(props) {
         cart.reduce(
           (a, c) =>
             a +
-            (parseFloat(c.price) + parseFloat(c.taxPrice)) *
+            (parseFloat(c.price) +
+              parseFloat(c.shippingPrice) +
+              parseFloat(c.taxPrice)) *
               parseFloat(c.quantity),
           0
         )
@@ -231,7 +233,15 @@ export default function OrderScreen(props) {
                   </tr>
                   <tr>
                     <td>Delivery</td>
-                    <td>KES 100</td>
+                    <td>
+                      KES{' '}
+                      {cart.reduce(
+                        (a, c) =>
+                          a +
+                          parseFloat(c.shippingPrice) * parseFloat(c.quantity),
+                        0
+                      )}
+                    </td>
                   </tr>
                   <tr>
                     <td>Order Total</td>
