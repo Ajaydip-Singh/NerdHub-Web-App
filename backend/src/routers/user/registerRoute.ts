@@ -7,8 +7,7 @@ import generateToken from '../../utils/jwt';
 import { mailGenerator } from '../../utils/mail/mail';
 import { confirmEmailTemplate } from '../../utils/mail/templates';
 import { generateRandomCode } from '../../utils/general';
-import nodemailer from 'nodemailer';
-import SMTPTransport from 'nodemailer/lib/smtp-transport';
+import sgMail from '../../config/sendGridConfig';
 
 const router = express.Router();
 
@@ -64,24 +63,15 @@ router.post(
     // Create jwt token for created user
     const token = generateToken(createdUser);
 
-    const transport = nodemailer.createTransport({
-      host: process.env.MAIL_HOST,
-      port: process.env.MAIL_PORT,
-      auth: {
-        user: process.env.MAIL_USER,
-        pass: process.env.MAIL_PASS
-      }
-    } as SMTPTransport.Options);
+    const msg = {
+      from: process.env.MAIL_FROM,
+      to: `<${user.email}>`,
+      subject: `NerdHub Kenya - Verify Email`,
+      html: mailGenerator.generate(confirmEmailTemplate(user, confirmationCode))
+    };
 
     try {
-      await transport.sendMail({
-        from: process.env.MAIL_FROM,
-        to: `<${user.email}>`,
-        subject: `NerdHub Kenya - Verify Email`,
-        html: mailGenerator.generate(
-          confirmEmailTemplate(user, confirmationCode)
-        )
-      });
+      await sgMail.send(<any>msg);
     } catch (err) {
       res.status(500).send({ message: 'Registration Failed' });
       await createdUser.remove();
